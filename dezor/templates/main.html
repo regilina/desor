@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>{% block head_title %}{% endblock head_title %}</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+  </head>
+  <body>
+    <div class="page">
+      <div class="chat">
+        <div class="chat__messages" id="chat-messages">
+          <!-- Сюда будут добавляться сообщения чат-бота и пользователя -->
+        </div>
+        <canvas class="chat__canvas chat__canvas_hidden" id="canvas"></canvas>
+        <div class="chat__input">
+          <input type="text" class="chat__input-field" id="user-input" placeholder="Введите сообщение">
+          <button class="chat__send-button" id="send-button">Отправить</button>
+        </div>
+      </div>
+    </div>
+    <script src="../static/js/chat-app.js"></script>
+  </body>
+</html>
