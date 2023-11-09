@@ -90,7 +90,10 @@
   flex-direction: column;
 
   &__messages {
+    display: flex;
+    flex-direction: column;
     overflow-y: auto;
+    gap: 15px;
   }
 
   &__input {
@@ -134,17 +137,25 @@
 }
 
 .message {
-  padding: 10px;
-  margin: 5px;
-  border-radius: 5px;
+  display: flex;
+  padding: 10px 38px;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 55px;
+  border: 1px solid rgba(0, 0, 0, 0.30);
+
+  color: rgba(0, 0, 0, 0.60);
+  font-weight: 400;
 }
 
 .user {
-  background-color: #e1f5fe;
+  background-color: #FFF;
+  align-self: end;
 }
   
 .bot {
-  background-color: #c8e6c9;
+  background-color: #FFF;
+  align-self: flex-start;
 }
 
 .about-festival {
