@@ -18,12 +18,14 @@ class ChatApp {
         income: ''
     };
     chatMessages = null;
+    chatMessage = null;
     userInput = null;
     sendButton = null;
     canvas = null;
     ctx = null;
     constructor() {
         this.chatMessages = document.getElementById('chat-messages');
+        this.chatMessage = document.getElementById('chat-message');
         this.userInput = document.getElementById('user-input');
         this.sendButton = document.getElementById('send-button');
         this.canvas = document.getElementById('canvas');
@@ -66,12 +68,9 @@ class ChatApp {
     typeQuestion(question, speed) {
         if (this.chatMessages) {
             this.chatMessages.innerHTML = '';
-            const messageElement = document.createElement('div');
-            messageElement.classList.add('message', 'bot');
-            if (this.chatMessages) {
-                this.chatMessages.appendChild(messageElement);
+            if (this.chatMessage) {
+                this.typeText(question, this.chatMessage, speed);
             }
-            this.typeText(question, messageElement, speed);
         }
     }
     startChat() {

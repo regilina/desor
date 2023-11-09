@@ -19,6 +19,7 @@ class ChatApp {
   }
 
   private chatMessages: HTMLElement | null = null
+  private chatMessage: HTMLElement | null = null
   private userInput: HTMLInputElement | null = null
   private sendButton: HTMLButtonElement | null = null
   private canvas: HTMLCanvasElement | null = null
@@ -26,6 +27,7 @@ class ChatApp {
 
   constructor () {
     this.chatMessages = document.getElementById('chat-messages')
+    this.chatMessage = document.getElementById('chat-message')
     this.userInput = document.getElementById('user-input') as HTMLInputElement
     this.sendButton = document.getElementById('send-button') as HTMLButtonElement
     this.canvas = document.getElementById('canvas') as HTMLCanvasElement
@@ -72,15 +74,12 @@ class ChatApp {
 
   private typeQuestion (question: string, speed: number) {
     if (this.chatMessages) {
-      this.chatMessages.innerHTML = ''
-      const messageElement = document.createElement('div')
-      messageElement.classList.add('message', 'bot')
-      if (this.chatMessages) {
-        this.chatMessages.appendChild(messageElement)
-      }
-      this.typeText(question, messageElement, speed)
+    this.chatMessages.innerHTML = ''
+        if (this.chatMessage) {
+            this.typeText(question, this.chatMessage, speed)
+        }
     }
-  }
+        }
 
   private startChat () {
     if (this.currentQuestionIndex < this.questions.length) {
@@ -160,3 +159,5 @@ class ChatApp {
 document.addEventListener('DOMContentLoaded', () => {
   new ChatApp()
 })
+
+
