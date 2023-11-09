@@ -18,14 +18,12 @@ class ChatApp {
         income: ''
     };
     chatMessages = null;
-    chatMessage = null;
     userInput = null;
     sendButton = null;
     canvas = null;
     ctx = null;
     constructor() {
         this.chatMessages = document.getElementById('chat-messages');
-        this.chatMessage = document.getElementById('chat-message');
         this.userInput = document.getElementById('user-input');
         this.sendButton = document.getElementById('send-button');
         this.canvas = document.getElementById('canvas');
@@ -65,13 +63,19 @@ class ChatApp {
             }
         }, speed);
     }
-    typeQuestion(question, speed) {
+    typeMessage(message, isUser, speed) {
         if (this.chatMessages) {
-            this.chatMessages.innerHTML = '';
-            if (this.chatMessage) {
-                this.typeText(question, this.chatMessage, speed);
-            }
+            const messageElement = document.createElement('div');
+            messageElement.classList.add('message', isUser ? 'user' : 'bot');
+            this.chatMessages.appendChild(messageElement);
+            this.typeText(message, messageElement, speed);
         }
+    }
+    typeQuestion(question, speed) {
+        this.typeMessage(question, false, speed);
+    }
+    typeAnswer(answer, speed) {
+        this.typeMessage(answer, true, speed);
     }
     startChat() {
         if (this.currentQuestionIndex < this.questions.length) {
@@ -91,6 +95,7 @@ class ChatApp {
         if (this.currentQuestionIndex < this.questions.length - 1) {
             this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message;
             this.currentQuestionIndex++;
+            this.typeAnswer(message, 50);
             this.startChat();
         }
         else {
