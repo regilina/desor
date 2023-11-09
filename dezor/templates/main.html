@@ -9,18 +9,38 @@
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
     <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
   </head>
-  <body>
-    <div class="page">
-      <div class="chat">
-        <div class="chat__messages" id="chat-messages">
-          <!-- Сюда будут добавляться сообщения чат-бота и пользователя -->
+  <body class="body">
+    <div class="content">
+      <header class="header">
+        <div class="logo-name">
+          <img src="../static/img/logo.svg" alt="логотип">
+          <span>Дезориентация</span>
         </div>
-        <canvas class="chat__canvas chat__canvas_hidden" id="canvas"></canvas>
-        <div class="chat__input">
-          <input type="text" class="chat__input-field" id="user-input" placeholder="Введите сообщение">
-          <button class="chat__send-button" id="send-button">Отправить</button>
+      </header>
+      <section class="hero">
+        <div class="hero__title-container">
+          <span class="hero__date">5-10 декабря</span>
+          <h1 class="hero__title">Career bootcamp</h1>
+          <span class="hero__description">Онлайн-фестиваль о карьере и профессиональном росте </span>
+          <button class="btn hero__btn">Записаться</button>
         </div>
-      </div>
+        <img class="hero__img" src="../static/img/hero-img.png" alt="разные предметы">
+      </section>
+      <section class="section-chat">
+        <h2 class="section-chat__title">Убедись, что фестиваль будет <br> тебе полезен</h2>
+        <p class="section-chat__text">Узнай стоимость часа своей работы, получи точки роста и забери набор карьерных стикеров от Дезориентации для общения с коллегами</p>
+        <div class="chat">
+          <div class="chat__messages" id="chat-messages">
+            <!-- Сюда будут добавляться сообщения чат-бота и пользователя -->
+          </div>
+          <canvas class="chat__canvas chat__canvas_hidden" id="canvas"></canvas>
+          <div class="chat__input">
+            <input type="text" class="chat__input-field" id="user-input" placeholder="Введите сообщение">
+            <button class="chat__send-button" id="send-button">Отправить</button>
+          </div>
+        </div>
+      </section>
+      
     </div>
     <script src="../static/js/chat-app.js"></script>
   </body>
