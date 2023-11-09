@@ -124,4 +124,40 @@
 
 .bot {
   background-color: #c8e6c9;
+}
+
+.about-festival {
+  padding-top: 150px;
+  padding-bottom: 150px;
+  display: flex;
+  flex-direction: column;
+}
+.about-festival__title {
+  font-size: 50px;
+  line-height: 110%;
+}
+.about-festival__img {
+  width: 405px;
+  height: 325px;
+}
+.about-festival__list {
+  margin-top: 24px;
+  margin-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 567px;
+}
+.about-festival__list-item {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+.about-festival__list-img-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 47px;
+}
+.about-festival__btn {
+  align-self: center;
 }/*# sourceMappingURL=styles.css.map */
