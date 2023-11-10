@@ -71,11 +71,6 @@ class ChatApp {
             messageElement.classList.add('message', isUser ? 'user' : 'bot');
             this.chatMessages.appendChild(messageElement);
             this.typeText(message, messageElement, speed);
-            // Добавим автоматическую прокрутку вниз
-            // Сделаем поле ввода видимым
-            if (this.chat) {
-                this.chat.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }
         }
     }
     typeQuestion(question, speed) {
@@ -96,6 +91,9 @@ class ChatApp {
                 this.handleUserMessage(userMessage);
                 this.userInput.value = '';
             }
+        }
+        if (this.chat) {
+            this.chat.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }
     handleUserMessage(message) {
