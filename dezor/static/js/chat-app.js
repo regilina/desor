@@ -30,15 +30,10 @@ class ChatApp {
         this.sendButton = document.getElementById('send-button');
         this.canvas = document.getElementById('canvas');
         this.ctx = this.canvas?.getContext('2d');
-        if (this.userInput) {
-            this.userInput.focus();
-        }
+        window.scrollTo(0, 0);
         this.startChat();
         if (this.sendButton) {
             this.sendButton.addEventListener('click', () => {
-                if (this.userInput) {
-                    this.userInput.focus();
-                }
                 this.sendMessage();
             });
         }
@@ -46,9 +41,6 @@ class ChatApp {
             this.userInput.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
                     this.sendMessage();
-                    if (this.userInput) {
-                        this.userInput.focus();
-                    }
                 }
             });
         }
@@ -102,6 +94,9 @@ class ChatApp {
             this.currentQuestionIndex++;
             this.typeAnswer(message, 50);
             this.startChat();
+            if (this.userInput) {
+                this.userInput.focus();
+            }
         }
         else {
             this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message;
