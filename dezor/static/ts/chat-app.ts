@@ -33,7 +33,7 @@ class ChatApp {
     this.canvas = document.getElementById('canvas') as HTMLCanvasElement
     this.ctx = this.canvas?.getContext('2d')
 
-    window.scrollTo(0, 0)
+    
 
     this.startChat()
 
@@ -51,6 +51,8 @@ class ChatApp {
         }
       })
     }
+
+    window.scrollTo(0, 0)
   }
 
   private typeText (message: string, element: HTMLElement, speed: number) {

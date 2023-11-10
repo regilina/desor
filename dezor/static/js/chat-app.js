@@ -30,7 +30,6 @@ class ChatApp {
         this.sendButton = document.getElementById('send-button');
         this.canvas = document.getElementById('canvas');
         this.ctx = this.canvas?.getContext('2d');
-        window.scrollTo(0, 0);
         this.startChat();
         if (this.sendButton) {
             this.sendButton.addEventListener('click', () => {
@@ -44,6 +43,7 @@ class ChatApp {
                 }
             });
         }
+        window.scrollTo(0, 0);
     }
     typeText(message, element, speed) {
         let i = 0;
