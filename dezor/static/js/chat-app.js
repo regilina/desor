@@ -17,12 +17,14 @@ class ChatApp {
         experience: '',
         income: ''
     };
+    chat = null;
     chatMessages = null;
     userInput = null;
     sendButton = null;
     canvas = null;
     ctx = null;
     constructor() {
+        this.chat = document.getElementById('chat');
         this.chatMessages = document.getElementById('chat-messages');
         this.userInput = document.getElementById('user-input');
         this.sendButton = document.getElementById('send-button');
@@ -64,11 +66,16 @@ class ChatApp {
         }, speed);
     }
     typeMessage(message, isUser, speed) {
-        if (this.chatMessages) {
+        if (this.chatMessages && this.userInput) {
             const messageElement = document.createElement('div');
             messageElement.classList.add('message', isUser ? 'user' : 'bot');
             this.chatMessages.appendChild(messageElement);
             this.typeText(message, messageElement, speed);
+            // Добавим автоматическую прокрутку вниз
+            // Сделаем поле ввода видимым
+            if (this.chat) {
+                this.chat.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            }
         }
     }
     typeQuestion(question, speed) {
@@ -104,6 +111,7 @@ class ChatApp {
         }
     }
     handleFinalAnswer(answer) {
+        this.typeAnswer(answer, 50);
         const monthlyIncome = parseFloat(answer);
         const hourlyRate = (monthlyIncome / (22 * 8)).toFixed(0);
         fetch('/your-server-endpoint', {

@@ -18,6 +18,7 @@ class ChatApp {
     income: ''
   };
 
+  private chat: HTMLElement | null = null;
   private chatMessages: HTMLElement | null = null;
   private userInput: HTMLInputElement | null = null;
   private sendButton: HTMLButtonElement | null = null;
@@ -25,6 +26,7 @@ class ChatApp {
   private ctx: CanvasRenderingContext2D | null = null;
 
   constructor() {
+    this.chat = document.getElementById('chat');
     this.chatMessages = document.getElementById('chat-messages');
     this.userInput = document.getElementById('user-input') as HTMLInputElement;
     this.sendButton = document.getElementById('send-button') as HTMLButtonElement;
@@ -71,14 +73,25 @@ class ChatApp {
   }
 
   private typeMessage(message: string, isUser: boolean, speed: number) {
-    if (this.chatMessages) {
+    if (this.chatMessages && this.userInput) {
       const messageElement = document.createElement('div');
       messageElement.classList.add('message', isUser ? 'user' : 'bot');
       this.chatMessages.appendChild(messageElement);
       this.typeText(message, messageElement, speed);
+  
+      // Добавим автоматическую прокрутку вниз
+     
+  
+      // Сделаем поле ввода видимым
+      if(this.chat) {
+        this.chat.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+      
+  
     }
   }
-
+  
+  
   private typeQuestion(question: string, speed: number) {
     this.typeMessage(question, false, speed);
   }
