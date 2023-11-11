@@ -145,6 +145,23 @@
   }
 }
 
+.section-result {
+  margin-bottom: 52px;
+  display: none;
+  
+  &__title {
+    font-size: 50px;
+    line-height: 110%;
+  }
+
+  &__result {
+    max-width: 1200px;
+    padding: 52px 40px 86.38px 88px;
+  }
+
+}
+  
+
 .message {
   display: flex;
   padding: 10px 38px;

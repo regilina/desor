@@ -18,6 +18,8 @@ class ChatApp {
     income: ''
   }
 
+  private sectionChat: HTMLElement | null = null
+  private sectionResult: HTMLElement | null = null
   private chat: HTMLElement | null = null
   private chatMessages: HTMLElement | null = null
   private userInput: HTMLInputElement | null = null
@@ -26,6 +28,8 @@ class ChatApp {
   private ctx: CanvasRenderingContext2D | null = null
 
   constructor () {
+    this.sectionChat = document.getElementById('section-chat')
+    this.sectionResult = document.getElementById('section-result')
     this.chat = document.getElementById('chat')
     this.chatMessages = document.getElementById('chat-messages')
     this.userInput = document.getElementById('user-input') as HTMLInputElement
@@ -36,6 +40,9 @@ class ChatApp {
     
 
     this.startChat()
+    if (this.userInput) {
+      this.userInput.focus()
+    }
 
     if (this.sendButton) {
       this.sendButton.addEventListener('click', () => {
@@ -138,6 +145,15 @@ class ChatApp {
       .catch((error) => {
         // Обработка ошибки при отправке данных
       })
+
+      if (this.sectionChat && this.sectionResult) {
+        this.sectionChat.style.display = 'none'
+        this.sectionResult.style.display = 'block'
+
+        this.sectionResult.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        
+      }
+       
 
     if (this.ctx && this.canvas) {
       this.canvas.classList.remove('chat__canvas_hidden')
