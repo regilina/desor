@@ -91,18 +91,14 @@ class ChatApp {
             if (userMessage.trim() !== '') {
                 this.handleUserMessage(userMessage);
                 this.userInput.value = '';
+                this.userInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
-        }
-        if (this.chat) {
-            this.chat.scrollIntoView({ behavior: 'smooth', block: 'center' });
         }
     }
     handleUserMessage(message) {
-        const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex];
-        this.userAnswers[currentQuestionKey] = message;
-        this.sendAnswerToServer(currentQuestionKey, message);
-        this.currentQuestionIndex++;
-        if (this.currentQuestionIndex < this.questions.length) {
+        if (this.currentQuestionIndex < this.questions.length - 1) {
+            this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message;
+            this.currentQuestionIndex++;
             this.typeAnswer(message, 50);
             this.startChat();
             if (this.userInput) {
@@ -110,24 +106,9 @@ class ChatApp {
             }
         }
         else {
+            this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message;
             this.handleFinalAnswer(message);
         }
-    }
-    sendAnswerToServer(key, answer) {
-        const data = { [key]: answer };
-        fetch('/your-server-endpoint', {
-            method: 'POST',
-            body: JSON.stringify(data),
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        })
-            .then((data) => {
-            // Handle the server response if needed
-        })
-            .catch((error) => {
-            // Handle error in sending data
-        });
     }
     handleFinalAnswer(answer) {
         this.typeAnswer(answer, 50);
