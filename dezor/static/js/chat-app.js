@@ -35,15 +35,13 @@ class ChatApp {
         this.canvas = document.getElementById('canvas');
         this.ctx = this.canvas?.getContext('2d');
         this.startChat();
-        if (this.userInput) {
-            this.userInput.focus();
-        }
         if (this.sendButton) {
             this.sendButton.addEventListener('click', () => {
                 this.sendMessage();
             });
         }
         if (this.userInput) {
+            this.userInput.focus();
             this.userInput.addEventListener('keydown', (event) => {
                 if (event.key === 'Enter') {
                     this.sendMessage();

@@ -37,12 +37,7 @@ class ChatApp {
     this.canvas = document.getElementById('canvas') as HTMLCanvasElement
     this.ctx = this.canvas?.getContext('2d')
 
-    
-
     this.startChat()
-    if (this.userInput) {
-      this.userInput.focus()
-    }
 
     if (this.sendButton) {
       this.sendButton.addEventListener('click', () => {
@@ -51,6 +46,7 @@ class ChatApp {
     }
 
     if (this.userInput) {
+      this.userInput.focus()
       this.userInput.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
           this.sendMessage()
@@ -151,9 +147,8 @@ class ChatApp {
         this.sectionResult.style.display = 'block'
 
         this.sectionResult.scrollIntoView({ behavior: 'smooth', block: 'start' })
-        
+
       }
-       
 
     if (this.ctx && this.canvas) {
       this.canvas.classList.remove('chat__canvas_hidden')
