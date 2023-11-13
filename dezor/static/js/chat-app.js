@@ -2,15 +2,19 @@
 class ChatApp {
     questions = [
         'Как вас зовут?',
+        'Какое ваше отчество?',
+        'Какая ваша фамилия?',
         'Сколько вам лет?',
-        'Укажите ваш контакт?',
+        'Укажите ваш контакт (телефон, телеграм)?',
         'Какая у вас профессия?',
-        'Сколько лет вы работаете?',
+        'Сколько лет вы работаете? (Стаж)',
         'Каков ваш месячный доход?'
     ];
     currentQuestionIndex = 0;
     userAnswers = {
         name: '',
+        patronymic: '',
+        surname: '',
         age: '',
         contact: '',
         profession: '',
@@ -94,9 +98,11 @@ class ChatApp {
         }
     }
     handleUserMessage(message) {
-        if (this.currentQuestionIndex < this.questions.length - 1) {
-            this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message;
-            this.currentQuestionIndex++;
+        const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex];
+        this.userAnswers[currentQuestionKey] = message;
+        this.sendAnswerToServer(currentQuestionKey, message);
+        this.currentQuestionIndex++;
+        if (this.currentQuestionIndex < this.questions.length) {
             this.typeAnswer(message, 50);
             this.startChat();
             if (this.userInput) {
@@ -104,9 +110,24 @@ class ChatApp {
             }
         }
         else {
-            this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message;
             this.handleFinalAnswer(message);
         }
+    }
+    sendAnswerToServer(key, answer) {
+        const data = { [key]: answer };
+        fetch('/your-server-endpoint', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+            .then((data) => {
+            // Handle the server response if needed
+        })
+            .catch((error) => {
+            // Handle error in sending data
+        });
     }
     handleFinalAnswer(answer) {
         this.typeAnswer(answer, 50);

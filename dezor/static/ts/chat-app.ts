@@ -1,16 +1,20 @@
 class ChatApp {
   private questions: string[] = [
     'Как вас зовут?',
+    'Какое ваше отчество?',
+    'Какая ваша фамилия?',
     'Сколько вам лет?',
-    'Укажите ваш контакт?',
+    'Укажите ваш контакт (телефон, телеграм)?',
     'Какая у вас профессия?',
-    'Сколько лет вы работаете?',
+    'Сколько лет вы работаете? (Стаж)',
     'Каков ваш месячный доход?'
   ]
 
   private currentQuestionIndex: number = 0
   private userAnswers: Record<string, string> = {
     name: '',
+    patronymic: '',
+    surname: '',
     age: '',
     contact: '',
     profession: '',
@@ -109,18 +113,37 @@ class ChatApp {
   }
 
   private handleUserMessage (message: string) {
-    if (this.currentQuestionIndex < this.questions.length - 1) {
-      this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message
-      this.currentQuestionIndex++
+    const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex]
+    this.userAnswers[currentQuestionKey] = message
+    this.sendAnswerToServer(currentQuestionKey, message)
+
+    this.currentQuestionIndex++
+    if (this.currentQuestionIndex < this.questions.length) {
       this.typeAnswer(message, 50)
       this.startChat()
       if (this.userInput) {
         this.userInput.focus()
       }
     } else {
-      this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message
       this.handleFinalAnswer(message)
     }
+  }
+
+  private sendAnswerToServer (key: string, answer: string) {
+    const data = { [key]: answer }
+    fetch('/your-server-endpoint', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((data) => {
+      // Handle the server response if needed
+    })
+    .catch((error) => {
+      // Handle error in sending data
+    })
   }
 
   private handleFinalAnswer (answer: string) {
