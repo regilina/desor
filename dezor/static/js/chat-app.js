@@ -2,25 +2,24 @@
 class ChatApp {
     questions = [
         'Как вас зовут?',
-        'Какое ваше отчество?',
-        'Какая ваша фамилия?',
         'Сколько вам лет?',
         'Укажите ваш контакт (телефон, телеграм)?',
+        'В каком городе работаете?',
         'Какая у вас профессия?',
         'Сколько лет вы работаете? (Стаж)',
         'Каков ваш месячный доход?'
     ];
     currentQuestionIndex = 0;
     userAnswers = {
-        name: '',
-        patronymic: '',
-        surname: '',
+        fio: '',
         age: '',
         contact: '',
+        city: '',
         profession: '',
         experience: '',
-        income: '',
-        hourlyRate: ''
+        monthly_income: '',
+        hourly_income: '',
+        id: ''
     };
     sectionChat = null;
     sectionResult = null;
@@ -82,6 +81,10 @@ class ChatApp {
         this.typeMessage(answer, true, speed);
     }
     startChat() {
+        const userId = localStorage.getItem('userId');
+        if (userId) {
+            this.userAnswers.id = userId;
+        }
         if (this.currentQuestionIndex < this.questions.length) {
             this.typeQuestion(this.questions[this.currentQuestionIndex], 50);
         }
@@ -109,20 +112,12 @@ class ChatApp {
             console.error('Произошла ошибка:', error);
         });
     }
-    sendUserDataToServer() {
-        const userData = {
-            date: new Date().toISOString(),
-            id: localStorage.getItem('userId'),
-            userAnswers: this.userAnswers
-        };
-        this.sendDataToServer(userData);
-    }
     sendMessage() {
         if (this.userInput) {
             const userMessage = this.userInput.value.trim();
             if (userMessage !== '') {
                 this.handleUserMessage(userMessage);
-                this.sendUserDataToServer(); // Add this line to send user data after each input
+                this.sendDataToServer(this.userAnswers);
                 this.userInput.value = '';
                 this.userInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
@@ -147,8 +142,8 @@ class ChatApp {
         this.typeAnswer(answer, 50);
         const monthlyIncome = parseFloat(answer);
         const hourlyRate = (monthlyIncome / (22 * 8)).toFixed(0);
-        this.userAnswers.hourlyRate = hourlyRate;
-        this.sendUserDataToServer();
+        this.userAnswers.hourly_income = hourlyRate;
+        this.sendDataToServer(this.userAnswers);
         if (this.sectionChat && this.sectionResult) {
             this.sectionChat.style.display = 'none';
             this.sectionResult.style.display = 'block';
