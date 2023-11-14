@@ -19,7 +19,9 @@ class ChatApp {
     contact: '',
     profession: '',
     experience: '',
-    income: ''
+    income: '',
+    date: '',
+    hourlyRate: ''
   }
 
   private sectionChat: HTMLElement | null = null
@@ -98,11 +100,46 @@ class ChatApp {
     }
   }
 
+  private sendDataToServer (data: Record<string, any>) {
+    fetch('/your-server-endpoint', {
+      method: 'POST',
+      body: JSON.stringify(data),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
+      .then((responseData) => {
+        // Обработка ответа от сервера, если необходимо
+        console.log('Ответ сервера:', responseData)
+      })
+      .catch((error) => {
+        // Обработка ошибки при отправке данных
+        console.error('Произошла ошибка:', error)
+      })
+  }
+
+  private sendUserDataToServer () {
+    const userData = {
+      date: new Date().toISOString(),
+      id: localStorage.getItem('userId'),
+      userAnswers: this.userAnswers
+    }
+
+    this.sendDataToServer(userData)
+  }
+
   private sendMessage () {
     if (this.userInput) {
-      const userMessage = this.userInput.value
-      if (userMessage.trim() !== '') {
+      const userMessage = this.userInput.value.trim()
+      if (userMessage !== '') {
         this.handleUserMessage(userMessage)
+        this.sendUserDataToServer() // Add this line to send user data after each input
         this.userInput.value = ''
         this.userInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
@@ -128,28 +165,17 @@ class ChatApp {
     this.typeAnswer(answer, 50)
     const monthlyIncome = parseFloat(answer)
     const hourlyRate = (monthlyIncome / (22 * 8)).toFixed(0)
+    this.userAnswers.hourlyRate = hourlyRate
 
-    fetch('/your-server-endpoint', {
-      method: 'POST',
-      body: JSON.stringify(this.userAnswers),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then((data) => {
-        // Обработка ответа от сервера, если необходимо
-      })
-      .catch((error) => {
-        // Обработка ошибки при отправке данных
-      })
+    this.sendUserDataToServer()
 
-      if (this.sectionChat && this.sectionResult) {
-        this.sectionChat.style.display = 'none'
-        this.sectionResult.style.display = 'block'
+    if (this.sectionChat && this.sectionResult) {
+      this.sectionChat.style.display = 'none'
+      this.sectionResult.style.display = 'block'
 
-        this.sectionResult.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      this.sectionResult.scrollIntoView({ behavior: 'smooth', block: 'start' })
 
-      }
+    }
 
     if (this.ctx && this.canvas) {
       this.canvas.classList.remove('chat__canvas_hidden')
