@@ -20,7 +20,6 @@ class ChatApp {
         profession: '',
         experience: '',
         income: '',
-        date: '',
         hourlyRate: ''
     };
     sectionChat = null;
