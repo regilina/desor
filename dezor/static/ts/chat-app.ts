@@ -102,30 +102,39 @@ class ChatApp {
     }
   }
 
-  private sendDataToServer (data: Record<string, any>) {
+  private sendDataToServer(data: Record<string, any>) {
+    const userId = localStorage.getItem('userId') // Получаем id из сохраненных ответов пользователя
+  
+    const requestData = {
+      id: userId,
+      data: data
+    };
 
+    
+  
     fetch('/your-server-endpoint', {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(requestData),
       headers: {
         'Content-Type': 'application/json'
       }
     })
       .then((response) => {
         if (!response.ok) {
-          throw new Error('Network response was not ok')
+          throw new Error('Network response was not ok');
         }
-        return response.json()
+        return response.json();
       })
       .then((responseData) => {
         // Обработка ответа от сервера, если необходимо
-        console.log('Ответ сервера:', responseData)
+        console.log('Ответ сервера:', responseData);
       })
       .catch((error) => {
         // Обработка ошибки при отправке данных
-        console.error('Произошла ошибка:', error)
-      })
+        console.error('Произошла ошибка:', error);
+      });
   }
+  
 
   private sendMessage () {
     if (this.userInput) {

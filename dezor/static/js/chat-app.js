@@ -90,9 +90,14 @@ class ChatApp {
         }
     }
     sendDataToServer(data) {
+        const userId = localStorage.getItem('userId'); // Получаем id из сохраненных ответов пользователя
+        const requestData = {
+            id: userId,
+            data: data
+        };
         fetch('/your-server-endpoint', {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify(requestData),
             headers: {
                 'Content-Type': 'application/json'
             }

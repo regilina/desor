@@ -1,9 +1,19 @@
 "use strict";
 // Получение информации о реферере (предыдущей странице)
 const referrer = document.referrer;
+// Получение информации о типе устройства (desktop или mobile)
+let device = 'desktop'; // По умолчанию предполагаем, что это рабочий стол
+// Проверяем ширину экрана для определения типа устройства
+if (window.innerWidth < 768) {
+    device = 'mobile'; // Если ширина экрана меньше 768px, считаем это мобильным устройством
+}
 // Данные для отправки на сервер
 const data = {
-    referrer: referrer
+    id: null,
+    data: {
+        device: device,
+        referrer: referrer
+    }
 };
 // Опции запроса
 const requestOptions = {
@@ -14,7 +24,7 @@ const requestOptions = {
     body: JSON.stringify(data)
 };
 // URL для отправки данных
-const serverURL = 'ваш_сервер/путь_обработчика';
+const serverURL = '/your-server-endpoint';
 console.log(data);
 // Отправка данных на сервер
 fetch(serverURL, requestOptions)
