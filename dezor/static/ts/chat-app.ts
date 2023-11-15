@@ -132,7 +132,6 @@ class ChatApp {
       const userMessage = this.userInput.value.trim()
       if (userMessage !== '') {
         this.handleUserMessage(userMessage)
-        this.sendDataToServer(this.userAnswers)
         this.userInput.value = ''
         this.userInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }
@@ -144,6 +143,7 @@ class ChatApp {
       this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message
       this.currentQuestionIndex++
       this.typeAnswer(message, 50)
+      this.sendDataToServer(this.userAnswers)
       this.startChat()
       if (this.userInput) {
         this.userInput.focus()
