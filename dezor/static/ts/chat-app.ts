@@ -153,7 +153,7 @@ class ChatApp {
       case 'monthly_income':
         return !isNaN(parseFloat(value)) && parseFloat(value) >= 0
       default:
-        return true 
+        return true
     }
   }
 

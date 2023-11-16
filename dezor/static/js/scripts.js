@@ -1,15 +1,15 @@
 "use strict";
 let startTime = 0; // Переменная для хранения времени начала посещения
 function saveVisitTime() {
-    startTime = new Date().getTime();
+    startTime = Math.floor(new Date().getTime() / 1000); // конвертируем время начала в секунды
     localStorage.setItem('visitTime', startTime.toString());
 }
 function sendVisitTimePeriodically() {
     setInterval(() => {
         const visitTime = localStorage.getItem('visitTime');
         if (visitTime) {
-            const currentTime = new Date().getTime();
-            const elapsedTime = currentTime - startTime;
+            const currentTime = Math.floor(new Date().getTime() / 1000); // текущее время в секундах
+            const elapsedTime = currentTime - parseInt(visitTime); // вычисляем прошедшее время в секундах
             const requestData = {
                 id: localStorage.getItem('userId'),
                 data: {
@@ -18,7 +18,7 @@ function sendVisitTimePeriodically() {
             };
             const currentDomain = window.location.origin;
             const url = `${currentDomain}/submit_data/`;
-            // Здесь отправляем данные на сервер
+            // Отправляем данные на сервер
             fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(requestData),
@@ -35,6 +35,7 @@ function sendVisitTimePeriodically() {
             })
                 .then(responseData => {
                 console.log('Ответ сервера:', responseData);
+                saveVisitTime(); // обновляем время после успешной отправки запроса
             })
                 .catch(error => {
                 console.error('Произошла ошибка:', error);
