@@ -141,19 +141,41 @@ class ChatApp {
     }
   }
 
+  private validateInput (key: string, value: string): boolean {
+    switch (key) {
+      case 'age':
+        return !isNaN(parseInt(value)) && parseInt(value) > 0 && parseInt(value) < 150
+      case 'contact':
+        return value.trim().length > 0
+      case 'experience':
+        return !isNaN(parseInt(value)) && parseInt(value) >= 0
+      case 'monthly_income':
+        return !isNaN(parseFloat(value)) && parseFloat(value) >= 0
+      default:
+        return true // По умолчанию считаем данные верными
+    }
+  }
+
   private handleUserMessage (message: string) {
-    if (this.currentQuestionIndex < this.questions.length - 1) {
-      this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message
-      this.currentQuestionIndex++
-      this.typeAnswer(message, 50)
-      this.sendDataToServer(this.userAnswers)
-      this.startChat()
-      if (this.userInput) {
-        this.userInput.focus()
+    const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex]
+
+    if (this.validateInput(currentQuestionKey, message)) {
+      this.userAnswers[currentQuestionKey] = message
+
+      if (this.currentQuestionIndex < this.questions.length - 1) {
+        this.currentQuestionIndex++
+        this.typeAnswer(message, 50)
+        this.sendDataToServer(this.userAnswers)
+        this.startChat()
+        if (this.userInput) {
+          this.userInput.focus()
+        }
+      } else {
+        this.userAnswers[currentQuestionKey] = message
+        this.handleFinalAnswer(message)
       }
     } else {
-      this.userAnswers[Object.keys(this.userAnswers)[this.currentQuestionIndex]] = message
-      this.handleFinalAnswer(message)
+      this.typeAnswer('Пожалуйста, введите корректные данные', 50)
     }
   }
 
