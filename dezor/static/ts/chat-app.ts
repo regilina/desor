@@ -151,14 +151,15 @@ class ChatApp {
         return /^\+7\d{10}$/.test(value) || /^@[A-Za-z0-9_]+$/.test(value)
       case 'experience':
         const parsedExperience = parseInt(value);
-        return !isNaN(parsedExperience) && parsedExperience >= 0;
+        return !isNaN(parsedExperience) && Number.isInteger(parsedExperience) && parsedExperience >= 0;
       case 'monthly_income':
         const parsedIncome = parseFloat(value);
-        return !isNaN(parsedIncome) && parsedIncome >= 0;
+        return !isNaN(parsedIncome) && Number.isInteger(parsedIncome) && parsedIncome >= 0;
       default:
         return true
     }
   }
+  
 
   private handleUserMessage (message: string) {
     const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex]
