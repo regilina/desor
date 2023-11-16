@@ -19,7 +19,8 @@ const data = {
 const requestOptions = {
     method: 'POST',
     headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'X-CSRFToken': 'csrftoken'
     },
     body: JSON.stringify(data)
 };

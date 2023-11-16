@@ -96,7 +96,8 @@ class ChatApp {
             method: 'POST',
             body: JSON.stringify(requestData),
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'X-CSRFToken': 'csrftoken'
             }
         })
             .then((response) => {
