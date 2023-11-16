@@ -9,7 +9,7 @@ if (window.innerWidth < 768) {
 }
 // Данные для отправки на сервер
 const data = {
-    id: 0,
+    id: null,
     data: {
         device: device,
         referrer: referrer

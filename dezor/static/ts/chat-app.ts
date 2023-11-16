@@ -145,13 +145,16 @@ class ChatApp {
   private validateInput (key: string, value: string): boolean {
     switch (key) {
       case 'age':
-        return !isNaN(parseInt(value)) && parseInt(value) > 0 && parseInt(value) < 150
+        const parsedAge = parseInt(value);
+        return !isNaN(parsedAge) && parsedAge > 0 && parsedAge < 150;  
       case 'contact':
         return /^\+7\d{10}$/.test(value) || /^@[A-Za-z0-9_]+$/.test(value)
       case 'experience':
-        return !isNaN(parseInt(value)) && parseInt(value) >= 0
+        const parsedExperience = parseInt(value);
+        return !isNaN(parsedExperience) && parsedExperience >= 0;
       case 'monthly_income':
-        return !isNaN(parseFloat(value)) && parseFloat(value) >= 0
+        const parsedIncome = parseFloat(value);
+        return !isNaN(parsedIncome) && parsedIncome >= 0;
       default:
         return true
     }
