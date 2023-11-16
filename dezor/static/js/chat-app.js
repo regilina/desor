@@ -129,13 +129,13 @@ class ChatApp {
             case 'age':
                 return !isNaN(parseInt(value)) && parseInt(value) > 0 && parseInt(value) < 150;
             case 'contact':
-                return value.trim().length > 0;
+                return /^\+7\d{10}$/.test(value) || /^@[A-Za-z0-9_]+$/.test(value);
             case 'experience':
                 return !isNaN(parseInt(value)) && parseInt(value) >= 0;
             case 'monthly_income':
                 return !isNaN(parseFloat(value)) && parseFloat(value) >= 0;
             default:
-                return true; // По умолчанию считаем данные верными
+                return true;
         }
     }
     handleUserMessage(message) {
