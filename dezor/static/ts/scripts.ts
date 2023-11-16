@@ -1,4 +1,4 @@
-let startTime: number = 0 
+let startTime: number = 0
 
 function saveVisitTime (): void {
   startTime = Math.floor(new Date().getTime() / 1000) // конвертируем время начала в секунды
@@ -49,4 +49,4 @@ function sendVisitTimePeriodically (): void {
 
 saveVisitTime()
 sendVisitTimePeriodically()
-
+
