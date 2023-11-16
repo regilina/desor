@@ -79,7 +79,6 @@ class ChatApp {
       messageElement.classList.add('message', isUser ? 'user' : 'bot')
       this.chatMessages.appendChild(messageElement)
       this.typeText(message, messageElement, speed)
-
     }
   }
 
@@ -105,7 +104,10 @@ class ChatApp {
       data: data
     }
 
-    fetch('/your-server-endpoint', {
+    const currentDomain: string = window.location.origin
+    const url: string = `${currentDomain}/submit_data/`
+
+    fetch(url, {
       method: 'POST',
       body: JSON.stringify(requestData),
       headers: {

@@ -16,8 +16,10 @@ function sendVisitTimePeriodically() {
                     visit_duration: elapsedTime.toString()
                 }
             };
+            const currentDomain = window.location.origin;
+            const url = `${currentDomain}/submit_data/`;
             // Здесь отправляем данные на сервер
-            fetch('/your-server-endpoint', {
+            fetch(url, {
                 method: 'POST',
                 body: JSON.stringify(requestData),
                 headers: {

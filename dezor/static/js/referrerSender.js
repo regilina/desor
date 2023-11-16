@@ -23,11 +23,11 @@ const requestOptions = {
     },
     body: JSON.stringify(data)
 };
-// URL для отправки данных
-const serverURL = '/your-server-endpoint';
 console.log(data);
+const currentDomain = window.location.origin;
+const url = `${currentDomain}/submit_data/`;
 // Отправка данных на сервер
-fetch(serverURL, requestOptions)
+fetch(url, requestOptions)
     .then(response => {
     // Обработка ответа от сервера
     if (response.ok) {

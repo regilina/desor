@@ -90,7 +90,9 @@ class ChatApp {
             id: userId,
             data: data
         };
-        fetch('/your-server-endpoint', {
+        const currentDomain = window.location.origin;
+        const url = `${currentDomain}/submit_data/`;
+        fetch(url, {
             method: 'POST',
             body: JSON.stringify(requestData),
             headers: {
