@@ -18,8 +18,7 @@ class ChatApp {
         profession: '',
         experience: '',
         monthly_income: '',
-        hourly_income: '',
-        id: ''
+        hourly_income: ''
     };
     sectionChat = null;
     sectionResult = null;
@@ -81,16 +80,12 @@ class ChatApp {
         this.typeMessage(answer, true, speed);
     }
     startChat() {
-        const userId = localStorage.getItem('userId');
-        if (userId) {
-            this.userAnswers.id = userId;
-        }
         if (this.currentQuestionIndex < this.questions.length) {
             this.typeQuestion(this.questions[this.currentQuestionIndex], 50);
         }
     }
     sendDataToServer(data) {
-        const userId = localStorage.getItem('userId'); // Получаем id из сохраненных ответов пользователя
+        const userId = localStorage.getItem('userId');
         const requestData = {
             id: userId,
             data: data
