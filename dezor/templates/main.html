@@ -38,19 +38,17 @@
           <div class="chat__messages" id="chat-messages">
             <!-- Сюда будут добавляться сообщения чат-бота и пользователя -->
           </div>
-          <canvas class="chat__canvas chat__canvas_hidden" id="canvas"></canvas>
           <div class="chat__input">
             <input type="text" class="chat__input-field" id="user-input" placeholder="Введите сообщение">
             <button class="btn chat__btn" id="send-button">Отправить</button>
           </div>
         </div>
       </section>
-      <section class="section-result" id="section-result">
-        <h2 class="section-result__title">Твой результат:</h2>
-        <div class="section-result__result">
-
-        </div>
-      </section>
+      <div class="chat__popup" id="popup">
+        <!-- Сюда добавьте содержимое вашего блока -->
+        <p>Это ваш всплывающий блок!</p>
+        <button class="chat__popup-btn" id="chat-popup-btn">Закрыть</button>
+      </div>
       <section class="about-festival">
         <h2 class="about-festival__title">Еще о фестивале</h2>
         <div class="about-festival__list-img-container">

@@ -29,6 +29,8 @@ class ChatApp {
   private sendButton: HTMLButtonElement | null = null
   private canvas: HTMLCanvasElement | null = null
   private ctx: CanvasRenderingContext2D | null = null
+  private popup: HTMLElement | null = null
+  private popupBtn: HTMLButtonElement | null = null
 
   constructor () {
     this.sectionChat = document.getElementById('section-chat')
@@ -39,6 +41,8 @@ class ChatApp {
     this.sendButton = document.getElementById('send-button') as HTMLButtonElement
     this.canvas = document.getElementById('canvas') as HTMLCanvasElement
     this.ctx = this.canvas?.getContext('2d')
+    this.popup = document.getElementById('popup')
+    this.popupBtn = document.getElementById('chat-popup-btn') as HTMLButtonElement
 
     this.startChat()
 
@@ -179,12 +183,8 @@ class ChatApp {
 
     this.sendDataToServer(this.userAnswers)
 
-    if (this.sectionChat && this.sectionResult) {
-      this.sectionChat.style.display = 'none'
-      this.sectionResult.style.display = 'block'
-
-      this.sectionResult.scrollIntoView({ behavior: 'smooth', block: 'start' })
-
+    if (this.popup) {
+      this.showPopup()
     }
 
     if (this.ctx && this.canvas) {
@@ -214,6 +214,24 @@ class ChatApp {
         }
       }
     }
+  }
+
+  private showPopup () {
+    if (this.popup) {
+      this.popup.classList.add('show')
+    }
+
+    this.popupBtn?.addEventListener('click', () => {
+      this.closePopup()
+    })
+
+  }
+
+  private closePopup () {
+    if (this.popup) {
+      this.popup.classList.remove('show')
+    }
+
   }
 }
 

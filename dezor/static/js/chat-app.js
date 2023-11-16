@@ -28,6 +28,8 @@ class ChatApp {
     sendButton = null;
     canvas = null;
     ctx = null;
+    popup = null;
+    popupBtn = null;
     constructor() {
         this.sectionChat = document.getElementById('section-chat');
         this.sectionResult = document.getElementById('section-result');
@@ -37,6 +39,8 @@ class ChatApp {
         this.sendButton = document.getElementById('send-button');
         this.canvas = document.getElementById('canvas');
         this.ctx = this.canvas?.getContext('2d');
+        this.popup = document.getElementById('popup');
+        this.popupBtn = document.getElementById('chat-popup-btn');
         this.startChat();
         if (this.sendButton) {
             this.sendButton.addEventListener('click', () => {
@@ -158,10 +162,8 @@ class ChatApp {
         const hourlyRate = (monthlyIncome / (22 * 8)).toFixed(0);
         this.userAnswers.hourly_income = hourlyRate;
         this.sendDataToServer(this.userAnswers);
-        if (this.sectionChat && this.sectionResult) {
-            this.sectionChat.style.display = 'none';
-            this.sectionResult.style.display = 'block';
-            this.sectionResult.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (this.popup) {
+            this.showPopup();
         }
         if (this.ctx && this.canvas) {
             this.canvas.classList.remove('chat__canvas_hidden');
@@ -186,6 +188,19 @@ class ChatApp {
                     this.ctx.fillText(hourlyRate.toString(), 80, 60);
                 }
             };
+        }
+    }
+    showPopup() {
+        if (this.popup) {
+            this.popup.classList.add('show');
+        }
+        this.popupBtn?.addEventListener('click', () => {
+            this.closePopup();
+        });
+    }
+    closePopup() {
+        if (this.popup) {
+            this.popup.classList.remove('show');
         }
     }
 }
