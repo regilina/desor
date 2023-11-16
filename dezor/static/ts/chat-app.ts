@@ -175,7 +175,7 @@ class ChatApp {
         this.handleFinalAnswer(message)
       }
     } else {
-      this.typeAnswer('Пожалуйста, введите корректные данные', 50)
+      this.typeQuestion('Пожалуйста, введите корректные данные', 50)
     }
   }
 
