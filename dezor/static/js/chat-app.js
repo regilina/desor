@@ -12,13 +12,13 @@ class ChatApp {
     currentQuestionIndex = 0;
     userAnswers = {
         fio: '',
-        age: '',
+        age: '0',
         contact: '',
         city: '',
         profession: '',
-        experience: '',
-        monthly_income: '',
-        hourly_income: ''
+        experience: '0',
+        monthly_income: '0',
+        hourly_income: '0'
     };
     sectionChat = null;
     sectionResult = null;

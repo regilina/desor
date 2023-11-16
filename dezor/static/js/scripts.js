@@ -1,5 +1,5 @@
 "use strict";
-let startTime = 0; // Переменная для хранения времени начала посещения
+let startTime = 0;
 function saveVisitTime() {
     startTime = Math.floor(new Date().getTime() / 1000); // конвертируем время начала в секунды
     localStorage.setItem('visitTime', startTime.toString());

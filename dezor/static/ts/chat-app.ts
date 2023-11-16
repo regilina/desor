@@ -12,13 +12,13 @@ class ChatApp {
   private currentQuestionIndex: number = 0
   private userAnswers: Record<string, string> = {
     fio: '',
-    age: '',
+    age: '0',
     contact: '',
     city: '',
     profession: '',
-    experience: '',
-    monthly_income: '',
-    hourly_income: ''
+    experience: '0',
+    monthly_income: '0',
+    hourly_income: '0'
   }
 
   private sectionChat: HTMLElement | null = null
