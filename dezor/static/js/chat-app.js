@@ -53,24 +53,12 @@ class ChatApp {
         }
         window.scrollTo(0, 0);
     }
-    typeText(message, element, speed) {
-        let i = 0;
-        const interval = setInterval(() => {
-            if (i < message.length) {
-                element.textContent += message[i];
-                i++;
-            }
-            else {
-                clearInterval(interval);
-            }
-        }, speed);
-    }
     typeMessage(message, isUser, speed) {
         if (this.chatMessages && this.userInput) {
             const messageElement = document.createElement('div');
             messageElement.classList.add('message', isUser ? 'user' : 'bot');
+            messageElement.textContent = message; // Установка всего текста сразу
             this.chatMessages.appendChild(messageElement);
-            this.typeText(message, messageElement, speed);
         }
     }
     typeQuestion(question, speed) {

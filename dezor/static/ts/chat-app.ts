@@ -61,24 +61,12 @@ class ChatApp {
     window.scrollTo(0, 0)
   }
 
-  private typeText (message: string, element: HTMLElement, speed: number) {
-    let i = 0
-    const interval = setInterval(() => {
-      if (i < message.length) {
-        element.textContent += message[i]
-        i++
-      } else {
-        clearInterval(interval)
-      }
-    }, speed)
-  }
-
   private typeMessage (message: string, isUser: boolean, speed: number) {
     if (this.chatMessages && this.userInput) {
       const messageElement = document.createElement('div')
       messageElement.classList.add('message', isUser ? 'user' : 'bot')
+      messageElement.textContent = message // Установка всего текста сразу
       this.chatMessages.appendChild(messageElement)
-      this.typeText(message, messageElement, speed)
     }
   }
 
