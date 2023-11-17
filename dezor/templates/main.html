@@ -12,35 +12,43 @@
     <title>{% block head_title %}{% endblock head_title %}</title>
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
     <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;700&family=Rubik+Mono+One&display=swap');
+    </style>
   </head>
   <body class="body">
     <div class="content">
       <header class="header">
         <div class="logo-name">
           <img src="../static/img/logo.svg" alt="логотип">
-          <span>Дезориентация</span>
+          <span class="logo-name__name">Дезориентация</span>
         </div>
         <a href="/manage">Админка</a>
       </header>
       <section class="hero">
         <div class="hero__title-container">
-          <span class="hero__date">5-10 декабря</span>
-          <h1 class="hero__title">Career bootcamp</h1>
-          <span class="hero__description">Онлайн-фестиваль о карьере и профессиональном росте </span>
+          <span class="hero__date">14-16 декабря</span>
+          <h1 class="hero__title">Pro-fest</h1>
+          <span class="hero__description">Онлайн-фестиваль о карьерном самоопределении</span>
           <button class="btn hero__btn">Записаться</button>
         </div>
         <img class="hero__img" src="../static/img/hero-img.png" alt="разные предметы">
       </section>
       <section class="section-chat" id="section-chat">
-        <h2 class="section-chat__title">Убедись, что фестиваль будет <br> тебе полезен</h2>
-        <p class="section-chat__text">Узнай стоимость часа своей работы, получи точки роста и забери набор карьерных стикеров от Дезориентации для общения с коллегами</p>
-        <div class="chat" id="chat">
-          <div class="chat__messages" id="chat-messages">
-            <!-- Сюда будут добавляться сообщения чат-бота и пользователя -->
+        <h2 class="section-chat__title">Убедись, что фестиваль будет тебе полезен</h2>
+        <div class="section-chat__chat-container">
+          <div>
+            <p class="section-chat__text">Узнай стоимость часа своей работы, получи точки роста и забери набор карьерных стикеров от Дезориентации для общения <br> с коллегами</p>
+            <img class="section-chat__img" src="../static/img/illustration-man.png" alt="мужчина">
           </div>
-          <div class="chat__input">
-            <input type="text" class="chat__input-field" id="user-input" placeholder="Введите сообщение">
-            <button class="btn chat__btn" id="send-button">Отправить</button>
+          <div class="chat" id="chat">
+            <div class="chat__messages" id="chat-messages">
+              <!-- Сюда будут добавляться сообщения чат-бота и пользователя -->
+            </div>
+            <div class="chat__input">
+              <input type="text" class="chat__input-field" id="user-input" placeholder="Введите сообщение">
+              <button class="btn chat__btn" id="send-button">Отправить</button>
+            </div>
           </div>
         </div>
       </section>
