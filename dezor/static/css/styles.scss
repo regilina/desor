@@ -134,7 +134,8 @@
     overflow-x: hidden;
     overflow-y: scroll; /* Включение вертикальной полосы прокрутки */
     margin-top: -120px;
-    padding-top: 120px;
+    padding-top: 153px;
+    padding-left: 25px;
     margin-bottom: -110px;
     padding-bottom: 110px;
 
@@ -172,12 +173,20 @@
   &__input {
     display: flex;
     align-items: center;
-    margin-bottom: 30px;
-    margin-left: 25px;
+    padding-bottom: 30px;
+    padding-left: 25px;
+    margin-right: 40px;
+    padding-top: 15px;
     z-index: 999;
+    background-color: #FFF;
+
+    border-radius: 0px 0px 0px 40px;
+
+    
+    
 
     gap: 10px;
-    margin-top: 15px;
+    
     
 
     &-field {
