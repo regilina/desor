@@ -115,31 +115,9 @@
   }
 }
 
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  /* Ширина полосы прокрутки в WebKit-браузерах */
-  .chat::-webkit-scrollbar {
-    width: 40px;
-    background-color: #F1F1F1;
-  }
 
-  .chat::-webkit-scrollbar-thumb {
-    background: #C1C1C1; /* Цвет ползунка полосы прокрутки */
-    max-height: 73px !important;
-  }
   
-  .chat::-webkit-scrollbar-button {
-    display: block;
-    background-color: transparent;
-  }
-  
-  .chat::-webkit-scrollbar-button:start:decrement,
-  .chat::-webkit-scrollbar-button:end:increment {
-    display: block;
-    height: 20px; /* Высота стрелок */
-    width: 100%; /* Ширина стрелок */
-    background-color: grey; /* Цвет стрелок */
-  }
-}
+
 
 
 
@@ -161,6 +139,34 @@
 
   overflow-y: scroll; /* Включение вертикальной полосы прокрутки */
   scrollbar-color: #F1F1F1; /* Цвет полосы прокрутки */
+
+  &::-webkit-scrollbar {
+    width: 40px;
+    background-color: #F1F1F1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #C1C1C1; /* Цвет ползунка полосы прокрутки */
+  }
+  
+  &::-webkit-scrollbar-button {
+    display: block;
+    background-color: transparent;
+  }
+  
+  &::-webkit-scrollbar-button:start:decrement {
+    display: block;
+    height: 20px; /* Высота стрелок */
+    width: 100%; /* Ширина стрелок */
+    background-color: grey; /* Цвет стрелок */
+  }
+  
+  &::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 20px; /* Высота стрелок */
+    width: 100%; /* Ширина стрелок */
+    background-color: grey; /* Цвет стрелок */
+  }
 
   &__messages {
     display: flex;
