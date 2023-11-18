@@ -1,23 +1,23 @@
 class ChatApp {
     private questions: string[] = [
-    'Как вас зовут?',
-    'Сколько вам лет?',
-    'Укажите ваш контакт (телефон, телеграм)?',
-    'В каком городе работаете?',
-    'Какая у вас профессия?',
-    'Сколько лет вы работаете? (Стаж)',
-    'Каков ваш месячный доход?'
+    'Привет, как тебя зовут? Укажи фамилию и имя',
+    'Сколько тебе лет? Не стесняйся, возраст - признак истинной мудрости',
+    'Кем работаешь? На что тратишь драгоценные минуты жизни?',
+    'Каков твой стаж работы? Как долго шокируешь окружающих своим успехом?',
+    'В каком городе работаешь? Где найти таких гениев?',
+    'Твой месячный доход? Удиви меня!',
+    'Оставь свой номер телефона, такого интересного собеседника я давно не встречал!'
   ]
 
   private currentQuestionIndex: number = 0
   private userAnswers: Record<string, string> = {
     fio: '',
     age: '0',
-    contact: '',
-    city: '',
     profession: '',
     experience: '0',
+    city: '',
     monthly_income: '0',
+    contact: '',
     hourly_income: '0'
   }
 
@@ -71,6 +71,7 @@ class ChatApp {
       messageElement.classList.add('message', isUser ? 'user' : 'bot')
       messageElement.textContent = message // Установка всего текста сразу
       this.chatMessages.appendChild(messageElement)
+      this.scrollToBottom()
     }
   }
 
@@ -129,7 +130,6 @@ class ChatApp {
       if (userMessage !== '') {
         this.handleUserMessage(userMessage)
         this.userInput.value = ''
-        this.userInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
         this.scrollToBottom()
       }
     }
@@ -235,11 +235,21 @@ class ChatApp {
 
   }
 
-  private scrollToBottom () {
-    if (this.chatMessages) {
-      this.chatMessages.scrollTop = this.chatMessages.scrollHeight
+  private scrollToBottom() {
+    if (this.chatMessages && this.userInput) {
+      const inputBottom = this.userInput.getBoundingClientRect().bottom;
+      const chatBottom = this.chatMessages.getBoundingClientRect().bottom;
+      const inputHeight = this.userInput.offsetHeight;
+  
+      if (inputBottom <= chatBottom) {
+        this.chatMessages.style.paddingBottom = `${inputHeight}px`;
+        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+      } else {
+        this.chatMessages.style.paddingBottom = '0';
+      }
     }
   }
+  
 }
 
 document.addEventListener('DOMContentLoaded', () => {

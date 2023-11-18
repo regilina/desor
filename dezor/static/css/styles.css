@@ -111,37 +111,39 @@
   border-top: 1px solid var(--Black, #000);
   border-bottom: 1px solid var(--Black, #000);
   border-left: 1px solid var(--Black, #000);
-  overflow-x: hidden;
-  overflow-y: scroll; /* Включение вертикальной полосы прокрутки */
-  scrollbar-color: #F1F1F1; /* Цвет полосы прокрутки */
-}
-.chat::-webkit-scrollbar {
-  width: 40px;
-  background-color: #F1F1F1;
-}
-.chat::-webkit-scrollbar-thumb {
-  background: #C1C1C1; /* Цвет ползунка полосы прокрутки */
-}
-.chat::-webkit-scrollbar-button {
-  display: block;
-  background-color: transparent;
-}
-.chat::-webkit-scrollbar-button:start:decrement {
-  display: block;
-  height: 20px; /* Высота стрелок */
-  width: 100%; /* Ширина стрелок */
-  background-color: grey; /* Цвет стрелок */
-}
-.chat::-webkit-scrollbar-button:end:increment {
-  display: block;
-  height: 20px; /* Высота стрелок */
-  width: 100%; /* Ширина стрелок */
-  background-color: grey; /* Цвет стрелок */
 }
 .chat__messages {
   display: flex;
   flex-direction: column;
   gap: 15px;
+  flex-grow: 1;
+  overflow-x: hidden;
+  overflow-y: auto; /* Включение вертикальной полосы прокрутки */
+  height: 786px; /* Полоса прокрутки будет по высоте чата */
+}
+.chat__messages::-webkit-scrollbar {
+  width: 40px; /* Ширина полосы прокрутки */
+  background-color: #F1F1F1;
+}
+.chat__messages::-webkit-scrollbar-thumb {
+  background: #C1C1C1;
+  border-radius: 5px; /* Скругление у ползунка полосы прокрутки */
+}
+.chat__messages::-webkit-scrollbar-button {
+  display: block;
+  background-color: transparent;
+}
+.chat__messages::-webkit-scrollbar-button:start:decrement {
+  display: block;
+  height: 20px;
+  width: 100%;
+  background-color: grey;
+}
+.chat__messages::-webkit-scrollbar-button:end:increment {
+  display: block;
+  height: 20px;
+  width: 100%;
+  background-color: grey;
 }
 .chat__input {
   display: flex;
