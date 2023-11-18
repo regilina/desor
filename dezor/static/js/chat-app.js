@@ -78,8 +78,10 @@ class ChatApp {
         if (this.chatMessages && this.userInput) {
             const messageElement = document.createElement('div');
             messageElement.classList.add('message', isUser ? 'user' : 'bot');
-            messageElement.textContent = message; // Установка всего текста сразу
+            messageElement.textContent = message;
             this.chatMessages.appendChild(messageElement);
+            // Прокручиваем чат вниз, чтобы были видны последние сообщения
+            this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         }
     }
     typeQuestion(question, speed) {
@@ -94,13 +96,9 @@ class ChatApp {
         }
     }
     sendDataToServer(data) {
-        const userId = localStorage.getItem('userId');
         const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000);
         this.userAnswers.visit_duration = timeOnSiteInSeconds.toString(); // Добавляем время пребывания в данные пользователя
-        const requestData = {
-            id: userId,
-            data: data
-        };
+        const requestData = data;
         const currentDomain = window.location.origin;
         const url = `${currentDomain}/submit_data/`;
         fetch(url, {
@@ -137,14 +135,13 @@ class ChatApp {
     }
     validateInput(key, value) {
         switch (key) {
+            case 'fio':
+                return !/\d/.test(value);
             case 'age':
                 const parsedAge = parseFloat(value);
                 return !isNaN(parsedAge) && Number.isInteger(parsedAge) && parsedAge > 0 && parsedAge < 150 && /^\d+$/.test(value);
             case 'contact':
                 return /^\+7\d{10}$/.test(value) || /^@[A-Za-z0-9_]+$/.test(value);
-            case 'experience':
-                const parsedExperience = parseFloat(value);
-                return !isNaN(parsedExperience) && Number.isInteger(parsedExperience) && parsedExperience >= 0 && /^\d+$/.test(value);
             case 'monthly_income':
                 const parsedIncome = parseFloat(value);
                 return !isNaN(parsedIncome) && Number.isInteger(parsedIncome) && parsedIncome >= 0 && /^\d+$/.test(value);

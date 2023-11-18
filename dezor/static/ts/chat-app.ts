@@ -88,12 +88,15 @@ class ChatApp {
     window.scrollTo(0, 0)
   }
 
-  private typeMessage (message: string, isUser: boolean, speed: number) {
+  private typeMessage(message: string, isUser: boolean, speed: number) {
     if (this.chatMessages && this.userInput) {
-      const messageElement = document.createElement('div')
-      messageElement.classList.add('message', isUser ? 'user' : 'bot')
-      messageElement.textContent = message // Установка всего текста сразу
-      this.chatMessages.appendChild(messageElement)
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('message', isUser ? 'user' : 'bot');
+      messageElement.textContent = message;
+      this.chatMessages.appendChild(messageElement);
+  
+      // Прокручиваем чат вниз, чтобы были видны последние сообщения
+      this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
     }
   }
 
@@ -112,15 +115,14 @@ class ChatApp {
   }
 
   private sendDataToServer (data: Record<string, any>) {
-    const userId = localStorage.getItem('userId')
+    
 
     const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000)
     this.userAnswers.visit_duration = timeOnSiteInSeconds.toString() // Добавляем время пребывания в данные пользователя
 
-    const requestData = {
-      id: userId,
-      data: data
-    }
+    const requestData = 
+      data
+    
 
     const currentDomain: string = window.location.origin
     const url: string = `${currentDomain}/submit_data/`
@@ -162,14 +164,13 @@ class ChatApp {
 
   private validateInput (key: string, value: string): boolean {
     switch (key) {
+      case 'fio':
+        return !/\d/.test(value); 
       case 'age':
         const parsedAge = parseFloat(value)
         return !isNaN(parsedAge) && Number.isInteger(parsedAge) && parsedAge > 0 && parsedAge < 150 && /^\d+$/.test(value)
       case 'contact':
         return /^\+7\d{10}$/.test(value) || /^@[A-Za-z0-9_]+$/.test(value)
-      case 'experience':
-        const parsedExperience = parseFloat(value)
-        return !isNaN(parsedExperience) && Number.isInteger(parsedExperience) && parsedExperience >= 0 && /^\d+$/.test(value)
       case 'monthly_income':
         const parsedIncome = parseFloat(value)
         return !isNaN(parsedIncome) && Number.isInteger(parsedIncome) && parsedIncome >= 0 && /^\d+$/.test(value)
