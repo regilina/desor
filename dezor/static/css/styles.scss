@@ -136,8 +136,10 @@
     margin-top: -120px;
     padding-top: 153px;
     padding-left: 25px;
+    padding-right: 25px;
     margin-bottom: -110px;
     padding-bottom: 110px;
+
 
     &::-webkit-scrollbar {
       width: 40px; /* Ширина полосы прокрутки */
@@ -310,13 +312,29 @@
 }
 
 .user {
-  background-color: #FFF;
+ 
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
   align-self: end;
+  border-radius: 10px 10px 0px 10px;
+  background: #E5FB8C;
 }
   
 .bot {
   background-color: #FFF;
   align-self: flex-start;
+  
+  color: #000;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 130%; 
 }
 
 .about-festival {
