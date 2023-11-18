@@ -213,7 +213,7 @@ class ChatApp {
 
     this.userAnswers.hourly_income = hourlyRate.toString()
 
-    this.sendDataToServer(this.userAnswers)
+    // this.sendDataToServer(this.userAnswers)
 
     if (this.popup) {
       this.showPopup()

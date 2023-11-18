@@ -180,7 +180,7 @@ class ChatApp {
         const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0);
         console.log('Часовая ставка до округления:', hourlyRate); // Вывод часовой ставки до округления
         this.userAnswers.hourly_income = hourlyRate.toString();
-        this.sendDataToServer(this.userAnswers);
+        // this.sendDataToServer(this.userAnswers)
         if (this.popup) {
             this.showPopup();
         }
