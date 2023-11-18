@@ -20,7 +20,7 @@ class ChatApp {
     contact: '',
     device: '',
     referrer: '',
-    hourly_income: '',
+    hourly_income: '0',
     visit_duration: '0'
   }
 
