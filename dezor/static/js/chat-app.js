@@ -174,11 +174,8 @@ class ChatApp {
     }
     handleFinalAnswer(answer) {
         this.typeAnswer(answer, 50);
-        console.log('Введенный месячный доход:', this.userAnswers.monthly_income); // Добавим эту строку для вывода введенного значения месячного дохода
         const monthlyIncome = parseFloat(this.userAnswers.monthly_income);
-        console.log('Преобразованный месячный доход:', monthlyIncome); // Вывод преобразованного значения в консоль
         const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0);
-        console.log('Часовая ставка до округления:', hourlyRate); // Вывод часовой ставки до округления
         this.userAnswers.hourly_income = hourlyRate.toString();
         // this.sendDataToServer(this.userAnswers)
         if (this.popup) {
