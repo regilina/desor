@@ -34,6 +34,7 @@ class ChatApp {
     popup = null;
     popupBtn = null;
     startTime = 0;
+    hasUserResponse = false;
     constructor() {
         this.sectionChat = document.getElementById('section-chat');
         this.sectionResult = document.getElementById('section-result');
@@ -70,7 +71,9 @@ class ChatApp {
             });
         }
         window.addEventListener('beforeunload', () => {
-            this.handlePageClose();
+            if (this.hasUserResponse) {
+                this.sendDataToServer(this.userAnswers);
+            }
         });
         window.scrollTo(0, 0);
     }
@@ -152,6 +155,7 @@ class ChatApp {
         const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex];
         if (this.validateInput(currentQuestionKey, message)) {
             this.userAnswers[currentQuestionKey] = message;
+            this.hasUserResponse = true;
             if (this.currentQuestionIndex < this.questions.length - 1) {
                 this.currentQuestionIndex++;
                 this.typeAnswer(message, 50);
@@ -168,9 +172,6 @@ class ChatApp {
         else {
             this.typeQuestion('Пожалуйста, введите корректные данные', 50);
         }
-    }
-    handlePageClose() {
-        this.sendDataToServer(this.userAnswers); // Отправка данных перед закрытием страницы
     }
     handleFinalAnswer(answer) {
         this.typeAnswer(answer, 50);

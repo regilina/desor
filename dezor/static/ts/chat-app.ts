@@ -35,6 +35,7 @@ class ChatApp {
   private popup: HTMLElement | null = null
   private popupBtn: HTMLButtonElement | null = null
   private startTime: number = 0
+  private hasUserResponse: boolean = false;
 
   constructor () {
     this.sectionChat = document.getElementById('section-chat')
@@ -82,7 +83,10 @@ class ChatApp {
     }
 
     window.addEventListener('beforeunload', () => {
-      this.handlePageClose()
+      if (this.hasUserResponse) {
+        this.sendDataToServer(this.userAnswers)
+      }
+      
     })
 
     window.scrollTo(0, 0)
@@ -174,12 +178,14 @@ class ChatApp {
     }
   }
 
+  
   private handleUserMessage (message: string) {
     const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex]
-
+    
     if (this.validateInput(currentQuestionKey, message)) {
       this.userAnswers[currentQuestionKey] = message
 
+      this.hasUserResponse = true;
       if (this.currentQuestionIndex < this.questions.length - 1) {
         this.currentQuestionIndex++
         this.typeAnswer(message, 50)
@@ -196,9 +202,6 @@ class ChatApp {
     }
   }
 
-  private handlePageClose () {
-    this.sendDataToServer(this.userAnswers) // Отправка данных перед закрытием страницы
-  }
 
   private handleFinalAnswer (answer: string) {
     this.typeAnswer(answer, 50)
