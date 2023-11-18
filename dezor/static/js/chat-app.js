@@ -1,26 +1,27 @@
 "use strict";
 class ChatApp {
     questions = [
-        'Как вас зовут?',
-        'Сколько вам лет?',
-        'Укажите ваш контакт (телефон, телеграм)?',
-        'В каком городе работаете?',
-        'Какая у вас профессия?',
-        'Сколько лет вы работаете? (Стаж)',
-        'Каков ваш месячный доход?'
+        'Привет, как тебя зовут? Укажи фамилию и имя',
+        'Сколько тебе лет? Не стесняйся, возраст - признак истинной мудрости',
+        'Кем работаешь? На что тратишь драгоценные минуты жизни?',
+        'Каков твой стаж работы? Как долго шокируешь окружающих своим успехом?',
+        'В каком городе работаешь? Где найти таких гениев?',
+        'Твой месячный доход? Удиви меня!',
+        'Оставь свой номер телефона, такого интересного собеседника я давно не встречал!'
     ];
     currentQuestionIndex = 0;
     userAnswers = {
         fio: '',
         age: '0',
-        contact: '',
-        city: '',
         profession: '',
         experience: '0',
+        city: '',
         monthly_income: '0',
+        contact: '',
         hourly_income: '0',
-        device: '0',
-        referrer: '0'
+        device: '',
+        referrer: '',
+        visit_duration: '0'
     };
     sectionChat = null;
     sectionResult = null;
@@ -32,6 +33,7 @@ class ChatApp {
     ctx = null;
     popup = null;
     popupBtn = null;
+    startTime = 0;
     constructor() {
         this.sectionChat = document.getElementById('section-chat');
         this.sectionResult = document.getElementById('section-result');
@@ -43,6 +45,7 @@ class ChatApp {
         this.ctx = this.canvas?.getContext('2d');
         this.popup = document.getElementById('popup');
         this.popupBtn = document.getElementById('chat-popup-btn');
+        this.startTime = Date.now();
         const referrer = document.referrer;
         // Получение информации о типе устройства (desktop или mobile)
         let device = 'D'; // По умолчанию предполагаем, что это рабочий стол
@@ -66,6 +69,9 @@ class ChatApp {
                 }
             });
         }
+        window.addEventListener('beforeunload', () => {
+            this.handlePageClose();
+        });
         window.scrollTo(0, 0);
     }
     typeMessage(message, isUser, speed) {
@@ -89,6 +95,8 @@ class ChatApp {
     }
     sendDataToServer(data) {
         const userId = localStorage.getItem('userId');
+        const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000);
+        this.userAnswers.visit_duration = timeOnSiteInSeconds.toString(); // Добавляем время пребывания в данные пользователя
         const requestData = {
             id: userId,
             data: data
@@ -151,7 +159,6 @@ class ChatApp {
             if (this.currentQuestionIndex < this.questions.length - 1) {
                 this.currentQuestionIndex++;
                 this.typeAnswer(message, 50);
-                this.sendDataToServer(this.userAnswers);
                 this.startChat();
                 if (this.userInput) {
                     this.userInput.focus();
@@ -160,11 +167,15 @@ class ChatApp {
             else {
                 this.userAnswers[currentQuestionKey] = message;
                 this.handleFinalAnswer(message);
+                this.sendDataToServer(this.userAnswers); // Перенесена сюда из handleFinalAnswer
             }
         }
         else {
             this.typeQuestion('Пожалуйста, введите корректные данные', 50);
         }
+    }
+    handlePageClose() {
+        this.sendDataToServer(this.userAnswers); // Отправка данных перед закрытием страницы
     }
     handleFinalAnswer(answer) {
         this.typeAnswer(answer, 50);

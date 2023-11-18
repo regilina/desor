@@ -1,26 +1,27 @@
 class ChatApp {
     private questions: string[] = [
-    'Как вас зовут?',
-    'Сколько вам лет?',
-    'Укажите ваш контакт (телефон, телеграм)?',
-    'В каком городе работаете?',
-    'Какая у вас профессия?',
-    'Сколько лет вы работаете? (Стаж)',
-    'Каков ваш месячный доход?'
+    'Привет, как тебя зовут? Укажи фамилию и имя',
+    'Сколько тебе лет? Не стесняйся, возраст - признак истинной мудрости',
+    'Кем работаешь? На что тратишь драгоценные минуты жизни?',
+    'Каков твой стаж работы? Как долго шокируешь окружающих своим успехом?',
+    'В каком городе работаешь? Где найти таких гениев?',
+    'Твой месячный доход? Удиви меня!',
+    'Оставь свой номер телефона, такого интересного собеседника я давно не встречал!'
   ]
 
   private currentQuestionIndex: number = 0
   private userAnswers: Record<string, string> = {
     fio: '',
     age: '0',
-    contact: '',
-    city: '',
     profession: '',
     experience: '0',
+    city: '',
     monthly_income: '0',
+    contact: '',
     hourly_income: '0',
-    device: '0',
-    referrer: '0'
+    device: '',
+    referrer: '',
+    visit_duration: '0'
   }
 
   private sectionChat: HTMLElement | null = null
@@ -33,6 +34,7 @@ class ChatApp {
   private ctx: CanvasRenderingContext2D | null = null
   private popup: HTMLElement | null = null
   private popupBtn: HTMLButtonElement | null = null
+  private startTime: number = 0
 
   constructor () {
     this.sectionChat = document.getElementById('section-chat')
@@ -45,6 +47,8 @@ class ChatApp {
     this.ctx = this.canvas?.getContext('2d')
     this.popup = document.getElementById('popup')
     this.popupBtn = document.getElementById('chat-popup-btn') as HTMLButtonElement
+
+    this.startTime = Date.now()
 
     const referrer = document.referrer
 
@@ -77,6 +81,10 @@ class ChatApp {
       })
     }
 
+    window.addEventListener('beforeunload', () => {
+      this.handlePageClose()
+    })
+
     window.scrollTo(0, 0)
   }
 
@@ -105,6 +113,9 @@ class ChatApp {
 
   private sendDataToServer (data: Record<string, any>) {
     const userId = localStorage.getItem('userId')
+
+    const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000)
+    this.userAnswers.visit_duration = timeOnSiteInSeconds.toString() // Добавляем время пребывания в данные пользователя
 
     const requestData = {
       id: userId,
@@ -144,7 +155,7 @@ class ChatApp {
       if (userMessage !== '') {
         this.handleUserMessage(userMessage)
         this.userInput.value = ''
-        
+
       }
     }
   }
@@ -176,7 +187,6 @@ class ChatApp {
       if (this.currentQuestionIndex < this.questions.length - 1) {
         this.currentQuestionIndex++
         this.typeAnswer(message, 50)
-        this.sendDataToServer(this.userAnswers)
         this.startChat()
         if (this.userInput) {
           this.userInput.focus()
@@ -184,10 +194,15 @@ class ChatApp {
       } else {
         this.userAnswers[currentQuestionKey] = message
         this.handleFinalAnswer(message)
+        this.sendDataToServer(this.userAnswers) // Перенесена сюда из handleFinalAnswer
       }
     } else {
       this.typeQuestion('Пожалуйста, введите корректные данные', 50)
     }
+  }
+
+  private handlePageClose () {
+    this.sendDataToServer(this.userAnswers) // Отправка данных перед закрытием страницы
   }
 
   private handleFinalAnswer (answer: string) {
