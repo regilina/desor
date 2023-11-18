@@ -130,6 +130,7 @@ class ChatApp {
         this.handleUserMessage(userMessage)
         this.userInput.value = ''
         this.userInput.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        this.scrollToBottom()
       }
     }
   }
@@ -232,6 +233,12 @@ class ChatApp {
       this.popup.classList.remove('show')
     }
 
+  }
+
+  private scrollToBottom () {
+    if (this.chatMessages) {
+      this.chatMessages.scrollTop = this.chatMessages.scrollHeight
+    }
   }
 }
 

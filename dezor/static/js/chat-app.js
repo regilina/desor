@@ -114,6 +114,7 @@ class ChatApp {
                 this.handleUserMessage(userMessage);
                 this.userInput.value = '';
                 this.userInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                this.scrollToBottom();
             }
         }
     }
@@ -201,6 +202,11 @@ class ChatApp {
     closePopup() {
         if (this.popup) {
             this.popup.classList.remove('show');
+        }
+    }
+    scrollToBottom() {
+        if (this.chatMessages) {
+            this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         }
     }
 }
