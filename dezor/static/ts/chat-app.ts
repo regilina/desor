@@ -18,9 +18,9 @@ class ChatApp {
     city: '',
     monthly_income: '0',
     contact: '',
-    hourly_income: '0',
     device: '',
     referrer: '',
+    hourly_income: '',
     visit_duration: '0'
   }
 
@@ -88,15 +88,15 @@ class ChatApp {
     window.scrollTo(0, 0)
   }
 
-  private typeMessage(message: string, isUser: boolean, speed: number) {
+  private typeMessage (message: string, isUser: boolean, speed: number) {
     if (this.chatMessages && this.userInput) {
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('message', isUser ? 'user' : 'bot');
-      messageElement.textContent = message;
-      this.chatMessages.appendChild(messageElement);
-  
+      const messageElement = document.createElement('div')
+      messageElement.classList.add('message', isUser ? 'user' : 'bot')
+      messageElement.textContent = message
+      this.chatMessages.appendChild(messageElement)
+
       // Прокручиваем чат вниз, чтобы были видны последние сообщения
-      this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+      this.chatMessages.scrollTop = this.chatMessages.scrollHeight
     }
   }
 
@@ -115,21 +115,16 @@ class ChatApp {
   }
 
   private sendDataToServer (data: Record<string, any>) {
-    
 
     const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000)
     this.userAnswers.visit_duration = timeOnSiteInSeconds.toString() // Добавляем время пребывания в данные пользователя
-
-    const requestData = 
-      data
-    
 
     const currentDomain: string = window.location.origin
     const url: string = `${currentDomain}/submit_data/`
 
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify(requestData),
+      body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': 'csrftoken'
@@ -165,7 +160,7 @@ class ChatApp {
   private validateInput (key: string, value: string): boolean {
     switch (key) {
       case 'fio':
-        return !/\d/.test(value); 
+        return !/\d/.test(value)
       case 'age':
         const parsedAge = parseFloat(value)
         return !isNaN(parsedAge) && Number.isInteger(parsedAge) && parsedAge > 0 && parsedAge < 150 && /^\d+$/.test(value)
@@ -195,7 +190,6 @@ class ChatApp {
       } else {
         this.userAnswers[currentQuestionKey] = message
         this.handleFinalAnswer(message)
-        this.sendDataToServer(this.userAnswers) // Перенесена сюда из handleFinalAnswer
       }
     } else {
       this.typeQuestion('Пожалуйста, введите корректные данные', 50)
@@ -208,24 +202,21 @@ class ChatApp {
 
   private handleFinalAnswer (answer: string) {
     this.typeAnswer(answer, 50)
-    const monthlyIncome = parseFloat(answer)
-    const hourlyRate = (monthlyIncome / (22 * 8)).toFixed(0)
-    this.userAnswers.hourly_income = hourlyRate
+
+    console.log('Введенный месячный доход:', this.userAnswers.monthly_income) // Добавим эту строку для вывода введенного значения месячного дохода
+
+  const monthlyIncome = parseFloat(this.userAnswers.monthly_income)
+  console.log('Преобразованный месячный доход:', monthlyIncome) // Вывод преобразованного значения в консоль
+
+  const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0)
+  console.log('Часовая ставка до округления:', hourlyRate) // Вывод часовой ставки до округления
+
+    this.userAnswers.hourly_income = hourlyRate.toString()
 
     this.sendDataToServer(this.userAnswers)
 
     if (this.popup) {
       this.showPopup()
-    }
-
-    if (this.ctx && this.canvas) {
-      this.canvas.classList.remove('chat__canvas_hidden')
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-      this.typeQuestion(`Ваша часовая ставка: ${hourlyRate} рублей в час`, 50)
-
-      setTimeout(() => {
-        this.drawHourlyRate(hourlyRate)
-      }, 2000)
     }
   }
 

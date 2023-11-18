@@ -232,9 +232,6 @@
   padding: 20px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
-.chat__popup-content {
-  /* Стилизуйте ваше содержимое блока */
-}
 .chat__popup.show {
   display: block;
 }

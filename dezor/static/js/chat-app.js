@@ -18,9 +18,9 @@ class ChatApp {
         city: '',
         monthly_income: '0',
         contact: '',
-        hourly_income: '0',
         device: '',
         referrer: '',
+        hourly_income: '',
         visit_duration: '0'
     };
     sectionChat = null;
@@ -98,12 +98,11 @@ class ChatApp {
     sendDataToServer(data) {
         const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000);
         this.userAnswers.visit_duration = timeOnSiteInSeconds.toString(); // Добавляем время пребывания в данные пользователя
-        const requestData = data;
         const currentDomain = window.location.origin;
         const url = `${currentDomain}/submit_data/`;
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(requestData),
+            body: JSON.stringify(data),
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': 'csrftoken'
@@ -164,7 +163,6 @@ class ChatApp {
             else {
                 this.userAnswers[currentQuestionKey] = message;
                 this.handleFinalAnswer(message);
-                this.sendDataToServer(this.userAnswers); // Перенесена сюда из handleFinalAnswer
             }
         }
         else {
@@ -176,20 +174,15 @@ class ChatApp {
     }
     handleFinalAnswer(answer) {
         this.typeAnswer(answer, 50);
-        const monthlyIncome = parseFloat(answer);
-        const hourlyRate = (monthlyIncome / (22 * 8)).toFixed(0);
-        this.userAnswers.hourly_income = hourlyRate;
+        console.log('Введенный месячный доход:', this.userAnswers.monthly_income); // Добавим эту строку для вывода введенного значения месячного дохода
+        const monthlyIncome = parseFloat(this.userAnswers.monthly_income);
+        console.log('Преобразованный месячный доход:', monthlyIncome); // Вывод преобразованного значения в консоль
+        const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0);
+        console.log('Часовая ставка до округления:', hourlyRate); // Вывод часовой ставки до округления
+        this.userAnswers.hourly_income = hourlyRate.toString();
         this.sendDataToServer(this.userAnswers);
         if (this.popup) {
             this.showPopup();
-        }
-        if (this.ctx && this.canvas) {
-            this.canvas.classList.remove('chat__canvas_hidden');
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            this.typeQuestion(`Ваша часовая ставка: ${hourlyRate} рублей в час`, 50);
-            setTimeout(() => {
-                this.drawHourlyRate(hourlyRate);
-            }, 2000);
         }
     }
     drawHourlyRate(hourlyRate) {
