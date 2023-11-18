@@ -82,11 +82,11 @@ class ChatApp {
       })
     }
 
-    window.addEventListener('beforeunload', () => {
+    window.addEventListener('beforeunload', async (event) => {
+      event.preventDefault(); // Предотвращаем закрытие страницы, пока данные не будут отправлены
       if (this.hasUserResponse) {
-        this.sendDataToServer(this.userAnswers)
+        await this.sendDataToServer(this.userAnswers); // Дождитесь завершения запроса на сервер
       }
-      
     })
 
     window.scrollTo(0, 0)

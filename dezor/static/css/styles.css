@@ -141,9 +141,7 @@
 }
 .chat__messages::-webkit-scrollbar-button:start:decrement {
   display: block;
-  height: 20px;
-  width: 100%;
-  background-image: url("../static/img/arrow-up.svg");
+  background-image: url("../img/arrow-up.svg");
 }
 .chat__messages::-webkit-scrollbar-button:end:increment {
   display: block;

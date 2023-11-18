@@ -159,9 +159,9 @@
 
     &::-webkit-scrollbar-button:start:decrement {
       display: block;
-      height: 20px;
-      width: 100%;
-      background-image: url('../static/img/arrow-up.svg');
+
+      
+      background-image: url('../img/arrow-up.svg');
     }
 
     &::-webkit-scrollbar-button:end:increment {
@@ -181,21 +181,13 @@
     padding-top: 15px;
     z-index: 999;
     background-color: #FFF;
-
     border-radius: 0px 0px 0px 40px;
-
-    
-    
-
     gap: 10px;
     
-    
-
     &-field {
       font-size: 16px;;
       font-weight: 400;
       line-height: 130%; 
-
       display: flex;
       width: 478px;
       height: 65px;
@@ -289,14 +281,11 @@
     max-width: 1200px;
     padding: 52px 40px 86.38px 88px;
   }
-
 }
-  
 
 .message {
   display: flex;
   padding: 10px 38px;
-
   flex-shrink: 0;
   border-radius: 55px;
   border: 1px solid rgba(0, 0, 0, 0.30);
@@ -310,19 +299,14 @@
       font-weight: 400;
       line-height: 130%;
     }
-    
   }
 }
 
 .user {
- 
   color: #000;
   font-size: 16px;
   font-weight: 400;
-
-
   padding: 20px;
-  
   align-self: end;
   border-radius: 10px 10px 0px 10px;
   background: #E5FB8C;
@@ -331,7 +315,6 @@
 .bot {
   background-color: #FFF;
   align-self: flex-start;
-  
   color: #000;
   font-size: 16px;
   font-weight: 400;
