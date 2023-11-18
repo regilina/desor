@@ -302,13 +302,22 @@
 .message {
   display: flex;
   padding: 10px 38px;
-  align-items: center;
+
   flex-shrink: 0;
   border-radius: 55px;
   border: 1px solid rgba(0, 0, 0, 0.30);
   flex-wrap: wrap;
   color: rgba(0, 0, 0, 0.60);
   font-weight: 400;
+
+  &-text {
+    & span {
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 130%;
+    }
+    
+  }
 }
 
 .user {
@@ -317,11 +326,9 @@
   font-size: 16px;
   font-weight: 400;
 
-  display: flex;
+
   padding: 20px;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: flex-start;
+  
   align-self: end;
   border-radius: 10px 10px 0px 10px;
   background: #E5FB8C;
@@ -335,6 +342,12 @@
   font-size: 16px;
   font-weight: 400;
   line-height: 130%; 
+
+  &-name {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
 }
 
 .about-festival {
