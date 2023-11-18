@@ -50,4 +50,3 @@ function sendVisitTimePeriodically (): void {
 
 saveVisitTime()
 sendVisitTimePeriodically()
-

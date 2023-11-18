@@ -235,21 +235,11 @@ class ChatApp {
 
   }
 
-  private scrollToBottom() {
-    if (this.chatMessages && this.userInput) {
-      const inputBottom = this.userInput.getBoundingClientRect().bottom;
-      const chatBottom = this.chatMessages.getBoundingClientRect().bottom;
-      const inputHeight = this.userInput.offsetHeight;
-  
-      if (inputBottom <= chatBottom) {
-        this.chatMessages.style.paddingBottom = `${inputHeight}px`;
-        this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
-      } else {
-        this.chatMessages.style.paddingBottom = '0';
-      }
+  private scrollToBottom () {
+    if (this.chatMessages) {
+      this.chatMessages.scrollTop = this.chatMessages.scrollHeight
     }
   }
-  
 }
 
 document.addEventListener('DOMContentLoaded', () => {

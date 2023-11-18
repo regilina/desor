@@ -118,11 +118,15 @@
   gap: 15px;
   flex-grow: 1;
   overflow-x: hidden;
-  overflow-y: auto; /* Включение вертикальной полосы прокрутки */
-  height: 786px; /* Полоса прокрутки будет по высоте чата */
+  overflow-y: scroll; /* Включение вертикальной полосы прокрутки */
+  margin-top: -120px;
+  padding-top: 120px;
+  margin-bottom: -110px;
+  padding-bottom: 110px;
 }
 .chat__messages::-webkit-scrollbar {
   width: 40px; /* Ширина полосы прокрутки */
+  height: 786px;
   background-color: #F1F1F1;
 }
 .chat__messages::-webkit-scrollbar-thumb {
@@ -150,6 +154,7 @@
   align-items: center;
   margin-bottom: 30px;
   margin-left: 25px;
+  z-index: 999;
   gap: 10px;
   margin-top: 15px;
 }
@@ -182,6 +187,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 999;
 }
 .chat__head span {
   color: #FFF;
