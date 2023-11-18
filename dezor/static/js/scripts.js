@@ -4,8 +4,8 @@ function saveVisitTime() {
     startTime = Math.floor(new Date().getTime() / 1000);
     localStorage.setItem('visitTime', startTime.toString());
 }
-function sendVisitTimePeriodically() {
-    setInterval(() => {
+function sendVisitTimeBeforeUnload() {
+    window.addEventListener('beforeunload', function (event) {
         const visitTime = localStorage.getItem('visitTime');
         if (visitTime) {
             const currentTime = Math.floor(new Date().getTime() / 1000);
@@ -33,15 +33,15 @@ function sendVisitTimePeriodically() {
                 return response.json();
             })
                 .then((responseData) => {
-                console.log('Ответ сервера:', responseData);
-                // Обновляем только visitTime, не перезаписывая startTime
+                console.log('Server Response:', responseData);
+                // Update visitTime without overwriting startTime
                 localStorage.setItem('visitTime', currentTime.toString());
             })
                 .catch((error) => {
-                console.error('Произошла ошибка:', error);
+                console.error('Error occurred:', error);
             });
         }
-    }, 10000);
+    });
 }
 saveVisitTime();
-sendVisitTimePeriodically();
+sendVisitTimeBeforeUnload();

@@ -1,24 +1,26 @@
 "use strict";
 class ChatApp {
     questions = [
-        'Привет, как тебя зовут? Укажи фамилию и имя',
-        'Сколько тебе лет? Не стесняйся, возраст - признак истинной мудрости',
-        'Кем работаешь? На что тратишь драгоценные минуты жизни?',
-        'Каков твой стаж работы? Как долго шокируешь окружающих своим успехом?',
-        'В каком городе работаешь? Где найти таких гениев?',
-        'Твой месячный доход? Удиви меня!',
-        'Оставь свой номер телефона, такого интересного собеседника я давно не встречал!'
+        'Как вас зовут?',
+        'Сколько вам лет?',
+        'Укажите ваш контакт (телефон, телеграм)?',
+        'В каком городе работаете?',
+        'Какая у вас профессия?',
+        'Сколько лет вы работаете? (Стаж)',
+        'Каков ваш месячный доход?'
     ];
     currentQuestionIndex = 0;
     userAnswers = {
         fio: '',
         age: '0',
+        contact: '',
+        city: '',
         profession: '',
         experience: '0',
-        city: '',
         monthly_income: '0',
-        contact: '',
-        hourly_income: '0'
+        hourly_income: '0',
+        device: '0',
+        referrer: '0'
     };
     sectionChat = null;
     sectionResult = null;
@@ -41,6 +43,15 @@ class ChatApp {
         this.ctx = this.canvas?.getContext('2d');
         this.popup = document.getElementById('popup');
         this.popupBtn = document.getElementById('chat-popup-btn');
+        const referrer = document.referrer;
+        // Получение информации о типе устройства (desktop или mobile)
+        let device = 'D'; // По умолчанию предполагаем, что это рабочий стол
+        // Проверяем ширину экрана для определения типа устройства
+        if (window.innerWidth < 768) {
+            device = 'M'; // Если ширина экрана меньше 768px, считаем это мобильным устройством
+        }
+        this.userAnswers.device = device;
+        this.userAnswers.referrer = referrer;
         this.startChat();
         if (this.sendButton) {
             this.sendButton.addEventListener('click', () => {
@@ -63,7 +74,6 @@ class ChatApp {
             messageElement.classList.add('message', isUser ? 'user' : 'bot');
             messageElement.textContent = message; // Установка всего текста сразу
             this.chatMessages.appendChild(messageElement);
-            this.scrollToBottom();
         }
     }
     typeQuestion(question, speed) {
@@ -114,7 +124,6 @@ class ChatApp {
             if (userMessage !== '') {
                 this.handleUserMessage(userMessage);
                 this.userInput.value = '';
-                this.scrollToBottom();
             }
         }
     }
@@ -202,11 +211,6 @@ class ChatApp {
     closePopup() {
         if (this.popup) {
             this.popup.classList.remove('show');
-        }
-    }
-    scrollToBottom() {
-        if (this.chatMessages) {
-            this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         }
     }
 }

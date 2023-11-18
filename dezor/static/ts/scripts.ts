@@ -1,16 +1,16 @@
-let startTime: number = 0
+let startTime = 0
 
-function saveVisitTime (): void {
+function saveVisitTime () {
   startTime = Math.floor(new Date().getTime() / 1000)
   localStorage.setItem('visitTime', startTime.toString())
 }
 
-function sendVisitTimePeriodically (): void {
-  setInterval(() => {
-    const visitTime: string | null = localStorage.getItem('visitTime')
+function sendVisitTimeBeforeUnload () {
+  window.addEventListener('beforeunload', function (event) {
+    const visitTime = localStorage.getItem('visitTime')
     if (visitTime) {
-      const currentTime: number = Math.floor(new Date().getTime() / 1000)
-      const elapsedTime: number = currentTime - parseInt(visitTime)
+      const currentTime = Math.floor(new Date().getTime() / 1000)
+      const elapsedTime = currentTime - parseInt(visitTime)
 
       const requestData = {
         id: localStorage.getItem('userId'),
@@ -19,8 +19,8 @@ function sendVisitTimePeriodically (): void {
         }
       }
 
-      const currentDomain: string = window.location.origin
-      const url: string = `${currentDomain}/submit_data/`
+      const currentDomain = window.location.origin
+      const url = `${currentDomain}/submit_data/`
 
       fetch(url, {
         method: 'POST',
@@ -30,23 +30,23 @@ function sendVisitTimePeriodically (): void {
           'X-CSRFToken': 'csrftoken'
         }
       })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok')
-          }
-          return response.json()
-        })
-        .then((responseData) => {
-          console.log('Ответ сервера:', responseData)
-          // Обновляем только visitTime, не перезаписывая startTime
-          localStorage.setItem('visitTime', currentTime.toString())
-        })
-        .catch((error) => {
-          console.error('Произошла ошибка:', error)
-        })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+        return response.json()
+      })
+      .then((responseData) => {
+        console.log('Server Response:', responseData)
+        // Update visitTime without overwriting startTime
+        localStorage.setItem('visitTime', currentTime.toString())
+      })
+      .catch((error) => {
+        console.error('Error occurred:', error)
+      })
     }
-  }, 10000)
+  })
 }
 
 saveVisitTime()
-sendVisitTimePeriodically()
+sendVisitTimeBeforeUnload()
