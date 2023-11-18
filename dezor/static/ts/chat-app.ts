@@ -203,17 +203,17 @@ class ChatApp {
   private handleFinalAnswer (answer: string) {
     this.typeAnswer(answer, 50)
 
-  const monthlyIncome = parseFloat(this.userAnswers.monthly_income)
+    const monthlyIncome = parseFloat(this.userAnswers.monthly_income)
 
-  const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0)
-  this.userAnswers.hourly_income = hourlyRate.toString()
+    const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0)
+    this.userAnswers.hourly_income = hourlyRate.toString()
 
     // this.sendDataToServer(this.userAnswers)
 
-  if (this.popup) {
-    this.showPopup()
+    if (this.popup) {
+      this.showPopup()
+    }
   }
-}
 
   private drawHourlyRate (hourlyRate: string) {
     if (this.ctx && this.canvas) {
