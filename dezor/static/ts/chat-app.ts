@@ -36,7 +36,7 @@ class ChatApp {
   private popupBtn: HTMLButtonElement | null = null
   private startTime: number = 0
   private hasUserResponse: boolean = false
-  private userId: Promise<string | null> | null = null
+  private userId: string | null = null
 
   constructor () {
     this.sectionChat = document.getElementById('section-chat')
@@ -61,15 +61,21 @@ class ChatApp {
     if (window.innerWidth < 768) {
         device = 'M' // Если ширина экрана меньше 768px, считаем это мобильным устройством
     }
-
+    console.log(window.innerWidth)
     console.log('device ' + device)
     this.userAnswers.device = device
     this.userAnswers.referrer = referrer
 
-    if (this.userAnswers.decice === 'M') {
-      this.userId = this.fetchUserId()
-      console.log(this.userId)
+    if (this.userAnswers.device === 'M') {
+      this.fetchUserId().then((id) => {
+        this.userId = id
+
+      }).catch((error) => {
+        console.error('Ошибка при получении userId:', error)
+      })
     }
+
+    console.log('userId ' + this.userId)
 
     this.startChat()
 
@@ -124,7 +130,7 @@ class ChatApp {
     }
   }
 
-  private sendDataToServer (data: Record<string, any>, userId: Promise<string | null> | null = null) {
+  private sendDataToServer (data: Record<string, any>, userId: string | null = null) {
 
     const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000)
     this.userAnswers.visit_duration = timeOnSiteInSeconds.toString() // Добавляем время пребывания в данные пользователя
@@ -162,24 +168,30 @@ class ChatApp {
   }
 
   private async fetchUserId (): Promise<string | null> {
-    const currentDomain: string = window.location.origin
-    const url: string = `${currentDomain}/submit_data/`
+    try {
+      const currentDomain: string = window.location.origin
+      const url: string = `${currentDomain}/submit_data/`
 
-    const response = await fetch(url, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-CSRFToken': 'csrftoken'
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': 'csrftoken'
+        }
+      })
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok')
       }
-    })
 
-    if (!response.ok) {
-      throw new Error('Network response was not ok')
+      const responseData = await response.json()
+      const userId: string = responseData.id
+      console.log(userId + ' userId')
+      return userId
+    } catch (error) {
+      console.error('Ошибка при получении userId:', error)
+      return null // Вернуть null в случае ошибки
     }
-
-    const responseData = await response.json()
-    const userId: string = responseData.id
-    return userId
   }
 
   private sendMessage () {

@@ -55,13 +55,18 @@ class ChatApp {
         if (window.innerWidth < 768) {
             device = 'M'; // Если ширина экрана меньше 768px, считаем это мобильным устройством
         }
+        console.log(window.innerWidth);
         console.log('device ' + device);
         this.userAnswers.device = device;
         this.userAnswers.referrer = referrer;
-        if (this.userAnswers.decice === 'M') {
-            this.userId = this.fetchUserId();
-            console.log(this.userId);
+        if (this.userAnswers.device === 'M') {
+            this.fetchUserId().then((id) => {
+                this.userId = id;
+            }).catch((error) => {
+                console.error('Ошибка при получении userId:', error);
+            });
         }
+        console.log('userId ' + this.userId);
         this.startChat();
         if (this.sendButton) {
             this.sendButton.addEventListener('click', () => {
@@ -138,21 +143,28 @@ class ChatApp {
         });
     }
     async fetchUserId() {
-        const currentDomain = window.location.origin;
-        const url = `${currentDomain}/submit_data/`;
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRFToken': 'csrftoken'
+        try {
+            const currentDomain = window.location.origin;
+            const url = `${currentDomain}/submit_data/`;
+            const response = await fetch(url, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': 'csrftoken'
+                }
+            });
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
             }
-        });
-        if (!response.ok) {
-            throw new Error('Network response was not ok');
+            const responseData = await response.json();
+            const userId = responseData.id;
+            console.log(userId + ' userId');
+            return userId;
         }
-        const responseData = await response.json();
-        const userId = responseData.id;
-        return userId;
+        catch (error) {
+            console.error('Ошибка при получении userId:', error);
+            return null; // Вернуть null в случае ошибки
+        }
     }
     sendMessage() {
         if (this.userInput) {
