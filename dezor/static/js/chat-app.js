@@ -209,11 +209,7 @@ class ChatApp {
         const monthlyIncome = parseFloat(this.userAnswers.monthly_income);
         const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0);
         this.userAnswers.hourly_income = hourlyRate.toString();
-        // if (this.userAnswers.device === 'M') {
-        //   this.sendDataToServer(this.userAnswers, this.userId)
-        // } else  {
-        //   this.sendDataToServer(this.userAnswers)
-        // }
+        this.sendDataToServer(this.userAnswers, this.userId);
         if (this.popup) {
             this.showPopup();
         }
