@@ -35,6 +35,7 @@ class ChatApp {
     popupBtn = null;
     startTime = 0;
     hasUserResponse = false;
+    userId = null;
     constructor() {
         this.sectionChat = document.getElementById('section-chat');
         this.sectionResult = document.getElementById('section-result');
@@ -54,8 +55,13 @@ class ChatApp {
         if (window.innerWidth < 768) {
             device = 'M'; // Если ширина экрана меньше 768px, считаем это мобильным устройством
         }
+        console.log('device ' + device);
         this.userAnswers.device = device;
         this.userAnswers.referrer = referrer;
+        if (this.userAnswers.decice === 'M') {
+            this.userId = this.fetchUserId();
+            console.log(this.userId);
+        }
         this.startChat();
         if (this.sendButton) {
             this.sendButton.addEventListener('click', () => {
@@ -99,7 +105,7 @@ class ChatApp {
             this.typeQuestion(this.questions[this.currentQuestionIndex], 50);
         }
     }
-    sendDataToServer(data) {
+    sendDataToServer(data, userId = null) {
         const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000);
         this.userAnswers.visit_duration = timeOnSiteInSeconds.toString(); // Добавляем время пребывания в данные пользователя
         const currentDomain = window.location.origin;
@@ -130,6 +136,23 @@ class ChatApp {
             // Обработка ошибки при отправке данных
             console.error('Произошла ошибка:', error);
         });
+    }
+    async fetchUserId() {
+        const currentDomain = window.location.origin;
+        const url = `${currentDomain}/submit_data/`;
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRFToken': 'csrftoken'
+            }
+        });
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const responseData = await response.json();
+        const userId = responseData.id;
+        return userId;
     }
     sendMessage() {
         if (this.userInput) {
@@ -164,6 +187,9 @@ class ChatApp {
             if (this.currentQuestionIndex < this.questions.length - 1) {
                 this.currentQuestionIndex++;
                 this.typeAnswer(message, 50);
+                if (this.userAnswers.device === 'M') {
+                    this.sendDataToServer(this.userAnswers, this.userId);
+                }
                 this.startChat();
                 if (this.userInput) {
                     this.userInput.focus();
@@ -183,7 +209,11 @@ class ChatApp {
         const monthlyIncome = parseFloat(this.userAnswers.monthly_income);
         const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0);
         this.userAnswers.hourly_income = hourlyRate.toString();
-        // this.sendDataToServer(this.userAnswers)
+        // if (this.userAnswers.device === 'M') {
+        //   this.sendDataToServer(this.userAnswers, this.userId)
+        // } else  {
+        //   this.sendDataToServer(this.userAnswers)
+        // }
         if (this.popup) {
             this.showPopup();
         }

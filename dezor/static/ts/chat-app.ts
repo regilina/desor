@@ -36,6 +36,7 @@ class ChatApp {
   private popupBtn: HTMLButtonElement | null = null
   private startTime: number = 0
   private hasUserResponse: boolean = false
+  private userId: Promise<string | null> | null = null
 
   constructor () {
     this.sectionChat = document.getElementById('section-chat')
@@ -61,8 +62,14 @@ class ChatApp {
         device = 'M' // Если ширина экрана меньше 768px, считаем это мобильным устройством
     }
 
+    console.log('device ' + device)
     this.userAnswers.device = device
     this.userAnswers.referrer = referrer
+
+    if (this.userAnswers.decice === 'M') {
+      this.userId = this.fetchUserId()
+      console.log(this.userId)
+    }
 
     this.startChat()
 
@@ -118,7 +125,7 @@ class ChatApp {
     }
   }
 
-  private sendDataToServer (data: Record<string, any>) {
+  private sendDataToServer (data: Record<string, any>, userId: Promise<string | null> | null = null) {
 
     const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000)
     this.userAnswers.visit_duration = timeOnSiteInSeconds.toString() // Добавляем время пребывания в данные пользователя
@@ -153,6 +160,27 @@ class ChatApp {
         // Обработка ошибки при отправке данных
         console.error('Произошла ошибка:', error)
       })
+  }
+
+  private async fetchUserId (): Promise<string | null> {
+    const currentDomain: string = window.location.origin
+    const url: string = `${currentDomain}/submit_data/`
+
+    const response = await fetch(url, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': 'csrftoken'
+      }
+    })
+
+    if (!response.ok) {
+      throw new Error('Network response was not ok')
+    }
+
+    const responseData = await response.json()
+    const userId: string = responseData.id
+    return userId
   }
 
   private sendMessage () {
@@ -193,6 +221,9 @@ class ChatApp {
       if (this.currentQuestionIndex < this.questions.length - 1) {
         this.currentQuestionIndex++
         this.typeAnswer(message, 50)
+        if (this.userAnswers.device === 'M') {
+          this.sendDataToServer(this.userAnswers, this.userId)
+        }
         this.startChat()
         if (this.userInput) {
           this.userInput.focus()
@@ -214,7 +245,11 @@ class ChatApp {
     const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0)
     this.userAnswers.hourly_income = hourlyRate.toString()
 
-    // this.sendDataToServer(this.userAnswers)
+    // if (this.userAnswers.device === 'M') {
+    //   this.sendDataToServer(this.userAnswers, this.userId)
+    // } else  {
+    //   this.sendDataToServer(this.userAnswers)
+    // }
 
     if (this.popup) {
       this.showPopup()
