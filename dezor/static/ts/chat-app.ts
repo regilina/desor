@@ -188,7 +188,6 @@ class ChatApp {
       if (userMessage !== '') {
         this.handleUserMessage(userMessage)
         this.userInput.value = ''
-
       }
     }
   }
@@ -244,29 +243,10 @@ class ChatApp {
     const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0)
     this.userAnswers.hourly_income = hourlyRate.toString()
 
-    
     this.sendDataToServer(this.userAnswers, this.userId)
 
     if (this.popup) {
       this.showPopup()
-    }
-  }
-
-  private drawHourlyRate (hourlyRate: string) {
-    if (this.ctx && this.canvas) {
-      this.canvas.classList.remove('chat__canvas_hidden')
-      this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-      const backgroundImage = new Image()
-      backgroundImage.src = '../static/img/cat.jpg'
-
-      backgroundImage.onload = () => {
-        if (this.ctx && this.canvas) {
-          this.ctx.drawImage(backgroundImage, 0, 0, this.canvas.width, this.canvas.height)
-          this.ctx.font = '36px Arial'
-          this.ctx.fillStyle = 'blue'
-          this.ctx.fillText(hourlyRate.toString(), 80, 60)
-        }
-      }
     }
   }
 
@@ -278,14 +258,12 @@ class ChatApp {
     this.popupBtn?.addEventListener('click', () => {
       this.closePopup()
     })
-
   }
 
   private closePopup () {
     if (this.popup) {
       this.popup.classList.remove('show')
     }
-
   }
 }
 

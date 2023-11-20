@@ -214,22 +214,6 @@ class ChatApp {
             this.showPopup();
         }
     }
-    drawHourlyRate(hourlyRate) {
-        if (this.ctx && this.canvas) {
-            this.canvas.classList.remove('chat__canvas_hidden');
-            this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-            const backgroundImage = new Image();
-            backgroundImage.src = '../static/img/cat.jpg';
-            backgroundImage.onload = () => {
-                if (this.ctx && this.canvas) {
-                    this.ctx.drawImage(backgroundImage, 0, 0, this.canvas.width, this.canvas.height);
-                    this.ctx.font = '36px Arial';
-                    this.ctx.fillStyle = 'blue';
-                    this.ctx.fillText(hourlyRate.toString(), 80, 60);
-                }
-            };
-        }
-    }
     showPopup() {
         if (this.popup) {
             this.popup.classList.add('show');
