@@ -70,9 +70,10 @@ class ChatApp {
                 }
             });
         }
-        window.addEventListener('beforeunload', () => {
+        window.addEventListener('beforeunload', async (event) => {
+            event.preventDefault(); // Предотвращаем закрытие страницы, пока данные не будут отправлены
             if (this.hasUserResponse) {
-                this.sendDataToServer(this.userAnswers);
+                await this.sendDataToServer(this.userAnswers); // Дождитесь завершения запроса на сервер
             }
         });
         window.scrollTo(0, 0);
@@ -103,9 +104,13 @@ class ChatApp {
         this.userAnswers.visit_duration = timeOnSiteInSeconds.toString(); // Добавляем время пребывания в данные пользователя
         const currentDomain = window.location.origin;
         const url = `${currentDomain}/submit_data/`;
+        const jsonData = {
+            id: 'null',
+            data: data
+        };
         fetch(url, {
             method: 'POST',
-            body: JSON.stringify(data),
+            body: JSON.stringify(jsonData),
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRFToken': 'csrftoken'

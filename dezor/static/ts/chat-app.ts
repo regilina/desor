@@ -35,7 +35,7 @@ class ChatApp {
   private popup: HTMLElement | null = null
   private popupBtn: HTMLButtonElement | null = null
   private startTime: number = 0
-  private hasUserResponse: boolean = false;
+  private hasUserResponse: boolean = false
 
   constructor () {
     this.sectionChat = document.getElementById('section-chat')
@@ -82,11 +82,11 @@ class ChatApp {
       })
     }
 
-    window.addEventListener('beforeunload', () => {
+    window.addEventListener('beforeunload', async (event) => {
+      event.preventDefault() // Предотвращаем закрытие страницы, пока данные не будут отправлены
       if (this.hasUserResponse) {
-        this.sendDataToServer(this.userAnswers)
+        await this.sendDataToServer(this.userAnswers) // Дождитесь завершения запроса на сервер
       }
-      
     })
 
     window.scrollTo(0, 0)
@@ -126,9 +126,14 @@ class ChatApp {
     const currentDomain: string = window.location.origin
     const url: string = `${currentDomain}/submit_data/`
 
+    const jsonData = {
+      id: 'null',
+      data: data
+    }
+
     fetch(url, {
       method: 'POST',
-      body: JSON.stringify(data),
+      body: JSON.stringify(jsonData),
       headers: {
         'Content-Type': 'application/json',
         'X-CSRFToken': 'csrftoken'
@@ -178,14 +183,13 @@ class ChatApp {
     }
   }
 
-  
   private handleUserMessage (message: string) {
     const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex]
-    
+
     if (this.validateInput(currentQuestionKey, message)) {
       this.userAnswers[currentQuestionKey] = message
 
-      this.hasUserResponse = true;
+      this.hasUserResponse = true
       if (this.currentQuestionIndex < this.questions.length - 1) {
         this.currentQuestionIndex++
         this.typeAnswer(message, 50)
@@ -201,7 +205,6 @@ class ChatApp {
       this.typeQuestion('Пожалуйста, введите корректные данные', 50)
     }
   }
-
 
   private handleFinalAnswer (answer: string) {
     this.typeAnswer(answer, 50)
