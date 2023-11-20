@@ -134,7 +134,7 @@ class ChatApp {
     const url: string = `${currentDomain}/submit_data/`
 
     const jsonData = {
-      id: 'null',
+      id: userId,
       data: data
     }
 

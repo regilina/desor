@@ -111,7 +111,7 @@ class ChatApp {
         const currentDomain = window.location.origin;
         const url = `${currentDomain}/submit_data/`;
         const jsonData = {
-            id: 'null',
+            id: userId,
             data: data
         };
         fetch(url, {
