@@ -141,7 +141,7 @@
   margin-top: 33px;
   padding-left: 25px;
   padding-right: 25px;
-  margin-bottom: 8px;
+  margin-bottom: 27px;
 }
 .chat__messages::-webkit-scrollbar {
   background-color: #F1F1F1;
@@ -244,11 +244,11 @@
   flex-wrap: wrap;
   color: rgba(0, 0, 0, 0.6);
   font-weight: 400;
-  display: flex;
   padding: 20px;
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
+  display: flex;
 }
 .message-text span {
   font-size: 16px;
@@ -266,7 +266,7 @@
   background: #E5FB8C;
 }
 
-.bot {
+.bot-text {
   background-color: #FFF;
   align-self: flex-start;
   color: #000;

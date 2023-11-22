@@ -93,9 +93,17 @@ class ChatApp {
         if (this.chatMessages && this.userInput) {
             const messageElement = document.createElement('div');
             messageElement.classList.add('message', isUser ? 'user' : 'bot');
-            messageElement.textContent = message;
+            if (!isUser) {
+                const proFestText = document.createElement('span');
+                proFestText.classList.add('bot-name');
+                proFestText.textContent = 'Pro-fest';
+                messageElement.appendChild(proFestText);
+            }
+            const messageText = document.createElement('span');
+            messageText.classList.add('bot-text');
+            messageText.textContent = message;
+            messageElement.appendChild(messageText);
             this.chatMessages.appendChild(messageElement);
-            // Прокручиваем чат вниз, чтобы были видны последние сообщения
             this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         }
     }

@@ -56,4 +56,17 @@
   .chat__head span {
     font-size: 40px;
   }
+  .chat__messages {
+    gap: 10px;
+    margin-top: 20px;
+    margin-bottom: 4px;
+    padding-left: 22px;
+    padding-right: 29px;
+  }
+  .message {
+    padding: 10px;
+  }
+  .user {
+    padding: 20px;
+  }
 }/*# sourceMappingURL=exceptions.css.map */
