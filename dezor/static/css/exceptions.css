@@ -1,4 +1,4 @@
-@media screen and (min-width: 768px) and (max-width: 1132px) {
+@media screen and (min-width: 768px) and (max-width: 1599px) {
   .content {
     padding: 0 20px;
     overflow: hidden;
@@ -12,7 +12,6 @@
   }
   .hero__img {
     margin-top: -83px;
-    width: 100%;
   }
   .hero__title {
     margin-bottom: 16px;
@@ -30,5 +29,31 @@
   .hero__description {
     margin-bottom: 50px;
     font-size: 24px;
+  }
+  .section-chat {
+    margin-top: 130px;
+  }
+  .section-chat__title {
+    font-size: 48px;
+    line-height: 120%;
+  }
+  .section-chat__text {
+    margin-bottom: 66px;
+    margin-top: 42px;
+  }
+  .section-chat__chat-container {
+    margin-top: 31px;
+    gap: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .section-chat__img {
+    margin-left: 0;
+  }
+  .chat {
+    height: 533px;
+  }
+  .chat__head span {
+    font-size: 40px;
   }
 }/*# sourceMappingURL=exceptions.css.map */
