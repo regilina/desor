@@ -89,5 +89,36 @@
   .user {
     padding: 20px;
   }
+
+  .footer {
+    padding: 67px 124.5px 53px 0;
+
+  
+    &__content {
+      display: flex;
+      gap: 58.5px;
+    }
+
+    &__links {
+      margin-top: 22px;
+      gap: 12px;
+    }
+
+    &__link {
+      font-size: 24px;
+      text-decoration: none;
+      color: var(--Black, #000);
+      font-weight: 400;
+      line-height: 28px;
+    }
+  }
+
+  .mobile {
+    display: block;
+  }
+
+  .desktop {
+    display: none;
+  }
 }
     
