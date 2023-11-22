@@ -30,12 +30,13 @@
 
 .logo-name {
   display: flex;
-  gap: 26.64px;
+  gap: 15px;
   align-items: center;
 
   &__name {
     font-size: 23px;
     font-weight: 400;
+    text-transform: uppercase;
   }
 }
 
