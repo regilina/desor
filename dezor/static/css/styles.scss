@@ -222,7 +222,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 999;
+
 
     & span {
       color: #FFF;
@@ -308,7 +308,6 @@
   
 .bot {
   &-text {
-    background-color: #FFF;
     align-self: flex-start;
     color: #000;
     font-size: 16px;
