@@ -92,7 +92,7 @@
 
   .footer {
     padding: 67px 124.5px 53px 0;
-
+    margin-top: 130px;
   
     &__content {
       display: flex;
@@ -110,6 +110,64 @@
       color: var(--Black, #000);
       font-weight: 400;
       line-height: 28px;
+    }
+  }
+
+  
+  .fest-program {
+    margin-top: 130px;
+
+    &__title {
+      text-shadow: none;
+      font-size: 48px;
+    }
+
+
+    &__cards {
+      margin-top: 50px;
+      gap: 40px;
+      
+    }
+
+    &__card {
+      padding: 60px 40px;
+
+      &-img {
+        margin-top: -25px;
+        align-self: end;
+      }
+
+      &_square {
+        padding: 30px 20px;
+        gap: 25px;
+      }
+
+      &_rectangle {
+        flex-direction: column-reverse;
+        gap: 0;
+        padding: 40px 36px 40px 20px;
+    
+
+        &-text-container {
+          gap: 25px;
+        }
+      }
+
+      &-title {
+        line-height: 110%;
+        font-size: 40px;
+      }
+
+      &-date {
+        margin-bottom: 5px;
+        font-size: 40px;
+      }
+
+      &-time {
+        font-size: 24px;
+        line-height: 120%; 
+        text-transform: uppercase;
+      }
     }
   }
 }

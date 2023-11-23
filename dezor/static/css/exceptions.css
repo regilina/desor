@@ -71,6 +71,7 @@
   }
   .footer {
     padding: 67px 124.5px 53px 0;
+    margin-top: 130px;
   }
   .footer__content {
     display: flex;
@@ -86,5 +87,48 @@
     color: var(--Black, #000);
     font-weight: 400;
     line-height: 28px;
+  }
+  .fest-program {
+    margin-top: 130px;
+  }
+  .fest-program__title {
+    text-shadow: none;
+    font-size: 48px;
+  }
+  .fest-program__cards {
+    margin-top: 50px;
+    gap: 40px;
+  }
+  .fest-program__card {
+    padding: 60px 40px;
+  }
+  .fest-program__card-img {
+    margin-top: -25px;
+    align-self: end;
+  }
+  .fest-program__card_square {
+    padding: 30px 20px;
+    gap: 25px;
+  }
+  .fest-program__card_rectangle {
+    flex-direction: column-reverse;
+    gap: 0;
+    padding: 40px 36px 40px 20px;
+  }
+  .fest-program__card_rectangle-text-container {
+    gap: 25px;
+  }
+  .fest-program__card-title {
+    line-height: 110%;
+    font-size: 40px;
+  }
+  .fest-program__card-date {
+    margin-bottom: 5px;
+    font-size: 40px;
+  }
+  .fest-program__card-time {
+    font-size: 24px;
+    line-height: 120%;
+    text-transform: uppercase;
   }
 }/*# sourceMappingURL=exceptions.css.map */

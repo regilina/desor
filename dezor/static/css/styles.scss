@@ -376,6 +376,10 @@
 .fest-program {
   margin-top: 150px;
 
+  &__square-cards-container {
+    gap: 42px;
+  }
+
   &__title {
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     font-size: 64px;
@@ -398,20 +402,26 @@
   &__card {
     padding: 60px 40px;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     border-radius: 40px;
+    width: 100%;
+
+    &-date-time-container {
+      flex-grow: 1;
+    }
 
     &_square {
       max-width: 569.5px;
-      width: 100%;
       flex-direction: column;
       gap: 60px;
     }
 
     &_rectangle {
       justify-content: space-between;
-      width: 100%;
       padding: 60px 42px;
       border: 1px solid #000;
+      flex-direction: row;
 
       &-text-container {
         max-width: 528px;
