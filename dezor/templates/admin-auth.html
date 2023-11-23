@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {% csrf_token %}
+    <script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>{% block head_title %}{% endblock head_title %}</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/admin-auth.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;700&family=Rubik+Mono+One&display=swap');
+    </style>
+  </head>
+  <body class="body">
+    <div class="content">
+      <form class="auth">
+        <div class="logo-name auth__logo-name">
+          <img src="../static/img/logo.svg" alt="логотип">
+          <span class="logo-name__name">Pro-fest</span>
+        </div>
+        <input type="text" class="auth__input auth__input-login" id="auth-input-login" placeholder="Логин">
+        <input type="text" class="auth__input auth__input-password" id="auth-input-password" placeholder="Пароль">
+        <button class="btn" type="submit">Вход</button>
+      </div>
+    </form>
+  </body>
+</html>

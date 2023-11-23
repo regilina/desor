@@ -74,11 +74,12 @@
 .btn {
   border-radius: 55px;
   background: #D4F21D;
-  width: 381px;
-  height: 84px;
   font-size: 28px;
   border: none;
   cursor: pointer;
+  padding: 25px 110px;
+  width: -moz-fit-content;
+  width: fit-content;
 }
 
 .section-chat {
@@ -325,6 +326,11 @@
 .fest-program {
   margin-top: 150px;
 }
+.fest-program__btn {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 .fest-program__square-cards-container {
   gap: 42px;
 }
@@ -342,6 +348,7 @@
   display: flex;
   flex-direction: column;
   gap: 60px;
+  margin-bottom: 70px;
 }
 .fest-program__card {
   padding: 60px 40px;
