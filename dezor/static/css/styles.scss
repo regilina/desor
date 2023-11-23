@@ -441,16 +441,26 @@
     padding: 60px 40px;
     display: flex;
     border-radius: 40px;
-    background: #007BFF;
 
     &_square {
-      width: 569.5px;
+      max-width: 569.5px;
+      width: 100%;
       flex-direction: column;
       gap: 60px;
     }
 
     &_rectangle {
       justify-content: space-between;
+      width: 100%;
+      padding: 60px 42px;
+      border: 1px solid #000;
+
+      &-text-container {
+        max-width: 528px;
+        display: flex;
+        flex-direction: column;
+        gap: 59px;
+      }
     }
 
     &-title {

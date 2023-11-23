@@ -380,15 +380,24 @@
   padding: 60px 40px;
   display: flex;
   border-radius: 40px;
-  background: #007BFF;
 }
 .fest-program__card_square {
-  width: 569.5px;
+  max-width: 569.5px;
+  width: 100%;
   flex-direction: column;
   gap: 60px;
 }
 .fest-program__card_rectangle {
   justify-content: space-between;
+  width: 100%;
+  padding: 60px 42px;
+  border: 1px solid #000;
+}
+.fest-program__card_rectangle-text-container {
+  max-width: 528px;
+  display: flex;
+  flex-direction: column;
+  gap: 59px;
 }
 .fest-program__card-title {
   font-size: 50px;
