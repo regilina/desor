@@ -415,5 +415,85 @@
   }
 }
 
+.fest-program {
+  margin-top: 150px;
+
+  &__title {
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-size: 64px;
+    line-height: 110%;
+  }
+
+  &__square-cards-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__cards {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    
+  }
+
+  &__card {
+    padding: 60px 40px;
+    display: flex;
+    border-radius: 40px;
+    background: #007BFF;
+
+    &_square {
+      width: 569.5px;
+      flex-direction: column;
+      gap: 60px;
+    }
+
+    &_rectangle {
+      justify-content: space-between;
+    }
+
+    &-title {
+      font-size: 50px;
+      line-height: 110%;
+    }
+
+    &-text {
+      line-height: 120%;
+    }
+
+    &-date {
+      font-size: 50px;
+      line-height: 110%;
+      margin-bottom: 10px;
+    }
+
+    &-time {
+      font-size: 30px;
+      line-height: 120%;
+    }
+
+    &_black {
+      background: #000;
+
+      & span {
+        color: var(--White, #FFF);
+      }
+
+      & p {
+        color: var(--White, #FFF);
+      }
+    }
+
+    &_violet {
+      background: var(--Purple, #C291F4);
+      color: #000;
+    }
+
+   
+    
+  }
+}
+
 
 
