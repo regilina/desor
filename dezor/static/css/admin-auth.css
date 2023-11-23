@@ -12,8 +12,16 @@
   margin-left: 29px;
   margin-bottom: 67px;
 }
-.auth__input {
+.auth__input-password {
+  margin-bottom: 30px;
+}
+.auth__input-login {
+  margin-bottom: 20px;
+}
+
+.admin-input {
   width: 100%;
+  max-width: 332px;
   height: 66px;
   padding: 10px 38px;
   border-radius: 40px;
@@ -21,15 +29,9 @@
   font-size: 20px;
   line-height: 120%;
 }
-.auth__input-password {
-  margin-bottom: 30px;
-}
-.auth__input-login {
-  margin-bottom: 20px;
-}
-.auth__input::-moz-placeholder {
+.admin-input::-moz-placeholder {
   color: #000;
 }
-.auth__input::placeholder {
+.admin-input::placeholder {
   color: #000;
 }/*# sourceMappingURL=admin-auth.css.map */

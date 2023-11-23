@@ -44,6 +44,20 @@
 
 .event {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
+  
 
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-left: 70px;
+    margin-top: 50px;
+  }
+
+  &__btn {
+    margin-top: 30px;
+  }
+  
 }

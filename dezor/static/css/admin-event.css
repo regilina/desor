@@ -38,5 +38,16 @@
 
 .event {
   display: flex;
+  flex-direction: column;
   flex-grow: 1;
+}
+.event__form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-left: 70px;
+  margin-top: 50px;
+}
+.event__btn {
+  margin-top: 30px;
 }/*# sourceMappingURL=admin-event.css.map */
