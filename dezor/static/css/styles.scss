@@ -322,48 +322,6 @@
   }
 }
 
-.about-festival {
-  padding-top: 150px;
-  padding-bottom: 150px;
-  display: flex;
-  flex-direction: column;
-  
-  &__title {
-    font-size: 50px;
-    line-height: 110%; 
-  }
-
-  &__img {
-    width: 405px;
-    height: 325px;
-  }
-
-  &__list {
-    margin-top: 24px;
-    margin-bottom: 70px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    max-width: 567px;
-
-    &-item {
-      display: flex;
-      align-items: center;
-      gap: 32px;
-    }
-
-    &-img-container {
-      display: flex;
-      justify-content: space-between;
-      margin-top: 47px;
-    }
-  }
-
-  &__btn {
-    align-self: center;
-  }
-}
-
 .footer {
   padding: 50px 0 74px;
   border-radius: 40px 40px 0px 0px;
