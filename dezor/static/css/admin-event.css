@@ -1,0 +1,42 @@
+.content {
+  max-width: 1920px;
+  display: flex;
+}
+
+.logo-name {
+  max-width: 148px;
+}
+.logo-name__name {
+  font-size: 18px;
+}
+.logo-name__logo {
+  max-width: 42px;
+}
+
+.admin-logo-container {
+  padding: 15px 15px 0;
+  border-right: 1px solid #000;
+}
+
+.admin-header {
+  padding: 22px 20px 22px 70px;
+  display: flex;
+  justify-content: space-between;
+  background: var(--Green, #D4F21D);
+  flex-grow: 1;
+}
+.admin-header__title {
+  font-size: 36px;
+}
+.admin-header__data-time {
+  display: flex;
+  flex-direction: column;
+}
+.admin-header__time {
+  align-self: end;
+}
+
+.event {
+  display: flex;
+  flex-grow: 1;
+}/*# sourceMappingURL=admin-event.css.map */

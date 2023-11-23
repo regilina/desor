@@ -13,7 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
     <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
-    <link rel="stylesheet" type="text/css" href="../static/css/admin-auth.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/admin-event.css">
     
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;700&family=Rubik+Mono+One&display=swap');
@@ -21,15 +21,25 @@
   </head>
   <body class="body">
     <div class="content">
-      <form class="auth">
-        <div class="logo-name auth__logo-name">
-          <img src="../static/img/logo.svg" alt="логотип">
+      <div class="admin-logo-container">
+        <div class="logo-name">
+          <img class="logo-name__logo" src="../static/img/logo.svg" alt="логотип">
           <span class="logo-name__name">Pro-fest</span>
         </div>
-        <input type="text" class="auth__input auth__input-login" id="auth-input-login" placeholder="Логин">
-        <input type="text" class="auth__input auth__input-password" id="auth-input-password" placeholder="Пароль">
-        <button class="btn" type="submit">Вход</button>
       </div>
-    </form>
+      <div class="event">
+        <header class="admin-header">
+          <span class="admin-header__title">События - новое событие</span>
+          <div class="admin-header__data-time">
+            <span>20-11-2023</span>
+            <span class="admin-header__time">14:20</span>
+          </div>
+        </header>
+        <!-- <form class="event__form">
+hjgf
+        </form> -->
+      </div>
+    </div>
+
   </body>
 </html>

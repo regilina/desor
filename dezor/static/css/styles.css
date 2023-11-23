@@ -285,6 +285,7 @@
   border-top: 1px solid #000;
   border-right: 1px solid #000;
   border-left: 1px solid #000;
+  margin-top: 130px;
 }
 .footer__content {
   display: flex;
