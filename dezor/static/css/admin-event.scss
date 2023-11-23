@@ -1,7 +1,11 @@
 .content {
   max-width: 1920px;
-  display: flex;
 
+
+}
+
+.admin-page {
+  display: flex;
 }
 
 .logo-name {
@@ -42,22 +46,26 @@
   }
 }
 
-.event {
+.admin-header-form-container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   
+}
 
+.admin-form {
+  padding-left: 70px;
+  padding-top: 50px;
+}
+
+.event {
   &__form {
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-left: 70px;
-    margin-top: 50px;
   }
 
   &__btn {
     margin-top: 30px;
   }
-  
 }

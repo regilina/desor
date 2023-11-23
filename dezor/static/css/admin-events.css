@@ -1,0 +1,38 @@
+.table {
+  display: table;
+  border-collapse: collapse;
+  max-width: 1524px;
+  width: 100%;
+}
+.table-row {
+  display: table-row;
+}
+.table-cell {
+  display: table-cell;
+  border: 1px solid #B9B9B9;
+  font-size: 16px;
+  line-height: 110%;
+  padding: 10px 12px;
+}
+.table-cell-head {
+  background-color: rgba(194, 145, 244, 0.6);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 130%;
+  padding: 10px 12px;
+}
+.table-cell-first-column {
+  padding: 16px 20px;
+}
+
+.events__table-title {
+  font-size: 32px;
+  font-weight: 700;
+}
+.events__table-title_active {
+  margin-bottom: 20px;
+}
+.events__table-title_completed {
+  margin-top: 45px;
+  margin-bottom: 64px;
+}/*# sourceMappingURL=admin-events.css.map */
