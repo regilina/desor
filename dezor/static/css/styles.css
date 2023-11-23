@@ -418,4 +418,7 @@
 .fest-program__card_violet {
   background: var(--Purple, #C291F4);
   color: #000;
+}
+.fest-program__card_green {
+  background: var(--Green, #D4F21D);
 }/*# sourceMappingURL=styles.css.map */
