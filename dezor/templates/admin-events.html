@@ -31,15 +31,15 @@
           </div>
           <nav class="admin-aside-nav">
             <div>
-              <button class="admin-aside-nav__button" type="button">
+              <button class="admin-aside-nav__button" id="home-button" type="button">
                 <img src="../static/img/home.svg">
                 <span>Главная</span>
               </button>
-              <button class="admin-aside-nav__button" type="button">
+              <button class="admin-aside-nav__button" id="activity-button" type="button">
                 <img src="../static/img/activity.svg">
                 <span>Конверсии</span>
               </button>
-              <button class="admin-aside-nav__button" type="button">
+              <button class="admin-aside-nav__button" id="events-button" type="button">
                 <img src="../static/img/calendar.svg">
                 <span>События</span>
               </button>
@@ -66,7 +66,7 @@
             </div>
           </header>
           <div class="admin-form">
-            <button class="btn events__button" id="events-button" type="button">Добавить</button>
+            <button class="btn events__button" id="add-event-button" type="button">Добавить</button>
             <h2 class="events__table-title events__table-title_active">Активные:</h2>
             <div class="table">
               <div class="table-row table__header">
@@ -187,11 +187,6 @@
         </div>
       </div>
     </div>
-    <script>
-      document.getElementById('events-button').addEventListener('click', function() {
-        window.location.href = 'admin-event.html';
-      });
-    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
     <script>
       const clock = new Vue({
@@ -221,6 +216,24 @@
           }
           return (zero + num).slice(-digit);
       }
+    </script>
+    <script>
+      document.getElementById('home-button').addEventListener('click', function() {
+        window.location.href = '#';
+      });
+
+      document.getElementById('activity-button').addEventListener('click', function() {
+        window.location.href = '#';
+      });
+
+      document.getElementById('events-button').addEventListener('click', function() {
+        window.location.href = 'admin-events.html';
+      });
+    </script>
+    <script>
+      document.getElementById('add-event-button').addEventListener('click', function() {
+        window.location.href = 'admin-event.html';
+      });
     </script>
   </body>
 </html>
