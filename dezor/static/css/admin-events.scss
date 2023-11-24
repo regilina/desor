@@ -1,30 +1,87 @@
+// .table {
+//   display: table;
+//   border-collapse: collapse;
+//   max-width: 1524px;
+//   width: 100%;
+
+//   &-row {
+//     display: table-row;
+//   }
+
+//   &-cell {
+//     display: table-cell;
+//     border: 1px solid #B9B9B9;
+//     font-size: 16px;
+//     line-height: 110%;
+//     padding: 10px 12px;
+
+//     &__text-container {
+//       display: flex;
+//       gap: 20px;
+//       align-items: center;
+//       font-size: 16px;
+//       line-height: 110%;
+//     }
+
+//     &-head {
+//       background-color: rgba(194, 145, 244, 0.6);
+//       font-size: 12px;
+//       font-weight: 600;
+//       line-height: 130%;
+//       padding: 10px 12px;
+//     }
+
+//     &-first-column {
+//       padding: 16px 20px;
+      
+//     }
+//   }
+// }
+
 .table {
-  display: table;
+  display: grid;
   border-collapse: collapse;
   max-width: 1524px;
   width: 100%;
+  border-bottom: 1px solid #B9B9B9;
+  border-left: 1px solid #B9B9B9;
 
-  &-row {
-    display: table-row;
-  }
+  &__header {
+    background-color: rgba(194, 145, 244, 0.6);
 
-  &-cell {
-    display: table-cell;
-    border: 1px solid #B9B9B9;
-    font-size: 16px;
-    line-height: 110%;
-    padding: 10px 12px;
-
-    &-head {
-      background-color: rgba(194, 145, 244, 0.6);
+    & span {
       font-size: 12px;
       font-weight: 600;
       line-height: 130%;
-      padding: 10px 12px;
     }
+  }
 
-    &-first-column {
-      padding: 16px 20px;
+  &-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr; /* Четыре столбца с пропорциями */
+    border-top: 1px solid #B9B9B9;
+  }
+
+  &-cell {
+    padding: 10px 12px;
+    font-size: 16px;
+    line-height: 110%;
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    border-right: 1px solid #B9B9B9;
+
+    &__text-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 16px;
+      line-height: 110%;
+      width: 100%;
+
+      &_time {
+        justify-content: space-between;
+      }
     }
   }
 }
@@ -41,6 +98,41 @@
     &_completed {
       margin-top: 45px;
       margin-bottom: 64px;
+    }
+  }
+
+  &__button {
+    padding: 18px 48px;
+    border-radius: 55px;
+    background: #C291F4;
+    color: white;
+    font-size: 20px;
+    align-self: end;
+  }
+}
+
+.admin-aside-nav {
+  margin-top: 68px;
+  width: fit-content;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  
+  &__button {
+    
+    border: none;
+    background: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    gap: 10px;
+    align-items: center;
+
+    & span {
+      font-size: 14px;
+      font-weight: 700;
     }
   }
 }
