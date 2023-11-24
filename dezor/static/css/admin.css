@@ -29,6 +29,7 @@
   border: 1px solid var(--Black, #000);
   font-size: 20px;
   line-height: 120%;
+  margin-bottom: 20px;
 }
 .admin-input::-moz-placeholder {
   color: #000;
@@ -106,10 +107,12 @@
 .event__form {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  width: -moz-fit-content;
+  width: fit-content;
+  align-items: center;
 }
 .event__btn {
-  margin-top: 30px;
+  margin-top: 10px;
 }
 
 .table {
@@ -172,6 +175,7 @@
   color: white;
   font-size: 20px;
   align-self: end;
+  text-decoration: none;
 }
 
 .admin-aside-nav {
@@ -184,6 +188,8 @@
   justify-content: space-between;
 }
 .admin-aside-nav__button {
+  max-width: 111px;
+  text-decoration: none;
   border: none;
   background: none;
   cursor: pointer;

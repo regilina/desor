@@ -29,28 +29,28 @@
           </div>
           <nav class="admin-aside-nav">
             <div>
-              <button class="admin-aside-nav__button" id="home-button" type="button">
+              <a class="admin-aside-nav__button" href="#">
                 <img src="../static/img/home.svg">
                 <span>Главная</span>
-              </button>
-              <button class="admin-aside-nav__button" id="activity-button" type="button">
+              </a>
+              <a class="admin-aside-nav__button" href="#">
                 <img src="../static/img/activity.svg">
                 <span>Конверсии</span>
-              </button>
-              <button class="admin-aside-nav__button" id="events-button" type="button">
+              </a>
+              <a class="admin-aside-nav__button" href="#">
                 <img src="../static/img/calendar.svg">
                 <span>События</span>
-              </button>
+              </a>
             </div>
             <div class="admin-aside-nav__settings-exit-container">
-              <button class="admin-aside-nav__button" type="button">
+              <a class="admin-aside-nav__button" href="#">
                 <img src="../static/img/setting.svg">
                 <span>Настройки</span>
-              </button>
-              <button class="admin-aside-nav__button" id="exit-button" type="button">
+              </a>
+              <a class="admin-aside-nav__button" href="#">
                 <img src="../static/img/exit.svg">
                 <span>Выход</span>
-              </button>
+              </a>
             </div>
           </nav>
           
@@ -64,7 +64,7 @@
             </div>
           </header>
           <div class="admin-form">
-            <button class="btn events__button" id="add-event-button" type="button">Добавить</button>
+            <a class="btn events__button" id="add-event-button" href="#">Добавить</a>
             <h2 class="events__table-title events__table-title_active">Активные:</h2>
             <div class="table">
               <div class="table-row table__header">
@@ -178,7 +178,7 @@
                   <div class="table-cell__text-container table-cell__text-container_time">
                   18:00-20:00
                   <img src="../static/img/clipboard-tick.svg">
-                </div></div>
+                </div>
               </div>
             </div>
           </div>
@@ -214,29 +214,6 @@
           }
           return (zero + num).slice(-digit);
       }
-    </script>
-    <script>
-      document.getElementById('home-button').addEventListener('click', function() {
-        window.location.href = '#';
-      });
-
-      document.getElementById('activity-button').addEventListener('click', function() {
-        window.location.href = '#';
-      });
-
-      document.getElementById('events-button').addEventListener('click', function() {
-        window.location.href = 'admin-events.html';
-      });
-    </script>
-    <script>
-      document.getElementById('add-event-button').addEventListener('click', function() {
-        window.location.href = 'admin-event.html';
-      });
-    </script>
-    <script>
-      document.getElementById('exit-button').addEventListener('click', function() {
-        window.location.href = 'admin-auth.html';
-      });
     </script>
   </body>
 </html>

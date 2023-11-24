@@ -80,6 +80,7 @@
   padding: 25px 110px;
   width: -moz-fit-content;
   width: fit-content;
+  text-decoration: none;
 }
 
 .section-chat {
