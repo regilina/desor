@@ -29,8 +29,6 @@ class ChatApp {
     chatMessages = null;
     userInput = null;
     sendButton = null;
-    canvas = null;
-    ctx = null;
     popup = null;
     popupBtn = null;
     startTime = 0;
@@ -43,8 +41,6 @@ class ChatApp {
         this.chatMessages = document.getElementById('chat-messages');
         this.userInput = document.getElementById('user-input');
         this.sendButton = document.getElementById('send-button');
-        this.canvas = document.getElementById('canvas');
-        this.ctx = this.canvas?.getContext('2d');
         this.popup = document.getElementById('popup');
         this.popupBtn = document.getElementById('chat-popup-btn');
         this.startTime = Date.now();

@@ -140,10 +140,10 @@
   flex-grow: 1;
   overflow-x: hidden;
   overflow-y: auto; /* Включение вертикальной полосы прокрутки */
-  margin-top: 33px;
+  padding-top: 33px;
   padding-left: 25px;
   padding-right: 25px;
-  margin-bottom: 27px;
+  padding-bottom: 27px;
 }
 .chat__messages::-webkit-scrollbar {
   background-color: #F1F1F1;
@@ -151,10 +151,6 @@
 .chat__messages::-webkit-scrollbar-thumb {
   background: #C1C1C1;
   border-radius: 5px; /* Скругление у ползунка полосы прокрутки */
-}
-.chat__messages::-webkit-scrollbar-button {
-  display: block;
-  background-color: transparent;
 }
 .chat__input {
   display: flex;

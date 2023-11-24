@@ -30,8 +30,6 @@ class ChatApp {
   private chatMessages: HTMLElement | null = null
   private userInput: HTMLInputElement | null = null
   private sendButton: HTMLButtonElement | null = null
-  private canvas: HTMLCanvasElement | null = null
-  private ctx: CanvasRenderingContext2D | null = null
   private popup: HTMLElement | null = null
   private popupBtn: HTMLButtonElement | null = null
   private startTime: number = 0
@@ -45,8 +43,7 @@ class ChatApp {
     this.chatMessages = document.getElementById('chat-messages')
     this.userInput = document.getElementById('user-input') as HTMLInputElement
     this.sendButton = document.getElementById('send-button') as HTMLButtonElement
-    this.canvas = document.getElementById('canvas') as HTMLCanvasElement
-    this.ctx = this.canvas?.getContext('2d')
+
     this.popup = document.getElementById('popup')
     this.popupBtn = document.getElementById('chat-popup-btn') as HTMLButtonElement
 

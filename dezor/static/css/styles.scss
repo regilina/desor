@@ -154,11 +154,11 @@
     overflow-x: hidden;
     overflow-y: auto; /* Включение вертикальной полосы прокрутки */
 
-    margin-top: 33px;
+    padding-top: 33px;
     padding-left: 25px;
     padding-right: 25px;
 
-    margin-bottom: 27px;
+    padding-bottom: 27px;
 
 
     &::-webkit-scrollbar {
@@ -171,10 +171,7 @@
       border-radius: 5px; /* Скругление у ползунка полосы прокрутки */
     }
 
-    &::-webkit-scrollbar-button {
-      display: block;
-      background-color: transparent;
-    }
+ 
   }
 
   &__input {
