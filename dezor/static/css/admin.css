@@ -37,6 +37,9 @@
 .admin-input::placeholder {
   color: #000;
 }
+.admin-input-textarea {
+  height: 198px;
+}
 
 .content {
   max-width: 1920px;
