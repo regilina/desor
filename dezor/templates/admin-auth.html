@@ -28,12 +28,16 @@
         </div>
         <input type="text" class="admin-input auth__input-login" id="auth-input-login" placeholder="Логин">
         <input type="password" class="admin-input auth__input-password" id="auth-input-password" placeholder="Пароль">
-        <button class="btn" type="submit">Вход</button>
+        <button class="btn" type="submit" id="auth-btn">Вход</button>
       </div>
     </form>
     <script>
+      const validLogin = 'admin'; // Замените на ваш логин
+      const validPassword = 'dez325%'; // Замените на ваш пароль
+    
       const loginInput = document.getElementById('auth-input-login');
       const passwordInput = document.getElementById('auth-input-password');
+      const btnSubmit = document.getElementById('auth-btn');
       const form = document.querySelector('.auth');
     
       loginInput.addEventListener('keypress', function(event) {
@@ -46,9 +50,25 @@
       passwordInput.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
           event.preventDefault();
-          form.submit();
+          validateAndSubmit();
         }
       });
+
+      btnSubmit.addEventListener('click', function(event) { 
+        event.preventDefault();
+        validateAndSubmit();
+      });
+    
+      function validateAndSubmit() {
+        const enteredLogin = loginInput.value;
+        const enteredPassword = passwordInput.value;
+    
+        if (enteredLogin === validLogin && enteredPassword === validPassword) {
+          window.location.href = 'admin-events.html'; // Замените на вашу целевую страницу
+        } else {
+          alert('Неверный логин или пароль');
+        }
+      }
     </script>
   </body>
 </html>
