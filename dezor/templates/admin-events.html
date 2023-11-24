@@ -60,9 +60,9 @@
         <div class="admin-header-form-container">
           <header class="admin-header">
             <span class="admin-header__title">События</span>
-            <div class="admin-header__data-time">
-              <span>20-11-2023</span>
-              <span class="admin-header__time">14:20</span>
+            <div class="admin-header__data-time" id="clock">
+              <p class="date">{{ date }}</p>
+              <p class="time admin-header__time">{{ time }}</p>
             </div>
           </header>
           <div class="admin-form">
@@ -187,5 +187,35 @@
         </div>
       </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+    <script>
+      const clock = new Vue({
+      el: '#clock',
+      data() {
+          return {
+              time: '',
+              date: ''
+          };
+        }
+      });
+
+      const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
+      setInterval(updateTime, 1000);
+      updateTime();
+
+      function updateTime() {
+          const cd = new Date();
+          clock.time = zeroPadding(cd.getHours(), 2) + ':' + zeroPadding(cd.getMinutes(), 2) + ':' + zeroPadding(cd.getSeconds(), 2);
+          clock.date = zeroPadding(cd.getDate(), 2) + '-' + zeroPadding(cd.getMonth() + 1, 2) + '-' + zeroPadding(cd.getFullYear(), 4);
+      }
+
+      function zeroPadding(num, digit) {
+          let zero = '';
+          for (let i = 0; i < digit; i++) {
+              zero += '0';
+          }
+          return (zero + num).slice(-digit);
+      }
+    </script>
   </body>
 </html>
