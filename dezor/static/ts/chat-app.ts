@@ -31,12 +31,12 @@ class ChatApp {
   private chat: HTMLElement | null = null
   private chatMessages: HTMLElement | null = null
   private userInput: HTMLInputElement | null = null
-  private sendButton: HTMLButtonElement | null = null
   private popup: HTMLElement | null = null
   private popupBtn: HTMLButtonElement | null = null
   private startTime: number = 0
   private userId: string | null = null
   private isChatFilled: boolean = false
+  private buttonChat: HTMLButtonElement | null = null
 
   constructor () {
     this.sectionChat = document.getElementById('section-chat')
@@ -44,7 +44,7 @@ class ChatApp {
     this.chat = document.getElementById('chat')
     this.chatMessages = document.getElementById('chat-messages')
     this.userInput = document.getElementById('user-input') as HTMLInputElement
-    this.sendButton = document.getElementById('send-button') as HTMLButtonElement
+    this.buttonChat = document.getElementById('send-button') as HTMLButtonElement
 
     this.popup = document.getElementById('popup')
     this.popupBtn = document.getElementById('chat-popup-btn') as HTMLButtonElement
@@ -57,8 +57,8 @@ class ChatApp {
     let device = 'D' // По умолчанию предполагаем, что это рабочий стол
 
     // Проверяем ширину экрана для определения типа устройства
-    if (window.innerWidth < 768) {
-        device = 'M' // Если ширина экрана меньше 768px, считаем это мобильным устройством
+    if (window.innerWidth <= 768) {
+        device = 'M' 
     }
     console.log(window.innerWidth)
     console.log('device ' + device)
@@ -77,8 +77,8 @@ class ChatApp {
 
     this.startChat()
 
-    if (this.sendButton) {
-      this.sendButton.addEventListener('click', () => {
+    if (this.buttonChat) {
+      this.buttonChat.addEventListener('click', () => {
         this.sendMessage()
       })
     }
@@ -264,6 +264,15 @@ class ChatApp {
 
   private handleFinalAnswer (answer: string) {
     this.typeAnswer(answer, 50)
+    if (this.buttonChat) {
+      this.buttonChat.innerHTML = '';
+      this.buttonChat.classList.remove('chat__btn');
+      this.buttonChat.classList.remove('btn');
+      this.buttonChat.classList.add('btn-result')
+      
+      this.buttonChat.textContent = 'Смотреть результат'
+    }
+        
 
     const monthlyIncome = parseFloat(this.userAnswers.monthly_income)
 

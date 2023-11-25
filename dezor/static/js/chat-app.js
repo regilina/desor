@@ -30,19 +30,19 @@ class ChatApp {
     chat = null;
     chatMessages = null;
     userInput = null;
-    sendButton = null;
     popup = null;
     popupBtn = null;
     startTime = 0;
     userId = null;
     isChatFilled = false;
+    buttonChat = null;
     constructor() {
         this.sectionChat = document.getElementById('section-chat');
         this.sectionResult = document.getElementById('section-result');
         this.chat = document.getElementById('chat');
         this.chatMessages = document.getElementById('chat-messages');
         this.userInput = document.getElementById('user-input');
-        this.sendButton = document.getElementById('send-button');
+        this.buttonChat = document.getElementById('send-button');
         this.popup = document.getElementById('popup');
         this.popupBtn = document.getElementById('chat-popup-btn');
         this.startTime = Date.now();
@@ -50,8 +50,8 @@ class ChatApp {
         // Получение информации о типе устройства (desktop или mobile)
         let device = 'D'; // По умолчанию предполагаем, что это рабочий стол
         // Проверяем ширину экрана для определения типа устройства
-        if (window.innerWidth < 768) {
-            device = 'M'; // Если ширина экрана меньше 768px, считаем это мобильным устройством
+        if (window.innerWidth <= 768) {
+            device = 'M';
         }
         console.log(window.innerWidth);
         console.log('device ' + device);
@@ -65,8 +65,8 @@ class ChatApp {
         }
         console.log('userId ' + this.userId);
         this.startChat();
-        if (this.sendButton) {
-            this.sendButton.addEventListener('click', () => {
+        if (this.buttonChat) {
+            this.buttonChat.addEventListener('click', () => {
                 this.sendMessage();
             });
         }
@@ -229,6 +229,13 @@ class ChatApp {
     }
     handleFinalAnswer(answer) {
         this.typeAnswer(answer, 50);
+        if (this.buttonChat) {
+            this.buttonChat.innerHTML = '';
+            this.buttonChat.classList.remove('chat__btn');
+            this.buttonChat.classList.remove('btn');
+            this.buttonChat.classList.add('btn-result');
+            this.buttonChat.textContent = 'Смотреть результат';
+        }
         const monthlyIncome = parseFloat(this.userAnswers.monthly_income);
         const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0);
         this.userAnswers.hourly_income = hourlyRate.toString();
