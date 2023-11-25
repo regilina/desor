@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    {% csrf_token %}
+    <script>
+    const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+    </script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>{% block head_title %}{% endblock head_title %}</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/admin.css">
+    
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;700&family=Rubik+Mono+One&display=swap');
+    </style>
+  </head>
+  <body class="body">
+    <div class="content">
+      <div class="admin-page">
+        <aside class="admin-aside">
+          <div class="logo-name">
+            <img class="logo-name__logo" src="../static/img/logo.svg" alt="логотип">
+            <span class="logo-name__name">Pro-fest</span>
+          </div>
+          <nav class="admin-aside-nav">
+            <div>
+              <a class="admin-aside-nav__button" href="#">
+                <img src="../static/img/home.svg">
+                <span>Главная</span>
+              </a>
+              <a class="admin-aside-nav__button" href="#">
+                <img src="../static/img/activity.svg">
+                <span>Конверсии</span>
+              </a>
+              <a class="admin-aside-nav__button" href="#">
+                <img src="../static/img/calendar.svg">
+                <span>События</span>
+              </a>
+            </div>
+            <div class="admin-aside-nav__settings-exit-container">
+              <a class="admin-aside-nav__button" href="#">
+                <img src="../static/img/setting.svg">
+                <span>Настройки</span>
+              </a>
+              <a class="admin-aside-nav__button" href="#">
+                <img src="../static/img/exit.svg">
+                <span>Выход</span>
+              </a>
+            </div>
+          </nav>
+          
+        </aside>
+        <div class="admin-header-form-container">
+          <header class="admin-header">
+            <span class="admin-header__title">Конверсии</span>
+            <div class="admin-header__data-time" id="clock">
+              <p class="date">{{ date }}</p>
+              <p class="time admin-header__time">{{ time }}</p>
+            </div>
+          </header>
+          <div class="admin-form">
+            <img class="date-range" src="../static/img/date-range.png" alt="период">
+            <a class="btn events__button" id="add-event-button" href="#" style="display: none;">Добавить</a>
+            <h2 class="events__table-title events__table-title_active">Новые:</h2>
+            <table class="table">
+              <tr>
+                <th>ФИО</th>
+                <th>Возраст</th>
+                <th>Профессия</th>
+                <th>Стаж</th>
+                <th>Город</th>
+                <th>Зарплата (час / мес)</th>
+                <th>Время на сайте</th>
+                <th>Событие</th>
+              </tr>
+              <tr>
+                <td>Иван Иванов</td>
+                <td>40</td>
+                <td>Слесарь</td>
+                <td>20</td>
+                <td>Ижевск</td>
+                <td>120 / 20 000</td>
+                <td>4:25</td>
+                <td>Экспертные сессии со спикерами</td>
+              </tr>
+              <tr>
+                <td>Иван Иванов</td>
+                <td>40</td>
+                <td>Слесарь</td>
+                <td>20</td>
+                <td>Ижевск</td>
+                <td>120 / 20 000</td>
+                <td>4:25</td>
+                <td>нет</td>
+              </tr>
+              <tr>
+                <td>Иван Иванов</td>
+                <td>40</td>
+                <td>Слесарь</td>
+                <td>20</td>
+                <td>Ижевск</td>
+                <td>120 / 20 000</td>
+                <td>4:25</td>
+                <td>Экспертные сессии со спикерами</td>
+              </tr>
+            </table>
+ 
+            <h2 class="events__table-title events__table-title_completed">Обработанные:</h2>
+            <table class="table">
+              <tr>
+                <th>ФИО</th>
+                <th>Возраст</th>
+                <th>Профессия</th>
+                <th>Стаж</th>
+                <th>Город</th>
+                <th>Зарплата (час / мес)</th>
+                <th>Время на сайте</th>
+                <th>Событие</th>
+              </tr>
+              <tr>
+                <td>Иван Иванов</td>
+                <td>40</td>
+                <td>Слесарь</td>
+                <td>20</td>
+                <td>Ижевск</td>
+                <td>120 / 20 000</td>
+                <td>4:25</td>
+                <td>Экспертные сессии со спикерами</td>
+              </tr>
+              <tr>
+                <td>Иван Иванов</td>
+                <td>40</td>
+                <td>Слесарь</td>
+                <td>20</td>
+                <td>Ижевск</td>
+                <td>120 / 20 000</td>
+                <td>4:25</td>
+                <td>нет</td>
+              </tr>
+              <tr>
+                <td>Иван Иванов</td>
+                <td>40</td>
+                <td>Слесарь</td>
+                <td>20</td>
+                <td>Ижевск</td>
+                <td>120 / 20 000</td>
+                <td>4:25</td>
+                <td>Экспертные сессии со спикерами</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
+    <script src="../static/js/data-time.js"></script>
+  </body>
+</html>

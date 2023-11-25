@@ -206,4 +206,11 @@
 .admin-aside-nav__button span {
   font-size: 14px;
   font-weight: 700;
+}
+
+.date-range {
+  max-width: 168px;
+  margin-bottom: 14px;
+  margin-left: -8px;
+  margin-top: -24px;
 }/*# sourceMappingURL=admin.css.map */
