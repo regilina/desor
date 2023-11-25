@@ -280,11 +280,14 @@ class ChatApp {
     this.userAnswers.hourly_income = hourlyRate.toString()
 
     this.sendDataToServer(this.userAnswers, this.userId)
-    this.isChatFilled = true;
 
-    if (this.popup) {
-      this.showPopup()
-    }
+    this.buttonChat?.addEventListener('click', () => {
+      this.isChatFilled = true;
+
+      if (this.popup) {
+        this.showPopup()
+      }
+    });
   }
 
   private showPopup () {
