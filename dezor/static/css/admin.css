@@ -209,8 +209,66 @@
 }
 
 .date-range {
-  max-width: 168px;
+  width: 168px;
+  height: auto;
   margin-bottom: 14px;
   margin-left: -8px;
   margin-top: -24px;
+}
+
+.main__head-img-container {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.main .date-range {
+  margin-bottom: 0;
+  margin-left: 0;
+  margin-top: 0;
+}
+.main__cards-container {
+  justify-content: left;
+  gap: 62px;
+  margin-bottom: 20px;
+}
+.main__card {
+  padding: 30px 20px;
+  max-width: 413px;
+  gap: 30px;
+}
+.main__card-title {
+  font-size: 35px;
+}
+.main__card-text {
+  font-size: 16px;
+}
+.main__card-date {
+  font-size: 35px;
+  margin-bottom: 5px;
+}
+.main__card-time {
+  font-size: 20px;
+}
+.main__button {
+  background-color: #D4F21D;
+  color: black;
+  align-self: start;
+}
+
+.graph {
+  width: 1084px;
+  height: 298px;
+  border: 1px solid black;
+  margin-right: 44px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+.graph-visits-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.visits {
+  display: flex;
+  flex-direction: column;
 }/*# sourceMappingURL=admin.css.map */

@@ -21,7 +21,7 @@
   </head>
   <body class="body">
     <div class="content">
-      <form class="auth">
+      <form class="auth" action="/your-server-endpoint" method="POST">
         <div class="logo-name auth__logo-name">
           <img src="../static/img/logo.svg" alt="логотип">
           <span class="logo-name__name">Pro-fest</span>
@@ -31,5 +31,25 @@
         <button class="btn" type="submit" id="auth-btn">Вход</button>
       </div>
     </form>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const loginInput = document.getElementById('auth-input-login');
+        const passwordInput = document.getElementById('auth-input-password');
+    
+        loginInput.addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            passwordInput.focus();
+          }
+        });
+    
+        passwordInput.addEventListener('keypress', function(event) {
+          if (event.key === 'Enter') {
+            event.preventDefault();
+            document.querySelector('.auth').submit();
+          }
+        });
+      });
+    </script>
   </body>
 </html>

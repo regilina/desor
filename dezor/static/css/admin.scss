@@ -299,9 +299,78 @@
 }
 
 .date-range {
-  max-width: 168px;
+  width: 168px;
+  height: auto;
   margin-bottom: 14px;
   margin-left: -8px;
   margin-top: -24px;
 }
 
+.main {
+  &__head-img-container {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+
+  .date-range {
+    margin-bottom: 0;
+    margin-left: 0;
+    margin-top: 0;
+  }
+
+
+  &__cards-container {
+    justify-content: left;
+    gap: 62px;
+    margin-bottom: 20px;
+  }
+
+  &__card {
+    padding: 30px 20px;
+    max-width: 413px;
+    gap: 30px;
+
+    &-title {
+    font-size: 35px;
+    }
+
+    &-text {
+      font-size: 16px;
+    }
+
+    &-date {
+      font-size: 35px;
+      margin-bottom: 5px;
+    }
+
+    &-time {
+      font-size: 20px;
+    }
+  }
+
+  &__button {
+    background-color: #D4F21D;
+    color: black;
+    align-self: start;
+  }
+}
+
+.graph {
+  width: 1084px;
+  height: 298px;
+  border: 1px solid black;
+  margin-right: 44px;
+  margin-bottom: 20px;
+  margin-top: 20px;
+
+  &-visits-container {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+.visits {
+  display: flex;
+  flex-direction: column;
+}
