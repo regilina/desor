@@ -144,52 +144,106 @@
 // admin-events styles
 
 .table {
-  display: grid;
-  border-collapse: collapse;
   max-width: 1524px;
   width: 100%;
-  border-bottom: 1px solid #B9B9B9;
-  border-left: 1px solid #B9B9B9;
 
-  &__header {
-    background-color: rgba(194, 145, 244, 0.6);
+  &__name-cell {
+    width: 100%;
+    & td {
+      border: none !important; 
+      padding: 0 !important;
+      vertical-align: middle; 
+    }
 
-    & span {
-      font-size: 12px;
-      font-weight: 600;
-      line-height: 130%;
+    &-img {
+      padding-right: 20px;
     }
   }
 
-  &-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr; /* Четыре столбца с пропорциями */
-    border-top: 1px solid #B9B9B9;
+  &__time-cell {
+    width: 100%;
+    & td {
+      border: none !important; 
+      padding: 0 !important;
+      vertical-align: middle; 
+      
+    }
+
+    &-img {
+      padding-left: 20px;
+    }
   }
 
-  &-cell {
+  & th {
+    border: 1px solid black;
+    background-color: rgba(194, 145, 244, 0.6);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 130%;
     padding: 10px 12px;
+    text-align: left;
+  }
+
+  & td {
+    border: 1px solid black;
     font-size: 16px;
     line-height: 110%;
     padding: 10px 12px;
-    display: flex;
-    align-items: center;
-    border-right: 1px solid #B9B9B9;
+    word-wrap: break-word;
+      vertical-align: middle; 
+    
 
-    &__text-container {
-      display: flex;
-      align-items: center;
-      gap: 20px;
-      font-size: 16px;
-      line-height: 110%;
-      width: 100%;
-
-      &_time {
-        justify-content: space-between;
-      }
-    }
   }
+  
 }
+
+// .table {
+//   display: grid;
+//   border-collapse: collapse;
+//   max-width: 1524px;
+//   width: 100%;
+//   border-bottom: 1px solid #B9B9B9;
+//   border-left: 1px solid #B9B9B9;
+
+//   &__header {
+//     background-color: rgba(194, 145, 244, 0.6);
+
+//     & span {
+//       font-size: 12px;
+//       font-weight: 600;
+//       line-height: 130%;
+//     }
+//   }
+
+//   &-row {
+//     display: grid;
+//     grid-template-columns: 1fr 1fr 1fr 1fr; /* Четыре столбца с пропорциями */
+//     border-top: 1px solid #B9B9B9;
+//   }
+
+//   &-cell {
+//     padding: 10px 12px;
+//     font-size: 16px;
+//     line-height: 110%;
+//     padding: 10px 12px;
+//     display: flex;
+//     align-items: center;
+//     border-right: 1px solid #B9B9B9;
+
+//     &__text-container {
+//       display: flex;
+//       align-items: center;
+//       gap: 20px;
+//       font-size: 16px;
+//       line-height: 110%;
+//       width: 100%;
+
+//       &_time {
+//         justify-content: space-between;
+//       }
+//     }
+//   }
+// }
 
 .events {
   &__table-title {
@@ -243,3 +297,4 @@
     }
   }
 }
+

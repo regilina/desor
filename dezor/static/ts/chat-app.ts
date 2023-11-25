@@ -17,11 +17,13 @@ class ChatApp {
     experience: '0',
     city: '',
     monthly_income: '0',
-    contact: '',
+    phone: '',
+    telegram: '',
+    referer: '',
+    visit_duration: '0',
     device: '',
-    referrer: '',
-    hourly_income: '0',
-    visit_duration: '0'
+    want_event: '',
+    hourly_income: '0'
   }
 
   private sectionChat: HTMLElement | null = null

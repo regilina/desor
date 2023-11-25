@@ -1,4 +1,3 @@
-@charset "UTF-8";
 .auth {
   max-width: 332px;
   margin-left: auto;
@@ -119,45 +118,47 @@
 }
 
 .table {
-  display: grid;
-  border-collapse: collapse;
   max-width: 1524px;
   width: 100%;
-  border-bottom: 1px solid #B9B9B9;
-  border-left: 1px solid #B9B9B9;
 }
-.table__header {
+.table__name-cell {
+  width: 100%;
+}
+.table__name-cell td {
+  border: none !important;
+  padding: 0 !important;
+  vertical-align: middle;
+}
+.table__name-cell-img {
+  padding-right: 20px;
+}
+.table__time-cell {
+  width: 100%;
+}
+.table__time-cell td {
+  border: none !important;
+  padding: 0 !important;
+  vertical-align: middle;
+}
+.table__time-cell-img {
+  padding-left: 20px;
+}
+.table th {
+  border: 1px solid black;
   background-color: rgba(194, 145, 244, 0.6);
-}
-.table__header span {
   font-size: 12px;
   font-weight: 600;
   line-height: 130%;
-}
-.table-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr; /* Четыре столбца с пропорциями */
-  border-top: 1px solid #B9B9B9;
-}
-.table-cell {
   padding: 10px 12px;
+  text-align: left;
+}
+.table td {
+  border: 1px solid black;
   font-size: 16px;
   line-height: 110%;
   padding: 10px 12px;
-  display: flex;
-  align-items: center;
-  border-right: 1px solid #B9B9B9;
-}
-.table-cell__text-container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: 16px;
-  line-height: 110%;
-  width: 100%;
-}
-.table-cell__text-container_time {
-  justify-content: space-between;
+  word-wrap: break-word;
+  vertical-align: middle;
 }
 
 .events__table-title {
