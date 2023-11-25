@@ -362,15 +362,21 @@
   border: 1px solid black;
   margin-right: 44px;
   margin-bottom: 20px;
-  margin-top: 20px;
 
   &-visits-container {
     display: flex;
     flex-direction: row;
+    margin-top: 20px;
   }
 }
 
 .visits {
   display: flex;
   flex-direction: column;
+  gap: 20px;
+
+  & span {
+    font-size: 16px;
+    font-weight: 700;
+  }
 }
