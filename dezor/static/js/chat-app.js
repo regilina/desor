@@ -7,7 +7,7 @@ class ChatApp {
         'Каков твой стаж работы? Как долго шокируешь окружающих своим успехом?',
         'В каком городе работаешь? Где найти таких гениев?',
         'Твой месячный доход? Удиви меня!',
-        'Оставь свой номер телефона, такого интересного собеседника я давно не встречал!'
+        'Оставьте свой ник Telegram (или номер телефона, если Telegram не установлен)'
     ];
     currentQuestionIndex = 0;
     userAnswers = {
@@ -17,8 +17,8 @@ class ChatApp {
         experience: '0',
         city: '',
         monthly_income: '0',
-        phone: '',
         telegram: '',
+        phone: '',
         referrer: '',
         visit_duration: '0',
         device: '',
@@ -34,8 +34,8 @@ class ChatApp {
     popup = null;
     popupBtn = null;
     startTime = 0;
-    hasUserResponse = false;
     userId = null;
+    isChatFilled = false;
     constructor() {
         this.sectionChat = document.getElementById('section-chat');
         this.sectionResult = document.getElementById('section-result');
@@ -79,9 +79,9 @@ class ChatApp {
             });
         }
         window.addEventListener('beforeunload', async (event) => {
-            event.preventDefault(); //Предотвращаем закрытие страницы, пока данные не будут отправлены
-            if (this.hasUserResponse) {
-                await this.sendDataToServer(this.userAnswers); // Дождитесь завершения запроса на сервер
+            if (this.userAnswers.fio !== '' && !this.isChatFilled) {
+                event.preventDefault(); //Предотвращаем закрытие страницы, пока данные не будут отправлены
+                await this.sendDataToServer(this.userAnswers); // Дождитесь завершения запроса на сервер 
             }
         });
         window.scrollTo(0, 0);
@@ -116,6 +116,13 @@ class ChatApp {
         }
     }
     sendDataToServer(data, userId = null) {
+        if (this.userAnswers.telegram.startsWith('+7')) {
+            this.userAnswers.phone = this.userAnswers.telegram;
+            this.userAnswers.telegram = '';
+        }
+        else if (!this.userAnswers.telegram.startsWith('@')) {
+            this.userAnswers.telegram = '';
+        }
         const timeOnSiteInSeconds = Math.floor((Date.now() - this.startTime) / 1000);
         this.userAnswers.visit_duration = timeOnSiteInSeconds.toString(); // Добавляем время пребывания в данные пользователя
         const currentDomain = window.location.origin;
@@ -187,7 +194,7 @@ class ChatApp {
             case 'age':
                 const parsedAge = parseFloat(value);
                 return !isNaN(parsedAge) && Number.isInteger(parsedAge) && parsedAge > 0 && parsedAge < 150 && /^\d+$/.test(value);
-            case 'contact':
+            case 'telegram':
                 return /^\+7\d{10}$/.test(value) || /^@[A-Za-z0-9_]+$/.test(value);
             case 'monthly_income':
                 const parsedIncome = parseFloat(value);
@@ -200,7 +207,6 @@ class ChatApp {
         const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex];
         if (this.validateInput(currentQuestionKey, message)) {
             this.userAnswers[currentQuestionKey] = message;
-            this.hasUserResponse = true;
             if (this.currentQuestionIndex < this.questions.length - 1) {
                 this.currentQuestionIndex++;
                 this.typeAnswer(message, 50);
@@ -227,6 +233,7 @@ class ChatApp {
         const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0);
         this.userAnswers.hourly_income = hourlyRate.toString();
         this.sendDataToServer(this.userAnswers, this.userId);
+        this.isChatFilled = true;
         if (this.popup) {
             this.showPopup();
         }
