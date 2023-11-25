@@ -19,7 +19,7 @@ class ChatApp {
     monthly_income: '0',
     phone: '',
     telegram: '',
-    referer: '',
+    referrer: '',
     visit_duration: '0',
     device: '',
     want_event: '',
@@ -51,7 +51,7 @@ class ChatApp {
 
     this.startTime = Date.now()
 
-    const referrer = document.referrer
+    this.userAnswers.referrer = document.referrer
 
     // Получение информации о типе устройства (desktop или mobile)
     let device = 'D' // По умолчанию предполагаем, что это рабочий стол
@@ -63,7 +63,6 @@ class ChatApp {
     console.log(window.innerWidth)
     console.log('device ' + device)
     this.userAnswers.device = device
-    this.userAnswers.referrer = referrer
 
     if (this.userAnswers.device === 'M') {
       this.fetchUserId().then((id) => {
