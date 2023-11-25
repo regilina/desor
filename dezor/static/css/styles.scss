@@ -100,6 +100,10 @@
     width: 100%;
     border: none;
     cursor: pointer;
+
+    &:active {
+      border: none;
+    }
   }
 }
 
@@ -143,10 +147,9 @@
 
 
   &__popup {
-    max-width: 1062px;
-    display: inline-flex;
-    padding: 60px 50px;
-    align-items: center;
+    max-width: 728px;
+    width: 100%;
+    padding: 20px 40px;
     gap: 165px;
     border-radius: 40px;
     background: #D4F21D;
@@ -155,9 +158,17 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    z-index: 999;
+    justify-content: space-between;
+
+
+
+    &-btn {
+
+    }
     
     &.show {
-      display: block;
+      display: flex;
     }
   }
 
@@ -173,7 +184,7 @@
     padding-left: 25px;
     padding-right: 25px;
 
-    padding-bottom: 27px;
+    padding-bottom: 7px;
 
 
     &::-webkit-scrollbar {
@@ -209,7 +220,7 @@
     gap: 10px;
     position: relative;
     margin-left: 40px;
-    margin-top: 10px;
+    margin-top: 6px;
 
     
     
@@ -312,7 +323,7 @@
   align-items: flex-start;
   gap: 6px;
   display: flex;
-  word-wrap: break-word;
+  word-break: break-all;
 
   &-text {
     & span {
@@ -509,5 +520,18 @@
   }
 }
 
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Цвет и прозрачность подложки */
+  display: none; /* Изначально скрыта */
+  z-index: 998; /* Ниже, чем у всплывающего окна */
+}
 
+.overlay.active {
+  display: block;
+}
 

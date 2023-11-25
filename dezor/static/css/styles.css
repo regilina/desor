@@ -96,6 +96,9 @@
   border: none;
   cursor: pointer;
 }
+.btn-result:active {
+  border: none;
+}
 
 .section-chat {
   margin-top: 150px;
@@ -131,10 +134,9 @@
   border: 1px solid var(--Black, #000);
 }
 .chat__popup {
-  max-width: 1062px;
-  display: inline-flex;
-  padding: 60px 50px;
-  align-items: center;
+  max-width: 728px;
+  width: 100%;
+  padding: 20px 40px;
   gap: 165px;
   border-radius: 40px;
   background: #D4F21D;
@@ -143,9 +145,11 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 999;
+  justify-content: space-between;
 }
 .chat__popup.show {
-  display: block;
+  display: flex;
 }
 .chat__messages {
   display: flex;
@@ -157,7 +161,7 @@
   padding-top: 33px;
   padding-left: 25px;
   padding-right: 25px;
-  padding-bottom: 27px;
+  padding-bottom: 7px;
 }
 .chat__messages::-webkit-scrollbar {
   background-color: #F1F1F1;
@@ -187,7 +191,7 @@
   gap: 10px;
   position: relative;
   margin-left: 40px;
-  margin-top: 10px;
+  margin-top: 6px;
 }
 .chat__input-field {
   font-size: 16px;
@@ -273,7 +277,7 @@
   align-items: flex-start;
   gap: 6px;
   display: flex;
-  word-wrap: break-word;
+  word-break: break-all;
 }
 .message-text span {
   font-size: 16px;
@@ -436,4 +440,19 @@
 }
 .fest-program__card_green {
   background: var(--Green, #D4F21D);
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5); /* Цвет и прозрачность подложки */
+  display: none; /* Изначально скрыта */
+  z-index: 998; /* Ниже, чем у всплывающего окна */
+}
+
+.overlay.active {
+  display: block;
 }/*# sourceMappingURL=styles.css.map */

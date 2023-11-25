@@ -58,10 +58,9 @@ class ChatApp {
 
     // Проверяем ширину экрана для определения типа устройства
     if (window.innerWidth <= 768) {
-        device = 'M' 
+        device = 'M'
     }
-    console.log(window.innerWidth)
-    console.log('device ' + device)
+
     this.userAnswers.device = device
 
     if (this.userAnswers.device === 'M') {
@@ -72,8 +71,6 @@ class ChatApp {
         console.error('Ошибка при получении userId:', error)
       })
     }
-
-    console.log('userId ' + this.userId)
 
     this.startChat()
 
@@ -94,34 +91,34 @@ class ChatApp {
 
     window.addEventListener('beforeunload', async (event) => {
       if (this.userAnswers.fio !== '' && !this.isChatFilled) {
-        event.preventDefault() //Предотвращаем закрытие страницы, пока данные не будут отправлены
-        await this.sendDataToServer(this.userAnswers) // Дождитесь завершения запроса на сервер 
+        event.preventDefault() // Предотвращаем закрытие страницы, пока данные не будут отправлены
+        await this.sendDataToServer(this.userAnswers) // Дождитесь завершения запроса на сервер
       }
     })
 
     window.scrollTo(0, 0)
   }
 
-  private typeMessage(message: string, isUser: boolean, speed: number) {
+  private typeMessage (message: string, isUser: boolean, speed: number) {
     if (this.chatMessages && this.userInput) {
-      const messageElement = document.createElement('div');
-      messageElement.classList.add('message', isUser ? 'user' : 'bot');
-  
+      const messageElement = document.createElement('div')
+      messageElement.classList.add('message', isUser ? 'user' : 'bot')
+
       if (!isUser) {
-        const proFestText = document.createElement('span');
-        proFestText.classList.add('bot-name');
-        proFestText.textContent = 'Pro-fest';
-        messageElement.appendChild(proFestText);
+        const proFestText = document.createElement('span')
+        proFestText.classList.add('bot-name')
+        proFestText.textContent = 'Pro-fest'
+        messageElement.appendChild(proFestText)
       }
-  
-      const messageText = document.createElement('span');
-      messageText.classList.add('bot-text');
-      messageText.textContent = message;
-  
-      messageElement.appendChild(messageText);
-      this.chatMessages.appendChild(messageElement);
-  
-      this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
+
+      const messageText = document.createElement('span')
+      messageText.classList.add('bot-text')
+      messageText.textContent = message
+
+      messageElement.appendChild(messageText)
+      this.chatMessages.appendChild(messageElement)
+
+      this.chatMessages.scrollTop = this.chatMessages.scrollHeight
     }
   }
 
@@ -265,16 +262,13 @@ class ChatApp {
   private handleFinalAnswer (answer: string) {
     this.typeAnswer(answer, 50)
     if (this.buttonChat) {
-      this.buttonChat.innerHTML = '';
-      this.buttonChat.classList.remove('chat__btn');
-      this.buttonChat.classList.remove('btn');
+      this.buttonChat.innerHTML = ''
+      this.buttonChat.classList.remove('chat__btn')
+      this.buttonChat.classList.remove('btn')
       this.buttonChat.classList.add('btn-result')
-      
+
       this.buttonChat.textContent = 'Смотреть результат'
     }
-        
-
-    const monthlyIncome = parseFloat(this.userAnswers.monthly_income)
 
     const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0)
     this.userAnswers.hourly_income = hourlyRate.toString()
@@ -282,25 +276,31 @@ class ChatApp {
     this.sendDataToServer(this.userAnswers, this.userId)
 
     this.buttonChat?.addEventListener('click', () => {
-      this.isChatFilled = true;
+      this.isChatFilled = true
 
       if (this.popup) {
         this.showPopup()
       }
-    });
-  }
-
-  private showPopup () {
-    if (this.popup) {
-      this.popup.classList.add('show')
-    }
-
-    this.popupBtn?.addEventListener('click', () => {
-      this.closePopup()
     })
   }
 
+  private overlay = document.getElementById('overlay')
+  private showPopup () {
+    if (this.popup) {
+      this.overlay?.classList.add('active')
+      this.popup.classList.add('show')
+      const hourlyRate = this.popup.querySelector('#popup-hourly-rate')
+      if (hourlyRate) {
+        hourlyRate.textContent = this.userAnswers.hourly_income + ' р/час'
+      }
+
+      this.popupBtn?.addEventListener('click', () => {
+        this.closePopup()
+      })
+    }
+  }
   private closePopup () {
+    this.overlay?.classList.remove('active')
     if (this.popup) {
       this.popup.classList.remove('show')
     }
