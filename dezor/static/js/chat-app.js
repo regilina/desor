@@ -1,13 +1,14 @@
 "use strict";
 class ChatApp {
     questions = [
-        'Привет, как тебя зовут? Укажи фамилию и имя',
-        'Сколько тебе лет? Не стесняйся, возраст - признак истинной мудрости',
-        'Кем работаешь? На что тратишь драгоценные минуты жизни?',
-        'Каков твой стаж работы? Как долго шокируешь окружающих своим успехом?',
-        'В каком городе работаешь? Где найти таких гениев?',
-        'Твой месячный доход? Удиви меня!',
-        'Оставьте свой ник Telegram (или номер телефона, если Telegram не установлен)'
+        'Привет! Как вас зовут? Укажите фамилию и имя',
+        'Сколько вам лет? Не стесняйтесь, возраст - признак истинной мудрости',
+        'В какой сфере вы раскрываете свой талант на работе? Укажите свою профессию',
+        'Сколько времени вы уже занимаетесь своим делом? Напишите число',
+        'В каком уголке мира свершаются ваши профессиональные подвиги? Укажите город',
+        'Ваш месячный доход? Напишите сумму',
+        'Укажите свой никнейм в Telegram (или номер телефона, если Telegram не установлен)',
+        'Записать вас на онлайн-фестиваль? На нём будет много интересного и полезного для карьеры'
     ];
     currentQuestionIndex = 0;
     userAnswers = {
@@ -88,10 +89,11 @@ class ChatApp {
                     section.scrollIntoView({ behavior: 'smooth' });
                     this.userInput?.focus({ preventScroll: true });
                 }
+                this.userAnswers.want_event = 'Y';
             });
         });
     }
-    typeMessage(message, isUser, speed) {
+    typeMessage(message, isUser) {
         if (this.chatMessages && this.userInput) {
             const messageElement = document.createElement('div');
             messageElement.classList.add('message', isUser ? 'user' : 'bot');
@@ -109,15 +111,15 @@ class ChatApp {
             this.chatMessages.scrollTop = this.chatMessages.scrollHeight;
         }
     }
-    typeQuestion(question, speed) {
-        this.typeMessage(question, false, speed);
+    typeQuestion(question) {
+        this.typeMessage(question, false);
     }
-    typeAnswer(answer, speed) {
-        this.typeMessage(answer, true, speed);
+    typeAnswer(answer) {
+        this.typeMessage(answer, true);
     }
     startChat() {
         if (this.currentQuestionIndex < this.questions.length) {
-            this.typeQuestion(this.questions[this.currentQuestionIndex], 50);
+            this.typeQuestion(this.questions[this.currentQuestionIndex]);
         }
     }
     sendDataToServer(data, userId = null) {
@@ -214,7 +216,7 @@ class ChatApp {
             this.userAnswers[currentQuestionKey] = message;
             if (this.currentQuestionIndex < this.questions.length - 1) {
                 this.currentQuestionIndex++;
-                this.typeAnswer(message, 50);
+                this.typeAnswer(message);
                 if (this.userAnswers.device === 'M') {
                     this.sendDataToServer(this.userAnswers, this.userId);
                 }
@@ -227,11 +229,21 @@ class ChatApp {
             }
         }
         else {
-            this.typeQuestion('Пожалуйста, введите корректные данные', 50);
+            this.typeQuestion('Пожалуйста, введите корректные данные');
         }
     }
     handleFinalAnswer(answer) {
-        this.typeAnswer(answer, 50);
+        this.typeAnswer(answer);
+        if (answer.toLowerCase() === 'да') {
+            this.userAnswers.want_event = 'Y';
+            const message = ' Вы успешно записаны на PRO-FEST! Отправим программу фестиваля на указанный вами номер. А еще мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!';
+            this.typeAnswer(message);
+        }
+        else {
+            this.userAnswers.want_event = 'N';
+            const message = 'Мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!';
+            this.typeAnswer(message);
+        }
         if (this.buttonChat) {
             this.buttonChat.innerHTML = '';
             this.buttonChat.classList.remove('chat__btn');
