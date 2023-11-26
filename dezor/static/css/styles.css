@@ -286,8 +286,7 @@
   align-items: flex-start;
   gap: 6px;
   display: flex;
-  overflow-wrap: anywhere; /* Для современных браузеров */
-  word-wrap: anywhere; /* Для поддержки старых браузеров */
+  overflow-wrap: anywhere;
   white-space: normal;
 }
 .message-text span {
@@ -466,4 +465,45 @@
 
 .overlay.active {
   display: block;
+}
+
+.merch {
+  margin-top: 150px;
+}
+.merch__title {
+  font-size: 64px;
+  line-height: 110%;
+}
+.merch__container {
+  display: flex;
+  gap: 62.5px;
+  margin-top: 60px;
+}
+.merch__container-column {
+  display: flex;
+  flex-direction: column;
+}
+.merch__card {
+  padding: 60px 40px;
+  margin-bottom: 37px;
+  border-radius: 40px;
+  border: 1px solid var(--Black, #000);
+  font-size: 30px;
+}
+.merch__card_covers {
+  margin-bottom: 70px;
+}
+.merch__card_coffee {
+  margin-bottom: 92.34px;
+}
+.merch__card_coffee-mobile {
+  display: none;
+}
+.merch__img {
+  margin-left: 39.5px;
+  width: 100%;
+  max-width: 489px;
+}
+.merch__btn_mobile {
+  display: none;
 }/*# sourceMappingURL=styles.css.map */

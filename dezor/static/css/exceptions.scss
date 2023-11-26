@@ -177,5 +177,47 @@
       }
     }
   }
+  .merch {
+   
+    &__container {
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      
+    }
+
+    &__title {
+      font-size: 48px;
+      line-height: 110%;
+    }
+
+    &__btn {
+      &_desktop {
+        display: none;
+      }
+
+      &_moblile {
+        display: block;
+      }
+    }
+
+    &__card {
+      max-width: 569px;
+      width: 100%;
+
+      &_coffee {
+        margin-bottom: 50px;
+  
+        &-mobile {
+          display: block;
+        }
+
+        &-desktop {
+          display: none;
+        }
+      }
+    }
+  }
+  
 }
     

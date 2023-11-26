@@ -137,4 +137,32 @@
     line-height: 120%;
     text-transform: uppercase;
   }
+  .merch__container {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+  }
+  .merch__title {
+    font-size: 48px;
+    line-height: 110%;
+  }
+  .merch__btn_desktop {
+    display: none;
+  }
+  .merch__btn_moblile {
+    display: block;
+  }
+  .merch__card {
+    max-width: 569px;
+    width: 100%;
+  }
+  .merch__card_coffee {
+    margin-bottom: 50px;
+  }
+  .merch__card_coffee-mobile {
+    display: block;
+  }
+  .merch__card_coffee-desktop {
+    display: none;
+  }
 }/*# sourceMappingURL=exceptions.css.map */
