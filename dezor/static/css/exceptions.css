@@ -149,12 +149,11 @@
   .merch__btn_desktop {
     display: none;
   }
-  .merch__btn_moblile {
+  .merch__btn_mobile {
     display: block;
   }
   .merch__card {
-    max-width: 569px;
-    width: 100%;
+    width: 569px;
   }
   .merch__card_coffee {
     margin-bottom: 50px;
@@ -164,5 +163,8 @@
   }
   .merch__card_coffee-desktop {
     display: none;
+  }
+  .merch__img {
+    margin-left: 0;
   }
 }/*# sourceMappingURL=exceptions.css.map */

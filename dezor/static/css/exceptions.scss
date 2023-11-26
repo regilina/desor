@@ -196,14 +196,14 @@
         display: none;
       }
 
-      &_moblile {
+      &_mobile {
         display: block;
       }
     }
 
     &__card {
-      max-width: 569px;
-      width: 100%;
+      width: 569px;
+      
 
       &_coffee {
         margin-bottom: 50px;
@@ -216,6 +216,11 @@
           display: none;
         }
       }
+    }
+
+    &__img {
+      margin-left: 0;
+      
     }
   }
   
