@@ -77,6 +77,10 @@
   }
 }
 
+.btn::-moz-focus-inner {
+  border: 0;
+}
+
 .btn {
   border-radius: 55px;
   background: #D4F21D;
@@ -100,10 +104,17 @@
     width: 100%;
     border: none;
     cursor: pointer;
+    outline: none; 
+
 
     &:active {
       border: none;
+      outline: none; 
     }
+
+    // :focus {
+    //   outline: px solid var(--Purple, #C291F4);
+    // }
   }
 }
 
@@ -222,6 +233,11 @@
     margin-left: 40px;
     margin-top: 6px;
 
+
+    :focus {
+      outline: none; 
+    }
+
     
     
     
@@ -323,8 +339,10 @@
   align-items: flex-start;
   gap: 6px;
   display: flex;
-  word-break: break-all;
-
+  overflow-wrap: anywhere; /* Для современных браузеров */
+  word-wrap: anywhere; /* Для поддержки старых браузеров */
+  white-space: normal;
+  
   &-text {
     & span {
       font-size: 16px;

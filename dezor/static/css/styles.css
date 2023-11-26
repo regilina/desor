@@ -71,6 +71,10 @@
   line-height: 120%;
 }
 
+.btn::-moz-focus-inner {
+  border: 0;
+}
+
 .btn {
   border-radius: 55px;
   background: #D4F21D;
@@ -95,9 +99,11 @@
   width: 100%;
   border: none;
   cursor: pointer;
+  outline: none;
 }
 .btn-result:active {
   border: none;
+  outline: none;
 }
 
 .section-chat {
@@ -193,6 +199,9 @@
   margin-left: 40px;
   margin-top: 6px;
 }
+.chat__input :focus {
+  outline: none;
+}
 .chat__input-field {
   font-size: 16px;
   font-weight: 400;
@@ -277,7 +286,9 @@
   align-items: flex-start;
   gap: 6px;
   display: flex;
-  word-break: break-all;
+  overflow-wrap: anywhere; /* Для современных браузеров */
+  word-wrap: anywhere; /* Для поддержки старых браузеров */
+  white-space: normal;
 }
 .message-text span {
   font-size: 16px;
