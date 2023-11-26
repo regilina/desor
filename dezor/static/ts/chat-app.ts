@@ -37,6 +37,7 @@ class ChatApp {
   private userId: string | null = null
   private isChatFilled: boolean = false
   private buttonChat: HTMLButtonElement | null = null
+  private scrollButtons: NodeListOf<HTMLButtonElement> | null = null
 
   constructor () {
     this.sectionChat = document.getElementById('section-chat')
@@ -45,6 +46,7 @@ class ChatApp {
     this.chatMessages = document.getElementById('chat-messages')
     this.userInput = document.getElementById('user-input') as HTMLInputElement
     this.buttonChat = document.getElementById('send-button') as HTMLButtonElement
+    this.scrollButtons = document.querySelectorAll<HTMLButtonElement>('.scroll-button')
 
     this.popup = document.getElementById('popup')
     this.popupBtn = document.getElementById('chat-popup-btn') as HTMLButtonElement
@@ -80,14 +82,12 @@ class ChatApp {
       })
     }
 
-    if (this.userInput) {
-      this.userInput.focus()
-      this.userInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter') {
-          this.sendMessage()
-        }
-      })
-    }
+    this.userInput?.focus({ preventScroll: true })
+    this.userInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        this.sendMessage()
+      }
+    })
 
     window.addEventListener('beforeunload', async (event) => {
       if (this.userAnswers.fio !== '' && !this.isChatFilled) {
@@ -96,7 +96,15 @@ class ChatApp {
       }
     })
 
-    window.scrollTo(0, 0)
+    this.scrollButtons?.forEach((button) => {
+      button.addEventListener('click', () => {
+        const section = document.getElementById('section-chat')
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth' })
+          this.userInput?.focus({ preventScroll: true })
+        }
+      })
+    })
   }
 
   private typeMessage (message: string, isUser: boolean, speed: number) {
@@ -247,9 +255,7 @@ class ChatApp {
           this.sendDataToServer(this.userAnswers, this.userId)
         }
         this.startChat()
-        if (this.userInput) {
-          this.userInput.focus()
-        }
+        this.userInput?.focus({ preventScroll: true })
       } else {
         this.userAnswers[currentQuestionKey] = message
         this.handleFinalAnswer(message)
@@ -305,6 +311,7 @@ class ChatApp {
       this.popup.classList.remove('show')
     }
   }
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {

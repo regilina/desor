@@ -155,6 +155,9 @@
   .merch__card {
     width: 569px;
   }
+  .merch__card_covers {
+    margin-bottom: 37px;
+  }
   .merch__card_coffee {
     margin-bottom: 50px;
   }

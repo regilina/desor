@@ -36,6 +36,7 @@ class ChatApp {
     userId = null;
     isChatFilled = false;
     buttonChat = null;
+    scrollButtons = null;
     constructor() {
         this.sectionChat = document.getElementById('section-chat');
         this.sectionResult = document.getElementById('section-result');
@@ -43,6 +44,7 @@ class ChatApp {
         this.chatMessages = document.getElementById('chat-messages');
         this.userInput = document.getElementById('user-input');
         this.buttonChat = document.getElementById('send-button');
+        this.scrollButtons = document.querySelectorAll('.scroll-button');
         this.popup = document.getElementById('popup');
         this.popupBtn = document.getElementById('chat-popup-btn');
         this.startTime = Date.now();
@@ -67,21 +69,27 @@ class ChatApp {
                 this.sendMessage();
             });
         }
-        if (this.userInput) {
-            this.userInput.focus();
-            this.userInput.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter') {
-                    this.sendMessage();
-                }
-            });
-        }
+        this.userInput?.focus({ preventScroll: true });
+        this.userInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                this.sendMessage();
+            }
+        });
         window.addEventListener('beforeunload', async (event) => {
             if (this.userAnswers.fio !== '' && !this.isChatFilled) {
                 event.preventDefault(); // Предотвращаем закрытие страницы, пока данные не будут отправлены
                 await this.sendDataToServer(this.userAnswers); // Дождитесь завершения запроса на сервер
             }
         });
-        window.scrollTo(0, 0);
+        this.scrollButtons?.forEach((button) => {
+            button.addEventListener('click', () => {
+                const section = document.getElementById('section-chat');
+                if (section) {
+                    section.scrollIntoView({ behavior: 'smooth' });
+                    this.userInput?.focus({ preventScroll: true });
+                }
+            });
+        });
     }
     typeMessage(message, isUser, speed) {
         if (this.chatMessages && this.userInput) {
@@ -211,9 +219,7 @@ class ChatApp {
                     this.sendDataToServer(this.userAnswers, this.userId);
                 }
                 this.startChat();
-                if (this.userInput) {
-                    this.userInput.focus();
-                }
+                this.userInput?.focus({ preventScroll: true });
             }
             else {
                 this.userAnswers[currentQuestionKey] = message;
