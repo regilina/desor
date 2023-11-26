@@ -8,6 +8,7 @@ class ChatApp {
     'Ваш месячный доход? Напишите сумму',
     'Укажите свой никнейм в Telegram (или номер телефона, если Telegram не установлен)',
     'Записать вас на онлайн-фестиваль? На нём будет много интересного и полезного для карьеры'
+    
   ]
 
   private currentQuestionIndex: number = 0
@@ -23,7 +24,7 @@ class ChatApp {
     referrer: '',
     visit_duration: '0',
     device: '',
-    want_event: '',
+    want_event: 'N',
     hourly_income: '0'
   }
 
@@ -75,7 +76,7 @@ class ChatApp {
       })
     }
 
-    this.startChat()
+
 
     if (this.buttonChat) {
       this.buttonChat.addEventListener('click', () => {
@@ -97,17 +98,37 @@ class ChatApp {
       }
     })
 
+    this.startChat()
+
     this.scrollButtons?.forEach((button) => {
       button.addEventListener('click', () => {
+        this.userAnswers.want_event = 'Y'
         const section = document.getElementById('section-chat')
         if (section) {
           section.scrollIntoView({ behavior: 'smooth' })
           this.userInput?.focus({ preventScroll: true })
+
+          setTimeout(() => {
+            this.clearChat();
+            this.userInput?.focus({ preventScroll: true })
+            const message = 'Привет! Пройдите небольшой опрос, чтобы мы узнали вас и лучше подготовились к мероприятию'
+            this.typeQuestion(message)
+            this.startChat()
+          }, 1000); 
+          
         }
 
-        this.userAnswers.want_event = 'Y'
+        
       })
     })
+  }
+
+  private clearChat() {
+    if (this.chatMessages) {
+      while (this.chatMessages.firstChild) {
+        this.chatMessages.removeChild(this.chatMessages.firstChild);
+      }
+    }
   }
 
   private typeMessage (message: string, isUser: boolean) {
@@ -251,7 +272,23 @@ class ChatApp {
     if (this.validateInput(currentQuestionKey, message)) {
       this.userAnswers[currentQuestionKey] = message
 
-      if (this.currentQuestionIndex < this.questions.length - 1) {
+      if (currentQuestionKey === 'telegram' && this.userAnswers.want_event === 'Y') {
+        this.typeAnswer(message)
+        const question = ' Вы успешно записаны на PRO-FEST! Отправим программу фестиваля на указанный вами номер. А еще мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!'
+        this.typeQuestion(question)
+        if (this.userAnswers.device === 'M') {
+          this.sendDataToServer(this.userAnswers, this.userId)
+        }
+        this.handleFinalAnswer(message)
+      } else if (currentQuestionKey === 'telegram' &&  this.questions.length - 1) {
+        this.currentQuestionIndex++
+        this.typeAnswer(message)
+        if (this.userAnswers.device === 'M') {
+          this.sendDataToServer(this.userAnswers, this.userId)
+        }
+        this.startChat()
+        this.userInput?.focus({ preventScroll: true })
+      } else if  (this.currentQuestionIndex < this.questions.length - 1) {
         this.currentQuestionIndex++
         this.typeAnswer(message)
         if (this.userAnswers.device === 'M') {
@@ -266,21 +303,26 @@ class ChatApp {
     } else {
       this.typeQuestion('Пожалуйста, введите корректные данные')
     }
+
   }
 
   private handleFinalAnswer (answer: string) {
-    this.typeAnswer(answer)
+    
 
-    if (answer.toLowerCase() === 'да') {
-      this.userAnswers.want_event = 'Y'
-      const message = ' Вы успешно записаны на PRO-FEST! Отправим программу фестиваля на указанный вами номер. А еще мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!'
-      this.typeAnswer(message)
+    if (this.userAnswers.want_event === 'N') {
+      if (answer.toLowerCase() === 'да') {
+        this.userAnswers.want_event = 'Y'
+        const message = ' Вы успешно записаны на PRO-FEST! Отправим программу фестиваля на указанный вами номер. А еще мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!'
+        this.typeAnswer(message)
+      } else {
+        this.userAnswers.want_event = 'N'
+        const message = 'Мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!'
+        this.typeAnswer(message)
+      }
     } else {
-      this.userAnswers.want_event = 'N'
-      const message = 'Мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!'
-      this.typeAnswer(message)
+     
     }
-
+    
     if (this.buttonChat) {
       this.buttonChat.innerHTML = ''
       this.buttonChat.classList.remove('chat__btn')
