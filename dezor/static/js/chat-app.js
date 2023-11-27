@@ -240,13 +240,13 @@ class ChatApp {
             case 'fio':
                 return !/\d/.test(value);
             case 'age':
-                const parsedAge = parseFloat(value);
-                return !isNaN(parsedAge) && Number.isInteger(parsedAge) && parsedAge > 0 && parsedAge < 150 && /^\d+$/.test(value);
+                return /^\d+$/.test(value);
+            case 'experience':
+                return /^\d+$/.test(value);
             case 'telegram':
                 return /^\+7\d{10}$/.test(value) || /^@[A-Za-z0-9_]+$/.test(value);
             case 'monthly_income':
-                const parsedIncome = parseFloat(value);
-                return !isNaN(parsedIncome) && Number.isInteger(parsedIncome) && parsedIncome >= 0 && /^\d+$/.test(value);
+                return /^\d+$/.test(value);
             default:
                 return true;
         }

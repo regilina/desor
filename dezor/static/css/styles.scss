@@ -144,18 +144,23 @@
   }
 }
 
+
+
+
 .chat {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  position: relative;
 
   max-width: 569px;
   width: 100%;
   height: 785px;
   flex-shrink: 0;
-  border-radius: 40px;
-  border: 1px solid var(--Black, #000);
-
+  border-radius: 40px 0 0 40px;
+  border-left: 1px solid var(--Black, #000);
+  border-bottom: 1px solid var(--Black, #000);
+  border-bottom-width: calc(100% - 8px);
 
   &__popup {
     max-width: 728px;
@@ -183,23 +188,25 @@
     gap: 15px;
     flex-grow: 1;
     overflow-x: hidden;
-    overflow-y: auto; /* Включение вертикальной полосы прокрутки */
-
+    overflow-y: scroll; /* Включение вертикальной полосы прокрутки */
     padding-top: 33px;
     padding-left: 25px;
     padding-right: 25px;
-
     padding-bottom: 7px;
 
 
+    scrollbar-color: #EAEAEA #080505; /*Цвет скролла, цвет ползунка*/
+    scrollbar-width: thin; /*Толщина скролла thin, auto*/
+    
     &::-webkit-scrollbar {
-      
-      background-color: #F1F1F1;
+      width: 8px;
+      background-color: #EAEAEA;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: #C1C1C1;
-      border-radius: 5px; /* Скругление у ползунка полосы прокрутки */
+ 
+      border-radius: 10px; /* Скругление у ползунка полосы прокрутки */
+      background-color: #080505;
     }
   }
 
@@ -213,6 +220,24 @@
     display: flex;
     padding-left: 10px;
     padding-top: 10px;
+  }
+
+  &__temp {
+    background-color: #EAEAEA;
+    width: 8px;
+    
+    position: absolute;
+    right: 0;
+
+    &_top {
+      top: 0;
+      height: 120px;
+    }
+
+    &_bottom {
+      bottom: -1px;
+      height: 102px;
+    }
   }
 
   &__input {
@@ -266,7 +291,7 @@
     width: 100%;
     height: 120px;
     flex-shrink: 0;
-    border-radius: 40px 40px 0px 0px;
+    border-radius: 40px 0px 0px 0px;
     border: 1px solid var(--Black, #000);
     background: #000;
     display: flex;

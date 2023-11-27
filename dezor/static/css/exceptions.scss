@@ -74,12 +74,18 @@
 
     &__messages {
       gap: 10px;
-  
-      margin-top: 20px;
-      margin-bottom: 4px;
       padding-left: 22px;
       padding-right: 29px;
     }
+
+    &__temp {
+  
+      &_bottom {
+        bottom: -1px;
+        height: 87px;
+      }
+    }
+  
   }
 
   .chat__input {
