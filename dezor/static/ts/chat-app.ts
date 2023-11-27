@@ -193,6 +193,18 @@ class ChatApp {
     if (this.currentQuestionIndex < this.questions.length) {
       this.typeQuestion(this.questions[this.currentQuestionIndex])
     }
+    
+    if (this.currentQuestionIndex === 6) {
+      if (this.userInput) {
+        this.userInput.placeholder = ''
+        this.userInput.value = '@'
+      }
+    } else {
+      if (this.userInput) {
+        this.userInput.placeholder = 'Введите ответ на вопрос'
+      }
+    }
+  
   }
 
   private sendDataToServer (data: Record<string, any>, userId: string | null = null) {
@@ -272,6 +284,16 @@ class ChatApp {
       if (userMessage !== '') {
         this.handleUserMessage(userMessage)
         this.userInput.value = ''
+        if (this.currentQuestionIndex === 6) {
+          if (this.userInput) {
+            this.userInput.placeholder = ''
+            this.userInput.value = '@'
+          }
+        } else {
+          if (this.userInput) {
+            this.userInput.placeholder = 'Введите ответ на вопрос'
+          }
+        }
       }
     }
   }

@@ -162,6 +162,17 @@ class ChatApp {
         if (this.currentQuestionIndex < this.questions.length) {
             this.typeQuestion(this.questions[this.currentQuestionIndex]);
         }
+        if (this.currentQuestionIndex === 6) {
+            if (this.userInput) {
+                this.userInput.placeholder = '';
+                this.userInput.value = '@';
+            }
+        }
+        else {
+            if (this.userInput) {
+                this.userInput.placeholder = 'Введите ответ на вопрос';
+            }
+        }
     }
     sendDataToServer(data, userId = null) {
         if (this.userAnswers.telegram.startsWith('+7')) {
@@ -232,6 +243,17 @@ class ChatApp {
             if (userMessage !== '') {
                 this.handleUserMessage(userMessage);
                 this.userInput.value = '';
+                if (this.currentQuestionIndex === 6) {
+                    if (this.userInput) {
+                        this.userInput.placeholder = '';
+                        this.userInput.value = '@';
+                    }
+                }
+                else {
+                    if (this.userInput) {
+                        this.userInput.placeholder = 'Введите ответ на вопрос';
+                    }
+                }
             }
         }
     }
