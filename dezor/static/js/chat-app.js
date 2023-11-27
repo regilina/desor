@@ -266,7 +266,7 @@ class ChatApp {
             case 'experience':
                 return /^\d+$/.test(value);
             case 'telegram':
-                return /^\+7\d{10}$/.test(value) || /^@[A-Za-z0-9_]+$/.test(value);
+                return /^\+7\d{10}$/.test(value) || /^@[^\u0400-\u04FF]{2,}$/.test(value);
             case 'monthly_income':
                 return /^\d+$/.test(value);
             default:

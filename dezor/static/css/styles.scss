@@ -194,10 +194,11 @@
     padding-right: 25px;
     padding-bottom: 7px;
 
-
-    scrollbar-color: #EAEAEA #080505; /*Цвет скролла, цвет ползунка*/
-    scrollbar-width: thin; /*Толщина скролла thin, auto*/
+   
+    overscroll-behavior: contain;
     
+    scrollbar-color: #EAEAEA #080505; /*Цвет скролла, цвет ползунка*/
+
     &::-webkit-scrollbar {
       width: 8px;
       background-color: #EAEAEA;
