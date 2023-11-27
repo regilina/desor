@@ -38,6 +38,42 @@
           <img class="hero__img" src="../static/img/hero-img.png" alt="разные предметы">
         </div>
       </section>
+      <section class="section-chat" id="section-chat">
+        <h2 class="section-chat__title">Убедись, что фестиваль будет тебе полезен</h2>
+        <div class="section-chat__chat-container">
+          <div>
+            <p class="section-chat__text">Узнай стоимость часа своей работы, получи точки роста и забери набор карьерных стикеров от Дезориентации для общения <br> с коллегами</p>
+            <div>
+              <img class="section-chat__img" src="../static/img/illustration-man.png" alt="мужчина">
+            </div>
+          </div>
+          <div class="chat" id="chat">
+            <div class="chat__head">
+              <span>Pro-fest</span>
+            </div>
+            <div class="chat__messages" id="chat-messages">
+              <!-- Сюда будут добавляться сообщения чат-бота и пользователя -->
+            </div>
+            <div class="chat__input">
+              <input type="text" class="chat__input-field" id="user-input" placeholder="Введите ответ на вопрос">
+              <button class="btn chat__btn" id="send-button">
+                <svg class="chat__button-svg" xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M28.9503 15.605C29.6912 15.9725 29.6912 17.0292 28.9503 17.3967L5.56937 28.9944C4.90465 29.3241 4.125 28.8405 4.125 28.0985V19.2488L16.5 16.4988L4.125 13.4661L4.125 4.9032C4.125 4.16121 4.90466 3.67764 5.56937 4.00736L28.9503 15.605Z" stroke="black" stroke-linejoin="round"/>
+                  </svg>
+              </button>
+              <button class="btn-result" id="btn-result">
+                Смотреть результат
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="overlay" id="overlay"></div>
+      <div class="chat__popup" id="popup">
+        <!-- Сюда добавьте содержимое вашего блока -->
+        <span class="chat__popup-hourly-rate" id="popup-hourly-rate"></span>
+        <button class="chat__popup-btn" id="chat-popup-btn">Закрыть</button>
+      </div>
       <section class="fest-program">
         <h2 class="fest-program__title">Что тебя ждет на фесте?</h2>
         <div class="fest-program__cards">
@@ -91,42 +127,7 @@
         </div>
         <button class="btn fest-program__btn scroll-button">Записаться на PRO-FEST</button>
       </section>
-      <section class="section-chat" id="section-chat">
-        <h2 class="section-chat__title">Убедись, что фестиваль будет тебе полезен</h2>
-        <div class="section-chat__chat-container">
-          <div>
-            <p class="section-chat__text">Узнай стоимость часа своей работы, получи точки роста и забери набор карьерных стикеров от Дезориентации для общения <br> с коллегами</p>
-            <div>
-              <img class="section-chat__img" src="../static/img/illustration-man.png" alt="мужчина">
-            </div>
-          </div>
-          <div class="chat" id="chat">
-            <div class="chat__head">
-              <span>Pro-fest</span>
-            </div>
-            <div class="chat__messages" id="chat-messages">
-              <!-- Сюда будут добавляться сообщения чат-бота и пользователя -->
-            </div>
-            <div class="chat__input">
-              <input type="text" class="chat__input-field" id="user-input" placeholder="Введите ответ на вопрос">
-              <button class="btn chat__btn" id="send-button">
-                <svg class="chat__button-svg" xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none">
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M28.9503 15.605C29.6912 15.9725 29.6912 17.0292 28.9503 17.3967L5.56937 28.9944C4.90465 29.3241 4.125 28.8405 4.125 28.0985V19.2488L16.5 16.4988L4.125 13.4661L4.125 4.9032C4.125 4.16121 4.90466 3.67764 5.56937 4.00736L28.9503 15.605Z" stroke="black" stroke-linejoin="round"/>
-                  </svg>
-              </button>
-              <button class="btn-result" id="btn-result">
-                Смотреть результат
-              </button>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div class="overlay" id="overlay"></div>
-      <div class="chat__popup" id="popup">
-        <!-- Сюда добавьте содержимое вашего блока -->
-        <span class="chat__popup-hourly-rate" id="popup-hourly-rate"></span>
-        <button class="chat__popup-btn" id="chat-popup-btn">Закрыть</button>
-      </div>
+      
       <section class="merch">
         <h2 class="merch__title">Разыграем фестивальный мерч среди участников!</h2>
         <div class="merch__container">
