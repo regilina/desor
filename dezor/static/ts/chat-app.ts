@@ -8,7 +8,7 @@ class ChatApp {
     'Ваш месячный доход? Напишите сумму',
     'Укажите свой никнейм в Telegram (или номер телефона, если Telegram не установлен)',
     'Записать вас на онлайн-фестиваль? На нём будет много интересного и полезного для карьеры'
-    
+
   ]
 
   private currentQuestionIndex: number = 0
@@ -40,6 +40,7 @@ class ChatApp {
   private isChatFilled: boolean = false
   private buttonChat: HTMLButtonElement | null = null
   private scrollButtons: NodeListOf<HTMLButtonElement> | null = null
+  private buttonResult: HTMLButtonElement | null = null
 
   constructor () {
     this.sectionChat = document.getElementById('section-chat')
@@ -49,6 +50,7 @@ class ChatApp {
     this.userInput = document.getElementById('user-input') as HTMLInputElement
     this.buttonChat = document.getElementById('send-button') as HTMLButtonElement
     this.scrollButtons = document.querySelectorAll<HTMLButtonElement>('.scroll-button')
+    this.buttonResult = document.getElementById('btn-result') as HTMLButtonElement
 
     this.popup = document.getElementById('popup')
     this.popupBtn = document.getElementById('chat-popup-btn') as HTMLButtonElement
@@ -57,15 +59,13 @@ class ChatApp {
 
     this.userAnswers.referrer = document.referrer
 
-    // Получение информации о типе устройства (desktop или mobile)
-    let device = 'D' // По умолчанию предполагаем, что это рабочий стол
+    this.buttonResult.style.display = 'none'
 
-    // Проверяем ширину экрана для определения типа устройства
     if (window.innerWidth <= 768) {
-        device = 'M'
+      this.userAnswers.device = 'M'
+    } else {
+      this.userAnswers.device = 'D'
     }
-
-    this.userAnswers.device = device
 
     if (this.userAnswers.device === 'M') {
       this.fetchUserId().then((id) => {
@@ -73,14 +73,6 @@ class ChatApp {
 
       }).catch((error) => {
         console.error('Ошибка при получении userId:', error)
-      })
-    }
-
-
-
-    if (this.buttonChat) {
-      this.buttonChat.addEventListener('click', () => {
-        this.sendMessage()
       })
     }
 
@@ -99,34 +91,69 @@ class ChatApp {
     })
 
     this.startChat()
+    this.buttonChat?.addEventListener('click', this.sendMessage.bind(this))
+    this.buttonResult?.addEventListener('click', this.getResult.bind(this))
 
     this.scrollButtons?.forEach((button) => {
       button.addEventListener('click', () => {
-        this.userAnswers.want_event = 'Y'
+        this.userAnswers = {
+          fio: '',
+          age: '0',
+          profession: '',
+          experience: '0',
+          city: '',
+          monthly_income: '0',
+          telegram: '',
+          phone: '',
+          referrer: this.userAnswers.referrer,
+          visit_duration: this.userAnswers.visit_duration,
+          device: this.userAnswers.device,
+          want_event: 'Y',
+          hourly_income: '0'
+        }
+
+        this.currentQuestionIndex = 0
+
         const section = document.getElementById('section-chat')
         if (section) {
           section.scrollIntoView({ behavior: 'smooth' })
           this.userInput?.focus({ preventScroll: true })
 
           setTimeout(() => {
-            this.clearChat();
+            this.questions[0] = 'Как вас зовут? Укажите фамилию и имя'
+            this.clearChat()
+
+            if (this.buttonChat) {
+              this.buttonChat.innerHTML = '<svg class="chat__button-svg" xmlns="http://www.w3.org/2000/svg" width="33" height="33" viewBox="0 0 33 33" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M28.9503 15.605C29.6912 15.9725 29.6912 17.0292 28.9503 17.3967L5.56937 28.9944C4.90465 29.3241 4.125 28.8405 4.125 28.0985V19.2488L16.5 16.4988L4.125 13.4661L4.125 4.9032C4.125 4.16121 4.90466 3.67764 5.56937 4.00736L28.9503 15.605Z" stroke="black" stroke-linejoin="round"/></svg>'
+              this.buttonChat.classList.add('chat__btn')
+              this.buttonChat.classList.add('btn')
+              this.buttonChat.classList.remove('btn-result')
+            }
+
+            if (this.buttonResult) {
+              this.buttonResult.style.display = 'none'
+            }
+
+            if (this.buttonChat) {
+              this.buttonChat.style.display = 'block'
+            }
+
             this.userInput?.focus({ preventScroll: true })
             const message = 'Привет! Пройдите небольшой опрос, чтобы мы узнали вас и лучше подготовились к мероприятию'
             this.typeQuestion(message)
             this.startChat()
-          }, 1000); 
-          
+          }, 800)
+
         }
 
-        
       })
     })
   }
 
-  private clearChat() {
+  private clearChat () {
     if (this.chatMessages) {
       while (this.chatMessages.firstChild) {
-        this.chatMessages.removeChild(this.chatMessages.firstChild);
+        this.chatMessages.removeChild(this.chatMessages.firstChild)
       }
     }
   }
@@ -270,7 +297,10 @@ class ChatApp {
     const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex]
 
     if (this.validateInput(currentQuestionKey, message)) {
-      this.userAnswers[currentQuestionKey] = message
+
+      if (currentQuestionKey !== 'phone') {
+        this.userAnswers[currentQuestionKey] = message
+      }
 
       if (currentQuestionKey === 'telegram' && this.userAnswers.want_event === 'Y') {
         this.typeAnswer(message)
@@ -297,7 +327,10 @@ class ChatApp {
         this.startChat()
         this.userInput?.focus({ preventScroll: true })
       } else {
-        this.userAnswers[currentQuestionKey] = message
+        if (currentQuestionKey !== 'phone') {
+          this.userAnswers[currentQuestionKey] = message
+        }
+
         this.handleFinalAnswer(message)
       }
     } else {
@@ -307,29 +340,24 @@ class ChatApp {
   }
 
   private handleFinalAnswer (answer: string) {
-    
 
     if (this.userAnswers.want_event === 'N') {
       if (answer.toLowerCase() === 'да') {
         this.userAnswers.want_event = 'Y'
         const message = ' Вы успешно записаны на PRO-FEST! Отправим программу фестиваля на указанный вами номер. А еще мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!'
-        this.typeAnswer(message)
+        this.typeAnswer(answer)
+        this.typeQuestion(message)
       } else {
         this.userAnswers.want_event = 'N'
         const message = 'Мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!'
-        this.typeAnswer(message)
+        this.typeAnswer(answer)
+        this.typeQuestion(message)
       }
-    } else {
-     
     }
-    
-    if (this.buttonChat) {
-      this.buttonChat.innerHTML = ''
-      this.buttonChat.classList.remove('chat__btn')
-      this.buttonChat.classList.remove('btn')
-      this.buttonChat.classList.add('btn-result')
 
-      this.buttonChat.textContent = 'Смотреть результат'
+    if (this.buttonChat && this.buttonResult) {
+      this.buttonChat.style.display = 'none'
+      this.buttonResult.style.display = 'block'
     }
 
     const hourlyRate = (parseInt(this.userAnswers.monthly_income) / (22 * 8)).toFixed(0)
@@ -337,13 +365,14 @@ class ChatApp {
 
     this.sendDataToServer(this.userAnswers, this.userId)
 
-    this.buttonChat?.addEventListener('click', () => {
-      this.isChatFilled = true
+  }
 
-      if (this.popup) {
-        this.showPopup()
-      }
-    })
+  private getResult () {
+    this.isChatFilled = true
+
+    if (this.popup) {
+      this.showPopup()
+    }
   }
 
   private overlay = document.getElementById('overlay')
