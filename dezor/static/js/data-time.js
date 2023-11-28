@@ -1,4 +1,5 @@
 const clock = new Vue({
+  delimiters: ['[[',']]'],
   el: '#clock',
   data() {
       return {
@@ -8,7 +9,6 @@ const clock = new Vue({
     }
   });
 
-  const week = ['Воскресенье', 'Понедельник', 'Вторник', 'Среда', 'Четверг', 'Пятница', 'Суббота'];
   setInterval(updateTime, 1000);
   updateTime();
 

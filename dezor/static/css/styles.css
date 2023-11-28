@@ -526,4 +526,11 @@
 }
 .merch__btn_mobile {
   display: none;
+}
+
+.ya-share2 {
+  width: 100px;
+  height: 100px;
+  background: greenyellow;
+  border-radius: 50%;
 }/*# sourceMappingURL=styles.css.map */

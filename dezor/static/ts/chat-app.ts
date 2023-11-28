@@ -419,6 +419,8 @@ class ChatApp {
     }
   }
 
+  
+
 }
 
 document.addEventListener('DOMContentLoaded', () => {
