@@ -39,6 +39,11 @@ class ChatApp {
     buttonChat = null;
     scrollButtons = null;
     buttonResult = null;
+    popupRate = null;
+    popupDescription = null;
+    popupImg = null;
+    popupTitle = null;
+    popupContainer = null;
     constructor() {
         this.sectionChat = document.getElementById('section-chat');
         this.sectionResult = document.getElementById('section-result');
@@ -48,8 +53,13 @@ class ChatApp {
         this.buttonChat = document.getElementById('send-button');
         this.scrollButtons = document.querySelectorAll('.scroll-button');
         this.buttonResult = document.getElementById('btn-result');
+        this.popupRate = document.getElementById('popup-rate');
         this.popup = document.getElementById('popup');
         this.popupBtn = document.getElementById('chat-popup-btn');
+        this.popupDescription = document.getElementById('popup-description');
+        this.popupImg = document.getElementById('popup-img');
+        this.popupTitle = document.getElementById('popup-title');
+        this.popupContainer = document.getElementById('popup-container');
         this.startTime = Date.now();
         this.userAnswers.referrer = document.referrer;
         this.buttonResult.style.display = 'none';
@@ -164,8 +174,7 @@ class ChatApp {
         }
         if (this.currentQuestionIndex === 6) {
             if (this.userInput) {
-                this.userInput.placeholder = '';
-                this.userInput.value = '@';
+                this.userInput.placeholder = '@ или +7';
             }
         }
         else {
@@ -245,8 +254,7 @@ class ChatApp {
                 this.userInput.value = '';
                 if (this.currentQuestionIndex === 6) {
                     if (this.userInput) {
-                        this.userInput.placeholder = '';
-                        this.userInput.value = '@';
+                        this.userInput.placeholder = '@ или +7';
                     }
                 }
                 else {
@@ -342,7 +350,32 @@ class ChatApp {
     }
     getResult() {
         this.isChatFilled = true;
-        if (this.popup) {
+        const horlyRate = parseInt(this.userAnswers.hourly_income, 10);
+        if (horlyRate <= 500) {
+            if (this.popup && this.popupRate && this.popupDescription && this.popupImg && this.popupTitle) {
+                this.popupRate.innerHTML = this.userAnswers.hourly_income + ' р/час';
+                this.popupDescription.innerHTML = `Вы стоите на отметке ${this.userAnswers.hourly_income} рублей в час, а это значит, что перед вами бесконечное поле возможностей! Как насчет участия в экспертной сессии с нашими спикерами? Только представьте, сколько точек роста и путей развития ожидает вас?! На карьерной дегустации вы можете пообщаться с коучем, который направит вас и поможет с разбором резюме. Дерзайте!`;
+                this.popupImg.src = '../static/img/result-1.png';
+                this.popupTitle.textContent = 'Достигатор обыкновенный';
+            }
+        }
+        else if (horlyRate >= 501 && horlyRate <= 2000) {
+            if (this.popup && this.popupRate && this.popupDescription && this.popupImg && this.popupTitle) {
+                this.popupRate.innerHTML = this.userAnswers.hourly_income + ' р/час';
+                this.popupDescription.innerHTML = `Ваша отметка на сегодня - ${this.userAnswers.hourly_income} в час, не замедляя шага, двигайтесь дальше. Чтобы свернуть на новом карьерном витке, послушайте лекции о переквалификации и востребованных профессиях на бизнес-завтраке или пообщайтесь с коучем. Но если вы хотите дойти до впечатляющих цифр, отправляйтесь на экспертные сессии феста.`;
+                this.popupImg.src = '../static/img/result-2.png';
+                this.popupTitle.textContent = 'Успехмейкер выдающийся';
+            }
+        }
+        else {
+            if (this.popup && this.popupRate && this.popupDescription && this.popupImg && this.popupTitle) {
+                this.popupRate.innerHTML = this.userAnswers.hourly_income + ' р/час';
+                this.popupDescription.innerHTML = `Вы многое преодолели, и не зря ваш путь остановился на отметке ${this.userAnswers.hourly_income} рублей в час! Сколько энергии и сил вы затратили на блуждания в профессиональном лабиринте возможностей, может быть, пора расслабиться и посетить карьерный стендап? А как насчет экспертных сессий о work/life balance, выгорании и новых точках роста? Ждем вас!`;
+                this.popupImg.src = '../static/img/result-3.png';
+                this.popupTitle.textContent = 'Маниманьяк';
+            }
+        }
+        if (this.showPopup) {
             this.showPopup();
         }
     }

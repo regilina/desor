@@ -17,7 +17,6 @@
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;700&family=Rubik+Mono+One&display=swap');
     </style>
-    <script src="https://vk.com/js/api/openapi.js?169" type="text/javascript"></script>
   </head>
   <body class="body">
     <div class="content">
@@ -27,17 +26,6 @@
           <span class="logo-name__name">Pro-fest</span>
         </div>
         <a href="#">Админка</a>
-        <div class="ya-share2" data-services="vkontakte,telegram">
-          <div class="ya-share2__container ya-share2__container_size_m">
-              <div class="ya-share2__content">
-                  <div class="ya-share2__title">Текст, который вы хотите поделиться</div>
-                  <div class="ya-share2__image">
-                      <img src="https://example.com/image.jpg" alt="Описание изображения">
-                  </div>
-              </div>
-          </div>
-      </div>
-      <script src="https://yastatic.net/share2/share.js"></script>
       </header>    
           
       <section class="hero">
@@ -85,11 +73,25 @@
         </div>
       </section>
       <div class="overlay" id="overlay"></div>
-      <div class="chat__popup" id="popup">
-        <!-- Сюда добавьте содержимое вашего блока -->
-        <span class="chat__popup-hourly-rate" id="popup-hourly-rate"></span>
-        <button class="chat__popup-btn" id="chat-popup-btn">Закрыть</button>
-      </div>
+      
+        <div class="chat__popup chat__popup_achiever" id="popup">
+          <div class="chat__popup-column chat__popup-column_1">
+            <h3 class="chat__popup-title" id="popup-title"></h3>
+            <img id="popup-img" alt="достигатор">
+            <div class="chat__popup-share-container">
+              <img src="../static//img/share-android.svg">
+              <span class="chat__popup-share">Поделиться результатом (без указания суммы)</span>
+            </div>
+          </div>
+          <div class="chat__popup-column chat__popup-column_2">
+            <span class="chat__popup-hourly-rate" id="popup-rate"></span>
+            <p class="chat__popup-description" id="popup-description"></p>
+            <button class="btn chat__popup-btn">Забрать стикеры в Telegram-боте</button>
+          </div>
+        </div>
+    
+      
+
       <section class="fest-program">
         <h2 class="fest-program__title">Что тебя ждет на фесте?</h2>
         <div class="fest-program__cards">
