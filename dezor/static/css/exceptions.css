@@ -1,4 +1,4 @@
-@media screen and (min-width: 768px) and (max-width: 1599px) {
+@media screen and (min-width: 768px) and (max-width: 1132px) {
   .content {
     padding: 0 20px;
     overflow: hidden;
@@ -674,5 +674,306 @@
   }
   .footer__btn_telegram {
     margin-top: 30px;
+  }
+}
+@media screen and (min-width: 1133px) and (max-width: 1599px) {
+  .content {
+    padding: 0 50px;
+    overflow: hidden;
+  }
+  .bot-name {
+    white-space: nowrap;
+  }
+  .header {
+    padding-top: 0px;
+  }
+  .hero {
+    display: flex;
+    justify-content: space-between;
+  }
+  .hero__img {
+    margin-top: -85.25px;
+  }
+  .hero__title {
+    margin-bottom: 16px;
+    font-size: 96px;
+    text-wrap: nowrap;
+  }
+  .hero__title-container {
+    margin-top: 65px;
+    margin-right: 9px;
+  }
+  .hero__date {
+    margin-bottom: 16px;
+    font-size: 24px;
+  }
+  .hero__description {
+    margin-bottom: 53.28px;
+    font-size: 24px;
+    max-width: 484px;
+  }
+  .section-chat {
+    margin-top: 150px;
+  }
+  .section-chat__title {
+    font-size: 50px;
+    line-height: 110%;
+  }
+  .section-chat__text {
+    margin-bottom: 40px;
+    margin-top: 0px;
+    line-height: 120%;
+  }
+  .section-chat__chat-container {
+    margin-top: 63px;
+    gap: 120px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .section-chat__img {
+    margin-left: 0;
+  }
+  .popup-img {
+    max-height: 270px;
+    height: 100%;
+    margin-left: 13.74px;
+    margin-right: 13.74px;
+  }
+  .chat {
+    height: 533px;
+  }
+  .chat__head span {
+    font-size: 40px;
+  }
+  .chat__messages {
+    gap: 10px;
+    padding-left: 22px;
+    padding-right: 29px;
+  }
+  .chat__temp_bottom {
+    bottom: -1px;
+    height: 87px;
+  }
+  .chat__popup {
+    max-width: 1068px;
+    padding: 25px 38px;
+    gap: 80px;
+    justify-content: space-between;
+    border-radius: 40px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+  }
+  .chat__popup-share {
+    font-size: 20px;
+    margin-left: 15px;
+  }
+  .chat__popup-share-container {
+    display: flex;
+  }
+  .chat__popup-btn {
+    padding: 18px 36px;
+    font-size: 20px;
+    text-align: left;
+  }
+  .chat__popup-title {
+    font-size: 50px;
+    line-height: 110%;
+  }
+  .chat__popup-hourly-rate {
+    font-size: 60px;
+    line-height: 110%;
+  }
+  .chat__popup-description {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 70px;
+  }
+  .chat__popup.show {
+    display: flex;
+  }
+  .chat__popup-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chat__popup-column_1 {
+    max-width: 380px;
+    width: 100%;
+    gap: 40px;
+    max-height: 602px;
+  }
+  .chat__popup-column_2 {
+    justify-content: center;
+    width: 100%;
+    max-width: 507px;
+  }
+  .chat__input {
+    margin-bottom: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .message {
+    padding: 10px;
+    overflow-wrap: break-word;
+  }
+  .user {
+    padding: 20px;
+  }
+  .footer {
+    padding: 50px 0 74px;
+    margin-top: 77px;
+  }
+  .footer__content {
+    display: flex;
+    justify-content: center;
+    gap: 117px;
+  }
+  .footer__links {
+    margin-top: 53px;
+    gap: 15px;
+  }
+  .footer__link {
+    font-size: 20px;
+    text-decoration: none;
+    color: var(--Black, #000);
+    font-weight: 400;
+  }
+  .fest-program {
+    margin-top: 150px;
+  }
+  .fest-program__title {
+    text-shadow: none;
+    font-size: 50px;
+    line-height: 110%;
+  }
+  .fest-program__cards {
+    margin-top: 60px;
+    gap: 52px;
+    margin-bottom: 50px;
+  }
+  .fest-program__square-cards-container {
+    gap: 52px;
+    display: flex;
+    justify-content: center;
+  }
+  .fest-program__card {
+    padding: 60px 40px;
+  }
+  .fest-program__card-text {
+    font-size: 16px;
+    line-height: 120%;
+  }
+  .fest-program__card-img {
+    margin-top: 104px;
+    align-self: center;
+    margin-top: 0;
+    max-width: 380px;
+    margin-left: 0px;
+  }
+  .fest-program__card_square {
+    padding: 30px 20px;
+    gap: 25px;
+    max-width: 490px;
+    width: 100%;
+  }
+  .fest-program__card_rectangle {
+    padding: 49px 29px 75px 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1032px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .fest-program__card_rectangle-text-container {
+    max-width: 583px;
+    gap: 50px;
+    padding-left: 70px;
+  }
+  .fest-program__card-title {
+    line-height: 110%;
+    font-size: 35px;
+  }
+  .fest-program__card-date {
+    margin-bottom: 5px;
+    font-size: 35px;
+    line-height: 110%;
+  }
+  .fest-program__card-time {
+    font-size: 20px;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+  .merch {
+    margin-top: 150px;
+  }
+  .merch__title {
+    font-size: 50px;
+    line-height: 110%;
+  }
+  .merch__container {
+    display: flex;
+    gap: 37px;
+    margin-top: 83px;
+    margin-left: auto;
+    margin-right: auto;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  .merch__container-column {
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+  }
+  .merch__container-column_2 {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+  }
+  .merch__container-column_1 {
+    margin-top: 0px;
+  }
+  .merch__card {
+    padding: 60px 40px;
+    margin-bottom: 50px;
+    border-radius: 40px;
+    border: 1px solid var(--Black, #000);
+    font-size: 30px;
+    width: 100%;
+    line-height: 120%;
+  }
+  .merch__card_covers {
+    margin-bottom: 0px;
+  }
+  .merch__card_coffee {
+    margin-bottom: 0px;
+    justify-self: end;
+  }
+  .merch__card_coffee-mobile {
+    display: none;
+  }
+  .merch__img {
+    margin-left: 27px;
+    width: 100%;
+    max-width: 454px;
+    margin-bottom: 55.06px;
+  }
+  .merch__btn_mobile {
+    display: none;
+  }
+  .merch__btn_desktop {
+    display: none;
+  }
+  .merch__btn_1133 {
+    margin-top: 103px;
+  }
+  .popup-img {
+    max-height: 331px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
   }
 }/*# sourceMappingURL=exceptions.css.map */

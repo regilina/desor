@@ -1,4 +1,4 @@
-@media screen and (min-width: 768px) and (max-width: 1599px) {
+@media screen and (min-width: 768px) and (max-width: 1132px) {
   .content {
     padding: 0 20px;
     overflow: hidden;
@@ -892,7 +892,391 @@
 
     }
   }
-  
-  
+}
 
+@media screen and (min-width: 1133px) and (max-width: 1599px) {
+   .content {
+    padding: 0 50px;
+    overflow: hidden;
+  }
+
+  .bot {
+
+    &-name {
+      white-space: nowrap;
+    }
+    
+  }
+  
+  .header {
+    padding-top: 0px;
+  }
+
+  .hero {
+    display: flex;
+    justify-content: space-between;
+
+    &__img {
+      margin-top: -85.25px;
+    }
+    
+    &__title {
+      margin-bottom: 16px;
+      font-size: 96px;
+      text-wrap: nowrap;
+
+      &-container {
+        margin-top: 65px;
+        margin-right: 9px;
+      }
+    }
+
+    &__date {
+      margin-bottom: 16px;
+      font-size: 24px;
+    }
+  
+    &__description {
+      margin-bottom: 53.28px;
+      font-size: 24px;
+      max-width: 484px;
+    }
+  }
+
+  .section-chat {
+    margin-top: 150px;
+  
+    &__title {
+      font-size: 50px;
+      line-height: 110%; 
+    }
+  
+    &__text {
+      margin-bottom: 40px;
+      margin-top: 0px;
+      line-height: 120%;
+    }
+  
+    &__chat-container {
+      margin-top: 63px;
+      gap: 120px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    &__img {
+      margin-left: 0;
+    }
+  }
+
+  .popup-img {
+    max-height: 270px;
+    height: 100%;
+    margin-left: 13.74px;
+    margin-right: 13.74px;
+  }
+
+  .chat {
+    height: 533px;
+
+    &__head {
+      & span {
+        font-size: 40px;
+      }
+    }
+
+    &__messages {
+      gap: 10px;
+      padding-left: 22px;
+      padding-right: 29px;
+
+    }
+
+    &__temp {
+  
+      &_bottom {
+        bottom: -1px;
+        height: 87px;
+      }
+    }
+
+    
+  &__popup {
+    max-width: 1068px;
+    padding: 25px 38px;
+    gap: 80px;
+    justify-content: space-between;
+    border-radius: 40px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+
+    
+
+    &-share {
+      font-size: 20px;
+      margin-left: 15px;
+
+      &-container {
+        display: flex;
+      }
+    }
+
+    &-btn {
+      padding: 18px 36px;
+      font-size: 20px;
+      text-align: left;
+    }
+ 
+    &-title {
+      font-size: 50px;
+      line-height: 110%;
+    }
+
+    &-hourly-rate {
+      font-size: 60px;
+      line-height: 110%;
+    }
+    
+    &-description {
+      font-size: 20px;
+      margin-top: 40px;
+      margin-bottom: 70px;
+    }
+
+    &.show {
+      display: flex;
+    }
+
+    &-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &_1 {
+        max-width: 380px;
+        width: 100%;
+        gap: 40px;
+        max-height: 602px;
+      }
+
+      &_2 {
+        justify-content: center;
+        width: 100%;
+        max-width: 507px;
+      }
+    }
+  }
+  
+  }
+
+  .chat__input {
+    margin-bottom: 15px; 
+    margin-right: 20px; 
+    margin-left: 20px; 
+  }
+
+  .message {
+    padding: 10px;
+    overflow-wrap: break-word;
+  }
+
+  .user {
+    padding: 20px;
+  }
+
+  .footer {
+    padding: 50px 0 74px;
+    margin-top: 77px;
+  
+    &__content {
+      display: flex;
+      justify-content: center;
+      gap: 117px;
+    }
+
+    &__links {
+      margin-top: 53px;
+      gap: 15px;
+    }
+
+    &__link {
+      font-size: 20px;
+      text-decoration: none;
+      color: var(--Black, #000);
+      font-weight: 400;
+    }
+  }
+
+  
+  .fest-program {
+    margin-top: 150px;
+
+    &__title {
+      text-shadow: none;
+      font-size: 50px;
+      line-height: 110%
+    }
+
+    &__cards {
+      margin-top: 60px;
+      gap: 52px;
+      margin-bottom: 50px;
+      
+    }
+
+    &__square-cards-container {
+      gap: 52px;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__card {
+      padding: 60px 40px;
+   
+      &-text {
+        font-size: 16px;
+        line-height: 120%;
+      }
+
+      &-img {
+        margin-top: 104px;
+        align-self: center;
+        margin-top: 0;
+        max-width: 380px;
+        margin-left: 0px;
+      }
+
+      &_square {
+        padding: 30px 20px;
+        gap: 25px;
+        max-width: 490px;
+        width: 100%;
+  
+      }
+
+      &_rectangle {
+        padding: 49px 29px 75px 40px;
+         display: grid;
+         grid-template-columns: 1fr 1fr;
+         max-width: 490px * 2 + 52px;
+         margin-left: auto;
+         margin-right: auto;
+ 
+         &-text-container {
+           max-width: 583px;
+           gap: 50px;
+           padding-left: 70px;
+         }
+       }
+
+      &-title {
+        line-height: 110%;
+        font-size: 35px;
+      }
+
+      &-date {
+        margin-bottom: 5px;
+        font-size: 35px;
+        line-height: 110%;
+      }
+
+      &-time {
+        font-size: 20px;
+        line-height: 120%; 
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .merch {
+    margin-top: 150px;
+  
+    &__title {
+      font-size: 50px;
+      line-height: 110%;
+    }
+  
+    &__container {
+      display: flex;
+      gap: 37px;
+      margin-top: 83px;
+      margin-left: auto;
+      margin-right: auto;
+      width: fit-content;
+  
+      &-column {
+        display: flex;
+        flex-direction: column;
+        width: 500px;
+
+        &_2 {
+          display: flex;
+          flex-direction: column-reverse;
+          justify-content: space-between;
+        }
+
+        &_1 {
+          margin-top: 0px;
+        }
+        
+      }
+    }
+  
+    &__card {
+      padding: 60px 40px;
+      margin-bottom: 50px;
+      border-radius: 40px;
+      border: 1px solid var(--Black, #000);
+      font-size: 30px;
+      width: 100%;
+      line-height: 120%;
+  
+      &_covers {
+        margin-bottom: 0px;
+      }
+  
+      
+      &_coffee {
+        margin-bottom: 0px;
+        justify-self: end;
+  
+        &-mobile {
+          display: none;
+        }
+      }
+    }
+  
+    &__img {
+      margin-left: 27px;
+      width: 100%;
+      max-width: 454px;
+      margin-bottom: 55.06px;
+    }
+  
+    &__btn {
+      &_mobile {
+        display: none;
+      }
+
+      &_desktop {
+        display: none;
+      }
+
+      &_1133 {
+        margin-top: 103px;
+      }
+    }
+  }
+
+  .popup-img {
+    max-height: 331px;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
 }
