@@ -524,7 +524,7 @@
     margin-bottom: 15px;
   }
   .merch__card_coffee {
-    margin-bottom: 15px;
+    margin-bottom: 35px;
   }
   .merch__card_coffee-mobile {
     display: block;
@@ -969,6 +969,7 @@
   }
   .merch__btn_1133 {
     margin-top: 103px;
+    display: block;
   }
   .popup-img {
     max-height: 331px;
