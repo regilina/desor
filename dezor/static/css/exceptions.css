@@ -50,6 +50,12 @@
   .section-chat__img {
     margin-left: 0;
   }
+  .popup-img {
+    max-height: 270px;
+    height: 100%;
+    margin-left: 13.74px;
+    margin-right: 13.74px;
+  }
   .chat {
     height: 533px;
   }
@@ -64,6 +70,61 @@
   .chat__temp_bottom {
     bottom: -1px;
     height: 87px;
+  }
+  .chat__popup {
+    max-width: 717px;
+    padding: 20px 40px;
+    gap: 51px;
+    justify-content: space-between;
+    border-radius: 40px;
+    background: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+  }
+  .chat__popup-share {
+    font-size: 16px;
+    margin-left: 15px;
+  }
+  .chat__popup-share-container {
+    display: flex;
+  }
+  .chat__popup-btn {
+    padding: 18px 36px;
+    font-size: 20px;
+    text-align: left;
+  }
+  .chat__popup-title {
+    font-size: 36px;
+  }
+  .chat__popup-hourly-rate {
+    font-size: 32px;
+  }
+  .chat__popup-description {
+    font-size: 16px;
+    margin-top: 35px;
+    margin-bottom: 50px;
+  }
+  .chat__popup.show {
+    display: flex;
+  }
+  .chat__popup-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chat__popup-column_1 {
+    max-width: 273px;
+    width: 100%;
+    gap: 15px;
+    max-height: 428px;
+  }
+  .chat__popup-column_2 {
+    justify-content: center;
+    width: 100%;
+    max-width: 324px;
   }
   .chat__input {
     margin-bottom: 15px;

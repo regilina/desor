@@ -170,6 +170,7 @@
 }
 .chat__popup-share-container {
   display: flex;
+  align-items: center;
 }
 .chat__popup-btn {
   padding: 25px 36px;
