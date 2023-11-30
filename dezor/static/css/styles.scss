@@ -47,6 +47,10 @@
   &__img {
     margin-top: -92px;
     width: 100%;
+
+    &_mobile {
+      display: none;
+    } 
   }
 
   &__title {
@@ -141,6 +145,10 @@
   &__img {
     margin-left: 19px;
     width: 100%;
+
+    &_mobile {
+      display: none;
+    }
   }
 }
 
@@ -471,6 +479,10 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+
+    &_mobile {
+      display: none;
+    }
   }
 
   &__link {

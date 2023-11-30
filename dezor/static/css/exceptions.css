@@ -172,4 +172,306 @@
   .merch__img {
     margin-left: 0;
   }
+}
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .content {
+    padding: 0 15px;
+  }
+  .header {
+    padding-top: 15px;
+    gap: 30px;
+  }
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .hero__btn {
+    padding: 18px 48px;
+    font-size: 20px;
+  }
+  .hero__img {
+    margin-top: 30px;
+  }
+  .hero__img_mobile {
+    display: block;
+  }
+  .hero__img_desktop {
+    display: none;
+  }
+  .hero__title {
+    margin-bottom: 10px;
+    font-size: 65px;
+    font-weight: 600;
+    line-height: 100%;
+  }
+  .hero__title-container {
+    margin-top: 40px;
+    margin-right: 0;
+  }
+  .hero__date {
+    margin-bottom: 10px;
+    font-size: 18px;
+    line-height: 120%;
+  }
+  .hero__description {
+    margin-bottom: 35px;
+    font-size: 18px;
+    line-height: 120%;
+  }
+  .section-chat {
+    margin-top: 75px;
+  }
+  .section-chat__title {
+    font-size: 40px;
+    line-height: 110%;
+  }
+  .section-chat__text {
+    margin-top: 0;
+    margin-bottom: 30px;
+  }
+  .section-chat__chat-container {
+    margin-top: 31px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+  .section-chat__img {
+    margin-left: 0;
+    margin-top: 30px;
+  }
+  .section-chat__img_mobile {
+    display: block;
+  }
+  .section-chat__img_desktop {
+    display: none;
+  }
+  .popup-img {
+    max-height: 270px;
+    height: 100%;
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+  .chat {
+    height: 533px;
+  }
+  .chat__head span {
+    font-size: 40px;
+  }
+  .chat__messages {
+    gap: 10px;
+    padding-left: 22px;
+    padding-right: 29px;
+  }
+  .chat__temp_bottom {
+    bottom: -1px;
+    height: 87px;
+  }
+  .chat__popup {
+    padding: 35px 20px;
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    justify-content: space-between;
+    border-radius: 20px;
+    max-width: 717px;
+    overflow: hidden;
+  }
+  .chat__popup-share {
+    font-size: 16px;
+  }
+  .chat__popup-btn {
+    padding: 18px 36px;
+    font-size: 20px;
+    width: 100%;
+    text-align: left;
+  }
+  .chat__popup-title {
+    font-size: 35px;
+  }
+  .chat__popup-hourly-rate {
+    font-size: 40px;
+  }
+  .chat__popup-description {
+    margin-top: 20px;
+    margin-bottom: 50px;
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .chat__popup.show {
+    display: flex;
+  }
+  .chat__popup-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .chat__popup-column_1 {
+    max-width: 380px;
+    width: 100%;
+    gap: 0px;
+    padding: 0 29.74px;
+  }
+  .chat__popup-column_2 {
+    justify-content: center;
+    width: 100%;
+    max-width: 507px;
+  }
+  .chat__input {
+    margin-bottom: 15px;
+    margin-right: 20px;
+    margin-left: 20px;
+  }
+  .message {
+    padding: 10px;
+  }
+  .user {
+    padding: 20px;
+  }
+  .footer {
+    padding: 25px 15px 20px;
+    margin-top: 75px;
+  }
+  .footer__btn {
+    padding: 18px 45px;
+    font-size: 18px;
+    line-height: 120%;
+  }
+  .footer__content {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+  }
+  .footer__logo-name {
+    font-size: 18px;
+    font-weight: 400;
+  }
+  .footer__logo-img {
+    max-width: 42.688px;
+    width: 100%;
+  }
+  .footer__links {
+    margin-top: 30px;
+    gap: 8px;
+    flex-direction: column;
+  }
+  .footer__links_mobile {
+    display: flex;
+  }
+  .footer__links_desktop {
+    display: none;
+  }
+  .footer__contact span {
+    font-size: 16px;
+    line-height: 120%;
+  }
+  .footer__link {
+    text-decoration: none;
+    color: var(--Black, #000);
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .fest-program {
+    margin-top: 75px;
+  }
+  .fest-program__btn {
+    padding: 18px 48px;
+    font-size: 20px;
+  }
+  .fest-program__title {
+    text-shadow: none;
+    font-size: 40px;
+    line-height: 110%;
+    margin-bottom: 35px;
+  }
+  .fest-program__cards {
+    margin-top: 35px;
+    gap: 30px;
+    margin-bottom: 35px;
+  }
+  .fest-program__square-cards-container {
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+  }
+  .fest-program__card {
+    padding: 30px 20px;
+  }
+  .fest-program__card-img {
+    margin-top: 5px;
+    align-self: end;
+    width: 100%;
+  }
+  .fest-program__card_square {
+    padding: 30px 20px;
+    gap: 25px;
+  }
+  .fest-program__card_rectangle {
+    flex-direction: column-reverse;
+    gap: 0;
+    padding: 40px 36px 40px 20px;
+  }
+  .fest-program__card_rectangle-text-container {
+    gap: 25px;
+  }
+  .fest-program__card-title {
+    font-size: 35px;
+    line-height: 110%;
+  }
+  .fest-program__card-text {
+    font-size: 16px;
+    line-height: 120%;
+  }
+  .fest-program__card-date {
+    margin-bottom: 5px;
+    font-size: 35px;
+    line-height: 110%;
+  }
+  .fest-program__card-time {
+    font-size: 20px;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+  .merch {
+    margin-top: 75px;
+  }
+  .merch__container {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 31px;
+    gap: 0;
+  }
+  .merch__title {
+    font-size: 40px;
+    line-height: 110%;
+  }
+  .merch__btn_desktop {
+    display: none;
+  }
+  .merch__btn_mobile {
+    display: block;
+  }
+  .merch__card {
+    max-width: 569px;
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .merch__card_covers {
+    margin-bottom: 15px;
+  }
+  .merch__card_coffee {
+    margin-bottom: 15px;
+  }
+  .merch__card_coffee-mobile {
+    display: block;
+  }
+  .merch__card_coffee-desktop {
+    display: none;
+  }
+  .merch__img {
+    margin-left: 0;
+    margin-top: 35px;
+  }
 }/*# sourceMappingURL=exceptions.css.map */

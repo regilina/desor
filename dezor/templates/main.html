@@ -21,9 +21,9 @@
   <body class="body">
     <div class="content">
       <header class="header">
-        <div class="logo-name">
-          <img src="../static/img/logo.svg" alt="логотип">
-          <span class="logo-name__name">Pro-fest</span>
+        <div class="logo-name ">
+          <img class="footer__logo-img" src="../static/img/logo.svg" alt="логотип">
+          <span class="logo-name__name footer__logo-name">Pro-fest</span>
         </div>
         <a href="#">Админка</a>
       </header>    
@@ -36,7 +36,8 @@
           <button class="btn hero__btn scroll-button">Записаться</button>
         </div>
         <div>
-          <img class="hero__img" src="../static/img/hero-img.png" alt="разные предметы">
+          <img class="hero__img hero__img_desktop" src="../static/img/hero-img.png" alt="разные предметы">
+          <img class="hero__img hero__img_mobile" src="../static/img/hero-img-mobile.png" alt="разные предметы">
         </div>
       </section>
       <section class="section-chat" id="section-chat">
@@ -45,7 +46,7 @@
           <div>
             <p class="section-chat__text">Узнай стоимость часа своей работы, получи точки роста и забери набор карьерных стикеров от Дезориентации для общения <br> с коллегами</p>
             <div>
-              <img class="section-chat__img" src="../static/img/illustration-man.png" alt="мужчина">
+              <img class="section-chat__img section-chat__img_desktop" src="../static/img/illustration-man.png" alt="мужчина">
             </div>
           </div>
           <div class="chat" id="chat">
@@ -70,6 +71,7 @@
               </button>
             </div>
           </div>
+          <img class="section-chat__img section-chat__img_mobile" src="../static/img/illustration-man.png" alt="мужчина">
         </div>
       </section>
       <div class="overlay" id="overlay"></div>
@@ -77,7 +79,7 @@
         <div class="chat__popup chat__popup_achiever" id="popup">
           <div class="chat__popup-column chat__popup-column_1">
             <h3 class="chat__popup-title" id="popup-title"></h3>
-            <img id="popup-img" alt="достигатор">
+            <img class="popup-img" id="popup-img" alt="достигатор">
             <div class="chat__popup-share-container">
               <img src="../static//img/share-android.svg">
               <span class="chat__popup-share">Поделиться результатом (без указания суммы)</span>
@@ -151,7 +153,7 @@
         <div class="merch__container">
           <div class="merch__contaner-column">
             <div class="merch__card">
-              <span>Карьерные карточки успеха</span>
+              <span>Метафорические карты</span>
             </div>
             <div class="merch__card">
               <span>Сменные стикеры для одежды</span>
@@ -178,10 +180,10 @@
       <div class="content footer__content">
         <div class="footer__logo-links-container">
           <div class="logo-name">
-            <img src="../static/img/logo.svg" alt="логотип">
-            <span class="logo-name__name">Pro-fest</span>
+            <img class="footer__logo-img" src="../static/img/logo.svg" alt="логотип">
+            <span class="logo-name__name footer__logo-name">Pro-fest</span>
           </div>
-          <div class="footer__links">
+          <div class="footer__links footer__links_desktop">
             <a href="#" class="footer__link">Договор оферты</a>
             <a href="#" class="footer__link">Политика конфиденциальности</a>
           </div>
@@ -191,6 +193,10 @@
           <button class="btn footer__btn footer__btn_telegram">Telegram</button>
           <button class="btn footer__btn footer__btn_email">Дезориентация</button>
         </div>
+      </div>
+      <div class="footer__links footer__links_mobile">
+        <a href="#" class="footer__link">Договор оферты</a>
+        <a href="#" class="footer__link">Политика конфиденциальности</a>
       </div>
     </footer>
     

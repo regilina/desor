@@ -235,4 +235,405 @@
   }
   
 }
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+  .content {
+    padding: 0 15px;
+  }
+
+  
+
+  .header {
+    padding-top: 15px;
+    gap: 30px;
+  }
+
+  .hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__btn {
+      padding: 18px 48px;
+      font-size: 20px;
+    }
+
+    &__img {
+      margin-top: 30px;
+
+      &_mobile {
+        display: block;
+      }
+
+      &_desktop {
+        display: none;
+      }
+    }
+    
+    &__title {
+      margin-bottom: 10px;
+      font-size: 65px;
+      font-weight: 600;
+      line-height: 100%; 
+
+
+      &-container {
+        margin-top: 40px;
+        margin-right: 0;
+      }
+    }
+
+    &__date {
+      margin-bottom: 10px;
+      font-size: 18px;
+      line-height: 120%;
+
+    }
+  
+    &__description {
+      margin-bottom: 35px;
+      font-size: 18px;
+      line-height: 120%;
+    }
+  }
+
+  .section-chat {
+    margin-top: 75px;
+  
+    &__title {
+      font-size: 40px;
+      line-height: 110%;
+    }
+  
+    &__text {
+      margin-top: 0;
+      margin-bottom: 30px;
+    }
+  
+    &__chat-container {
+      margin-top: 31px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    &__img {
+      margin-left: 0;
+      margin-top: 30px;
+
+      &_mobile {
+        display: block;
+      }
+
+      &_desktop {
+        display: none;
+      }
+    }
+  }
+
+  .popup-img {
+    max-height: 270px;
+    height: 100%;
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+
+  .chat {
+    height: 533px;
+
+    &__head {
+      & span {
+        font-size: 40px;
+      }
+    }
+
+    &__messages {
+      gap: 10px;
+      padding-left: 22px;
+      padding-right: 29px;
+
+    }
+
+    &__temp {
+  
+      &_bottom {
+        bottom: -1px;
+        height: 87px;
+      }
+    }
+
+    &__popup {
+      padding: 35px 20px;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      justify-content: space-between;
+      border-radius: 20px;
+      max-width: 717px;
+   
+      overflow: hidden;
+      
+      &-share {
+        font-size: 16px;
+      }
+  
+      &-btn {
+        padding: 18px 36px;
+        font-size: 20px;
+        width: 100%;
+
+        text-align: left;
+      }
+   
+      &-title {
+        font-size: 35px;
+      }
+  
+      &-hourly-rate {
+        font-size: 40px;
+      }
+      
+      &-description {
+        margin-top: 20px;
+        margin-bottom: 50px;
+        font-size: 18px;
+        font-weight: 400;
+      }
+  
+      &.show {
+        display: flex;
+      }
+  
+      &-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+  
+        &_1 {
+          max-width: 380px;
+          width: 100%;
+          gap: 0px;
+          padding: 0 29.74px;
+        }
+  
+        &_2 {
+          justify-content: center;
+          width: 100%;
+          max-width: 507px;
+
+        }
+      }
+    }
+  
+  }
+
+  .chat__input {
+    margin-bottom: 15px; 
+    margin-right: 20px; 
+    margin-left: 20px; 
+  }
+
+  .message {
+    padding: 10px;
+  }
+
+  .user {
+    padding: 20px;
+  }
+
+  .footer {
+    padding: 25px 15px 20px;
+    margin-top: 75px;
+
+    &__btn {
+      padding: 18px 45px;
+      font-size: 18px;
+      line-height: 120%;
+    }
+  
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+    }
+
+    &__logo-name {
+      font-size: 18px;
+      font-weight: 400;
+    }
+
+    &__logo-img {
+      max-width: 42.688px;
+      width: 100%;
+    }
+
+    &__links {
+      margin-top: 30px;
+      gap: 8px;
+      flex-direction: column;
+
+      &_mobile {
+        display: flex;
+      }
+
+      &_desktop {
+        display: none;
+      }
+      
+    }
+
+    &__contact {
+      & span {
+        font-size: 16px;
+        line-height: 120%;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      color: var(--Black, #000);
+      font-size: 14px;
+      font-weight: 400;
+    }
+  }
+
+  
+  .fest-program {
+    margin-top: 75px;
+
+    
+    &__btn {
+      padding: 18px 48px;
+      font-size: 20px;
+      
+    }
+
+    &__title {
+      text-shadow: none;
+      font-size: 40px;
+      line-height: 110%;
+      margin-bottom: 35px;
+    }
+
+
+    &__cards {
+      margin-top: 35px;
+      gap: 30px;
+      margin-bottom: 35px;
+      
+    }
+
+    &__square-cards-container {
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+    }
+
+    &__card {
+      padding: 30px 20px;
+
+      &-img {
+        margin-top: 5px;
+        align-self: end;
+        width: 100%;
+      }
+
+      &_square {
+        padding: 30px 20px;
+        gap: 25px;
+      }
+
+      &_rectangle {
+        flex-direction: column-reverse;
+        gap: 0;
+        padding: 40px 36px 40px 20px;
+    
+
+        &-text-container {
+          gap: 25px;
+          
+        }
+      }
+
+      &-title {
+        font-size: 35px;
+        line-height: 110%;
+      }
+
+      &-text {
+        font-size: 16px;
+        line-height: 120%;
+      }
+
+      &-date {
+        margin-bottom: 5px;
+        font-size: 35px;;
+        line-height: 110%; 
+      }
+
+      &-time {
+        font-size: 20px;
+        line-height: 120%; 
+        text-transform: uppercase;
+      }
+    }
+  }
+  .merch {
+    margin-top: 75px;
+
+    &__container {
+      flex-direction: column;
+      align-items: center;
+      margin-top: 31px;
+      gap: 0;
+    }
+
+    &__title {
+      font-size: 40px;
+      line-height: 110%;
+     
+    }
+
+    &__btn {
+      &_desktop {
+        display: none;
+      }
+
+      &_mobile {
+        display: block;
+      }
+    }
+
+    &__card {
+      max-width: 569px;
+      width: 100%;
+      margin-bottom: 15px;
+      
+      &_covers {
+        margin-bottom: 15px;
+      }
+      
+      &_coffee {
+        margin-bottom: 15px;
+  
+        &-mobile {
+          display: block;
+        }
+
+        &-desktop {
+          display: none;
+        }
+      }
+    }
+
+    &__img {
+      margin-left: 0;
+      margin-top: 35px;
+      
+    }
+  }
+
+}
     
