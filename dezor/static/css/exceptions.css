@@ -536,4 +536,143 @@
     margin-left: 0;
     margin-top: 35px;
   }
+}
+@media screen and (min-width: 1920px) {
+  .content {
+    max-width: 1427.5px;
+  }
+  .header {
+    padding-top: 120px;
+  }
+  .hero__title {
+    margin-bottom: 20px;
+    font-size: 150px;
+  }
+  .hero__title-container {
+    display: flex;
+    flex-direction: column;
+    margin-top: 86px;
+  }
+  .hero__date {
+    margin-bottom: 20px;
+  }
+  .hero__description {
+    margin-bottom: 90px;
+  }
+  .section-chat__title {
+    font-size: 50px;
+    line-height: 110%;
+  }
+  .section-chat__text {
+    margin-bottom: 80px;
+    margin-top: 120px;
+  }
+  .section-chat__chat-container {
+    display: flex;
+    margin-top: 81px;
+    gap: 287px;
+  }
+  .section-chat__img {
+    margin-left: 0;
+  }
+  .chat {
+    max-width: 537px;
+  }
+  .chat__popup {
+    max-width: 1292px;
+    padding: 60px 130px;
+    gap: 166px;
+  }
+  .chat__popup-column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .fest-program {
+    margin-top: 150px;
+  }
+  .fest-program__square-cards-container {
+    gap: 60px;
+  }
+  .fest-program__title {
+    font-size: 64px;
+    line-height: 110%;
+  }
+  .fest-program__cards {
+    margin-top: 80px;
+    gap: 60px;
+    margin-bottom: 70px;
+  }
+  .fest-program__card_square {
+    max-width: 730px;
+    gap: 50px;
+  }
+  .fest-program__card-img {
+    margin-left: 115px;
+  }
+  .fest-program__card_rectangle {
+    padding: 56px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .fest-program__card_rectangle-text-container {
+    max-width: 583px;
+    gap: 50px;
+    padding-left: 70px;
+  }
+  .merch {
+    margin-top: 150px;
+  }
+  .merch__container {
+    gap: 60px;
+    margin-top: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  .merch__card {
+    margin-bottom: 40px;
+    line-height: 120%;
+    font-size: 30px;
+    width: 730px;
+  }
+  .merch__card_covers {
+    margin-bottom: 90px;
+  }
+  .merch__card_coffee {
+    margin-bottom: 100px;
+  }
+  .merch__img {
+    margin-left: 115px;
+  }
+  .merch__btn {
+    width: 100%;
+  }
+  .footer {
+    padding: 59px 0 66px;
+    margin-top: 150px;
+  }
+  .footer__content {
+    display: flex;
+    gap: 479px;
+  }
+  .footer__links {
+    margin-top: 53px;
+  }
+  .footer__link {
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: none;
+  }
+  .footer__contact {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+  }
+  .footer__btn {
+    width: 260px;
+    height: 65px;
+  }
+  .footer__btn_telegram {
+    margin-top: 30px;
+  }
 }/*# sourceMappingURL=exceptions.css.map */

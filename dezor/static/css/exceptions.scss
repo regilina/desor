@@ -712,3 +712,187 @@
 
 }
     
+@media screen and (min-width: 1920px) {
+  .content {
+    max-width: 1427.5px;
+  }
+  
+  .header {
+    padding-top: 120px;
+  }
+
+  .hero {
+    &__title {
+      margin-bottom: 20px;
+      font-size: 150px;
+      
+      &-container {
+        display: flex;
+        flex-direction: column;
+        margin-top: 86px;
+      }
+    }
+  
+    &__date {
+      margin-bottom: 20px;
+    }
+  
+    &__description {
+      margin-bottom: 90px;
+    }
+  }
+  
+  .section-chat {
+    &__title {
+      font-size: 50px;
+      line-height: 110%;
+    }
+  
+    &__text {
+      margin-bottom: 80px;
+      margin-top: 120px;
+    }
+  
+    &__chat-container {
+      display: flex;
+      margin-top: 81px;
+      gap: 287px;
+    }
+  
+    &__img {
+      margin-left: 0;
+    }
+  }
+  
+  .chat {
+    max-width: 537px;
+
+    &__popup {
+      max-width: 1292px;
+      padding: 60px 130px;
+      gap: 166px;
+  
+      &-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  }
+
+  .fest-program {
+    margin-top: 150px;
+  
+    &__square-cards-container {
+      gap: 60px;
+    }
+  
+    &__title {
+      font-size: 64px;
+      line-height: 110%;
+    }
+  
+    &__cards {
+      margin-top: 80px;
+      gap: 60px;
+      margin-bottom: 70px;
+    }
+  
+    &__card {
+      &_square {
+        max-width: 730px;
+        gap: 50px;
+      }
+
+      &-img {
+        margin-left: 115px;
+      }
+  
+      &_rectangle {
+       padding: 56px 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+
+        &-text-container {
+          max-width: 583px;
+          gap: 50px;
+          padding-left: 70px;
+        }
+      }
+    }
+  }
+
+  .merch {
+    margin-top: 150px;
+  
+    &__container {
+      gap: 60px;
+      margin-top: 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  
+    &__card {
+      margin-bottom: 40px;
+      line-height: 120%;
+      font-size: 30px;
+      width: 730px;
+      
+  
+      &_covers {
+        margin-bottom: 90px;
+      }
+  
+      &_coffee {
+        margin-bottom: 100px;
+      }
+    }
+  
+    &__img {
+      margin-left: 115px;
+    }
+
+    &__btn {
+      width: 100%;
+    }
+  }
+
+  .footer {
+    padding: 59px 0 66px;
+    margin-top: 150px;
+  
+    &__content {
+      display: flex;
+      gap: 479px;
+    }
+  
+    &__links {
+      margin-top: 53px;
+    }
+  
+    &__link {
+      font-size: 20px;
+      font-weight: 400;
+      text-decoration: none;
+    }
+  
+    &__contact {
+      display: flex;
+      flex-direction: column;
+      padding-top: 20px;
+    }
+  
+    &__btn {
+      width: 260px;
+      height: 65px;
+  
+      &_telegram {
+        margin-top: 30px;
+      }
+
+    }
+  }
+  
+  
+
+}
