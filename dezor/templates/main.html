@@ -76,20 +76,29 @@
       </section>
       <div class="overlay" id="overlay"></div>
       
-        <div class="chat__popup chat__popup_achiever" id="popup">
-          <div class="chat__popup-column chat__popup-column_1">
-            <h3 class="chat__popup-title" id="popup-title"></h3>
-            <img class="popup-img" id="popup-img" alt="достигатор">
-            <div class="chat__popup-share-container">
-              <img src="../static//img/share-android.svg">
-              <span class="chat__popup-share">Поделиться результатом (без указания суммы)</span>
+        <div class="chat__popup" id="popup">
+          <button class="chat__popup-btn-close" id="popup-btn-close">
+            <img class="chat__popup-btn-close-img" src="../static/img/icon-close.svg" alt="закрыть">
+          </button>
+          <div class="chat__popup-container">
+            
+            <div class="chat__popup-column chat__popup-column_1">
+              
+              <h3 class="chat__popup-title" id="popup-title"></h3>
+              <img class="popup-img" id="popup-img" alt="достигатор">
+              <div class="chat__popup-share-container">
+                <img src="../static//img/share-android.svg">
+                <span class="chat__popup-share">Поделиться результатом (без указания суммы)</span>
+              </div>
+            </div>
+            <div class="chat__popup-column chat__popup-column_2">
+            
+              <span class="chat__popup-hourly-rate" id="popup-rate"></span>
+              <p class="chat__popup-description" id="popup-description"></p>
+              <button class="btn chat__popup-btn">Забрать стикеры в Telegram-боте</button>
             </div>
           </div>
-          <div class="chat__popup-column chat__popup-column_2">
-            <span class="chat__popup-hourly-rate" id="popup-rate"></span>
-            <p class="chat__popup-description" id="popup-description"></p>
-            <button class="btn chat__popup-btn">Забрать стикеры в Telegram-боте</button>
-          </div>
+         
         </div>
     
       

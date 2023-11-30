@@ -59,7 +59,7 @@ class ChatApp {
     this.buttonResult = document.getElementById('btn-result') as HTMLButtonElement
     this.popupRate = document.getElementById('popup-rate')
     this.popup = document.getElementById('popup')
-    this.popupBtn = document.getElementById('chat-popup-btn') as HTMLButtonElement
+    this.popupBtn = document.getElementById('popup-btn-close') as HTMLButtonElement
     this.popupDescription = document.getElementById('popup-description')
     this.popupImg = document.getElementById('popup-img') as HTMLImageElement
     this.popupTitle = document.getElementById('popup-title')

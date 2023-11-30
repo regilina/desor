@@ -74,8 +74,6 @@
   .chat__popup {
     max-width: 717px;
     padding: 20px 40px;
-    gap: 51px;
-    justify-content: space-between;
     border-radius: 40px;
     background: white;
     position: fixed;
@@ -83,6 +81,10 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
+  }
+  .chat__popup-container {
+    gap: 51px;
+    margin-top: 80px;
   }
   .chat__popup-share {
     font-size: 16px;
@@ -95,6 +97,10 @@
     padding: 18px 36px;
     font-size: 20px;
     text-align: left;
+  }
+  .chat__popup-btn-close {
+    margin-top: -95px;
+    margin-right: -40px;
   }
   .chat__popup-title {
     font-size: 36px;
@@ -331,14 +337,17 @@
   }
   .chat__popup {
     padding: 35px 20px;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-    justify-content: space-between;
     border-radius: 20px;
     max-width: 717px;
     width: 92%;
     overflow: hidden;
+  }
+  .chat__popup-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 50px;
+    justify-content: space-between;
+    margin-top: 0;
   }
   .chat__popup-share {
     font-size: 16px;
@@ -349,8 +358,24 @@
     width: 100%;
     text-align: left;
   }
+  .chat__popup-btn-close {
+    margin-right: 0;
+    margin-top: 0;
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .chat__popup-btn-close-img {
+    width: 15px;
+    height: 15px;
+    margin-right: 0;
+    margin-top: 0;
+  }
   .chat__popup-title {
     font-size: 35px;
+    margin-top: 0;
   }
   .chat__popup-hourly-rate {
     font-size: 40px;
@@ -581,7 +606,19 @@
   .chat__popup {
     max-width: 1292px;
     padding: 60px 130px;
+  }
+  .chat__popup-container {
     gap: 166px;
+  }
+  .chat__popup-btn-close {
+    margin-top: -145px;
+    height: 50px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: -130px;
+    border-radius: 30px;
+    border: none;
+    background: rgba(255, 255, 255, 0.4);
   }
   .chat__popup-column {
     display: flex;
@@ -757,8 +794,6 @@
   .chat__popup {
     max-width: 1068px;
     padding: 25px 38px;
-    gap: 80px;
-    justify-content: space-between;
     border-radius: 40px;
     background: white;
     position: fixed;
@@ -767,17 +802,24 @@
     transform: translate(-50%, -50%);
     z-index: 999;
   }
+  .chat__popup-container {
+    gap: 80px;
+    justify-content: space-between;
+    display: flex;
+    margin-top: 0;
+  }
   .chat__popup-share {
     font-size: 20px;
     margin-left: 15px;
-  }
-  .chat__popup-share-container {
-    display: flex;
   }
   .chat__popup-btn {
     padding: 18px 36px;
     font-size: 20px;
     text-align: left;
+  }
+  .chat__popup-btn-close {
+    margin-right: 0;
+    margin-top: 0;
   }
   .chat__popup-title {
     font-size: 50px;

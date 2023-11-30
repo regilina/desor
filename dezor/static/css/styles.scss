@@ -175,9 +175,9 @@
     width: 100%;
     padding: 60px 50px;
     display: flex;
+    flex-direction: column;
     display: none;
-    gap: 142px;
-    justify-content: space-between;
+    
     border-radius: 40px;
     background: white;
     position: fixed;
@@ -185,6 +185,17 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 999;
+    overflow: visible;
+
+    
+    &-container {
+      display: flex;
+      margin-top: 95px;
+      flex-direction: row;
+      align-items: center;
+      gap: 142px;
+      justify-content: space-between;
+    }
 
     &-share {
       font-size: 20px;
@@ -202,6 +213,18 @@
       font-size: 24px;
       line-height: 130%;
       width: 100%;
+      cursor: pointer;
+
+      &-close {
+        margin-top: -145px;
+        height: 50px;
+        width: 50px;
+        margin-left: auto;
+        margin-right: -50px;
+        border-radius: 30px;
+        border: none;
+        background: rgba(255, 255, 255, 0.40);
+      }
     }
  
     &-title {
@@ -693,9 +716,6 @@
       display: none;
     }
 
-    &_1133 {
-      display: none;
-    }
   }
 }
 

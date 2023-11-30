@@ -153,9 +153,8 @@
   width: 100%;
   padding: 60px 50px;
   display: flex;
+  flex-direction: column;
   display: none;
-  gap: 142px;
-  justify-content: space-between;
   border-radius: 40px;
   background: white;
   position: fixed;
@@ -163,6 +162,15 @@
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
+  overflow: visible;
+}
+.chat__popup-container {
+  display: flex;
+  margin-top: 95px;
+  flex-direction: row;
+  align-items: center;
+  gap: 142px;
+  justify-content: space-between;
 }
 .chat__popup-share {
   font-size: 20px;
@@ -178,6 +186,17 @@
   font-size: 24px;
   line-height: 130%;
   width: 100%;
+  cursor: pointer;
+}
+.chat__popup-btn-close {
+  margin-top: -145px;
+  height: 50px;
+  width: 50px;
+  margin-left: auto;
+  margin-right: -50px;
+  border-radius: 30px;
+  border: none;
+  background: rgba(255, 255, 255, 0.4);
 }
 .chat__popup-title {
   text-align: center;
@@ -582,8 +601,5 @@
   max-width: 489px;
 }
 .merch__btn_mobile {
-  display: none;
-}
-.merch__btn_1133 {
   display: none;
 }/*# sourceMappingURL=styles.css.map */

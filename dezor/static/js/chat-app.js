@@ -55,7 +55,7 @@ class ChatApp {
         this.buttonResult = document.getElementById('btn-result');
         this.popupRate = document.getElementById('popup-rate');
         this.popup = document.getElementById('popup');
-        this.popupBtn = document.getElementById('chat-popup-btn');
+        this.popupBtn = document.getElementById('popup-btn-close');
         this.popupDescription = document.getElementById('popup-description');
         this.popupImg = document.getElementById('popup-img');
         this.popupTitle = document.getElementById('popup-title');
