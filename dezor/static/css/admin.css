@@ -331,20 +331,21 @@
 .edit-select-container {
   display: flex;
 }
-.edit-label {
-  font-family: Inter;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: 120%;
-  align-self: center;
-}
 .edit-first-inputs-container {
   display: grid;
   grid-template-columns: 118px 280px;
   grid-gap: 10px;
   align-items: center;
   margin-bottom: 20px;
+}
+
+.edit-form p > label {
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 120%;
+  align-self: center;
 }
 
 .table__name-cell-img {

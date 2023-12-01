@@ -438,14 +438,7 @@
     }
   }
 
-  &-label {
-    font-family: Inter;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 120%;
-    align-self: center;
-  }
+  
 
   &-first-inputs-container {
     display: grid;
@@ -456,6 +449,18 @@
 
   }
 }
+
+.edit-form {
+  p > label {
+    font-family: Inter;
+    font-size: 20px; 
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    align-self: center;
+  }
+}
+
 
 .table__name-cell-img {
   margin-left: 10px;
