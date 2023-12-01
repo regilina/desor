@@ -283,7 +283,7 @@
   font-weight: 700;
 }
 
-.edit-user__input {
+.edit-input {
   width: 280px;
   height: 50px;
   padding: 5px 20px;
@@ -296,7 +296,7 @@
   font-weight: 500;
   line-height: 120%;
 }
-.edit-user__select {
+.edit-select {
   padding: 15.5px 20px;
   width: 280px;
   height: 50px;
@@ -319,7 +319,7 @@
   background-position-y: center;
   background-repeat: no-repeat;
 }
-.edit-user__select option {
+.edit-select option {
   border-radius: 20px;
   background: #FFF;
   font-family: Inter;
@@ -328,10 +328,10 @@
   font-weight: 500;
   line-height: 120%;
 }
-.edit-user__select-container {
+.edit-select-container {
   display: flex;
 }
-.edit-user__label {
+.edit-label {
   font-family: Inter;
   font-size: 20px;
   font-style: normal;
@@ -339,7 +339,7 @@
   line-height: 120%;
   align-self: center;
 }
-.edit-user__first-inputs-container {
+.edit-first-inputs-container {
   display: grid;
   grid-template-columns: 118px 280px;
   grid-gap: 10px;

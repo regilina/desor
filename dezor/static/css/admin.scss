@@ -386,8 +386,8 @@
   }
 }
 
-.edit-user {
-  &__input {
+.edit {
+  &-input {
     width: 280px;
     height: 50px;
     padding: 5px 20px;
@@ -401,7 +401,7 @@
     line-height: 120%;
   }
 
-  &__select {
+  &-select {
     padding: 15.5px 20px;
     width: 280px;
     height: 50px;
@@ -438,7 +438,7 @@
     }
   }
 
-  &__label {
+  &-label {
     font-family: Inter;
     font-size: 20px;
     font-style: normal;
@@ -447,7 +447,7 @@
     align-self: center;
   }
 
-  &__first-inputs-container {
+  &-first-inputs-container {
     display: grid;
     grid-template-columns: 118px 280px;
     grid-gap: 10px;
