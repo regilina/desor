@@ -325,6 +325,16 @@
     padding: 0 15px;
   }
 
+  .btn-close-popup:hover {
+    
+    
+      background: white;
+
+      & svg path {
+        fill-opacity: 0.2;
+        fill: #000;
+      }
+    }
   
 
   .header {
@@ -476,23 +486,9 @@
         &-close {
           margin-right: 0;
           margin-top: 0;
-          width: 15px;
-          height: 15px;
-
-          &:hover {
-            background: none;
-
-            & > svg#btn-close path {
-              fill-opacity: 0.2;
-            }
-          }
-
-          svg#btn-close {
-            width: 15px;
-            height: 15px;
-          }
-
-          
+       
+  
+  
         }
       }
    
@@ -953,6 +949,17 @@
     overflow: hidden;
   }
 
+  .btn-close-popup:hover {
+    
+    
+    background: white;
+
+    & svg path {
+      fill-opacity: 0.2;
+      fill: #000;
+    }
+  }
+
   .bot {
 
     &-name {
@@ -1086,15 +1093,6 @@
       &-close {
         margin-right: 0;
         margin-top: 0;
-
-        &:hover {
-          background: none;
-
-          & > svg#btn-close path {
-            fill-opacity: 0.2;
-          }
-        }
-
       }
     }
  

@@ -154,7 +154,6 @@
   padding: 60px 50px;
   display: flex;
   flex-direction: column;
-  display: none;
   border-radius: 40px;
   background: white;
   position: fixed;
@@ -626,9 +625,9 @@
 
 .btn-close-popup:hover {
   background-color: #000;
-  color: #FFF;
 }
-.btn-close-popup:hover > svg#btn-close path {
+.btn-close-popup:hover svg path {
+  fill: #FFF;
   stroke: #FFF;
 }
 
@@ -643,5 +642,16 @@
 .btn-share {
   background: #FFF;
   border-radius: 50%;
+  width: 48px;
+  height: 48px;
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-close-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }/*# sourceMappingURL=styles.css.map */
