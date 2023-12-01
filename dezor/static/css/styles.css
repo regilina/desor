@@ -627,7 +627,7 @@
   background-color: #000;
 }
 .btn-close-popup:hover svg path {
-  fill: #FFF;
+  fill: white;
   stroke: #FFF;
 }
 
