@@ -281,11 +281,81 @@ class ChatApp {
                 return true;
         }
     }
+    // Функция для определения схожести строк
+    similarity(s1, s2) {
+        const normalize = (string) => string.toLowerCase().replace(/[^a-zа-яё]/g, '');
+        const str1 = normalize(s1);
+        const str2 = normalize(s2);
+        let longer = str1.length > str2.length ? str1 : str2;
+        let shorter = str1.length > str2.length ? str2 : str1;
+        const longerLength = longer.length;
+        if (longerLength === 0) {
+            return 1.0;
+        }
+        return (longerLength - this.editDistance(longer, shorter)) / parseFloat(longerLength.toString());
+    }
+    // Функция для вычисления расстояния Левенштейна (расстояния между строками)
+    editDistance(str1, str2) {
+        const matrix = [];
+        for (let i = 0; i <= str2.length; i++) {
+            matrix[i] = [i];
+        }
+        for (let j = 0; j <= str1.length; j++) {
+            matrix[0][j] = j;
+        }
+        for (let i = 1; i <= str2.length; i++) {
+            for (let j = 1; j <= str1.length; j++) {
+                if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+                    matrix[i][j] = matrix[i - 1][j - 1];
+                }
+                else {
+                    matrix[i][j] = Math.min(matrix[i - 1][j - 1] + 1, Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1));
+                }
+            }
+        }
+        return matrix[str2.length][str1.length];
+    }
+    changePiter(city) {
+        const userInput = city;
+        // Нормализация ввода пользователя
+        const normalizedUserInput = userInput.toLowerCase().trim();
+        // Возможные варианты написания города Санкт-Петербург
+        const validCityNames = [
+            "санкт-петербург",
+            "питер"
+            // Другие варианты, которые могут соответствовать Санкт-Петербургу
+        ];
+        // Поиск наиболее похожего варианта
+        let bestMatch = "";
+        let bestSimilarity = 0;
+        validCityNames.forEach(city => {
+            const similarityValue = this.similarity(normalizedUserInput, city);
+            if (similarityValue > bestSimilarity) {
+                bestSimilarity = similarityValue;
+                bestMatch = city;
+            }
+        });
+        if (bestMatch && bestSimilarity > 0.5) {
+            console.log(`Введенный город похож на ${bestMatch}.`);
+            // Отправка данных на сервер для найденного города
+            // ...
+            this.userAnswers.city = 'питер';
+        }
+        else {
+            console.log("Город не Питер.");
+            // Логика для обработки неверного ввода
+            // .
+        }
+    }
     handleUserMessage(message) {
         const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex];
         if (this.validateInput(currentQuestionKey, message)) {
             if (currentQuestionKey !== 'phone') {
                 this.userAnswers[currentQuestionKey] = message;
+            }
+            if (currentQuestionKey === 'city') {
+                this.userAnswers.city = message.toLocaleLowerCase();
+                this.changePiter(message);
             }
             if (currentQuestionKey === 'telegram' && this.userAnswers.want_event === 'Y') {
                 this.typeAnswer(message);

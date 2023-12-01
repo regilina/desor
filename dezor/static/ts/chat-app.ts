@@ -324,6 +324,94 @@ class ChatApp {
     }
   }
 
+   // Функция для определения схожести строк
+   private similarity(s1: string, s2: string): number {
+    const normalize = (string: string): string => string.toLowerCase().replace(/[^a-zа-яё]/g, '');
+    const str1: string = normalize(s1);
+    const str2: string = normalize(s2);
+
+    let longer: string = str1.length > str2.length ? str1 : str2;
+    let shorter: string = str1.length > str2.length ? str2 : str1;
+
+    const longerLength: number = longer.length;
+
+    if (longerLength === 0) {
+      return 1.0;
+    }
+
+    return (longerLength - this.editDistance(longer, shorter)) / parseFloat(longerLength.toString());
+  }
+
+  // Функция для вычисления расстояния Левенштейна (расстояния между строками)
+  private editDistance(str1: string, str2: string): number {
+    const matrix: number[][] = [];
+
+    for (let i: number = 0; i <= str2.length; i++) {
+      matrix[i] = [i];
+    }
+
+    for (let j: number = 0; j <= str1.length; j++) {
+      matrix[0][j] = j;
+    }
+
+    for (let i: number = 1; i <= str2.length; i++) {
+      for (let j: number = 1; j <= str1.length; j++) {
+        if (str2.charAt(i - 1) === str1.charAt(j - 1)) {
+          matrix[i][j] = matrix[i - 1][j - 1];
+        } else {
+          matrix[i][j] = Math.min(
+            matrix[i - 1][j - 1] + 1,
+            Math.min(matrix[i][j - 1] + 1, matrix[i - 1][j] + 1)
+          );
+        }
+      }
+    }
+
+    return matrix[str2.length][str1.length];
+  }
+
+
+  private changePiter (city: string) {
+    
+    const userInput: string = city;
+
+    // Нормализация ввода пользователя
+    const normalizedUserInput: string = userInput.toLowerCase().trim();
+
+    // Возможные варианты написания города Санкт-Петербург
+    const validCityNames: string[] = [
+      "санкт-петербург",
+      "питер"
+      // Другие варианты, которые могут соответствовать Санкт-Петербургу
+    ];
+
+   
+
+    // Поиск наиболее похожего варианта
+    let bestMatch: string = "";
+    let bestSimilarity: number = 0;
+
+    validCityNames.forEach(city => {
+      const similarityValue: number = this.similarity(normalizedUserInput, city);
+      if (similarityValue > bestSimilarity) {
+        bestSimilarity = similarityValue;
+        bestMatch = city;
+      }
+    });
+
+    if (bestMatch && bestSimilarity > 0.5) {
+      console.log(`Введенный город похож на ${bestMatch}.`);
+      // Отправка данных на сервер для найденного города
+      // ...
+      this.userAnswers.city = 'питер'
+
+    } else {
+      console.log("Город не Питер.");
+      // Логика для обработки неверного ввода
+      // .
+    }
+  }
+
   private handleUserMessage (message: string) {
     const currentQuestionKey = Object.keys(this.userAnswers)[this.currentQuestionIndex]
 
@@ -333,6 +421,11 @@ class ChatApp {
         this.userAnswers[currentQuestionKey] = message
       }
 
+      if (currentQuestionKey === 'city') {
+        this.userAnswers.city = message.toLocaleLowerCase()
+        this.changePiter(message)
+      }
+      
       if (currentQuestionKey === 'telegram' && this.userAnswers.want_event === 'Y') {
         this.typeAnswer(message)
         const question = ' Вы успешно записаны на PRO-FEST! Отправим программу фестиваля на указанный вами номер. А еще мы рассчитали стоимость часа вашей работы. Скорее смотрите результат ниже и забирайте подарочные стикеры для общения с коллегами!'
