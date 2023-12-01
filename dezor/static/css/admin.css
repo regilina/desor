@@ -354,4 +354,15 @@
 
 .admin-form {
   padding-bottom: 40px;
+}
+
+.edit-btn {
+  width: 203px;
+  height: 60px;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  padding: 18px 48px;
 }/*# sourceMappingURL=admin.css.map */
