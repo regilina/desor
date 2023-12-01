@@ -363,15 +363,16 @@
     margin-top: 0;
     width: 15px;
     height: 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
-  .chat__popup-btn-close-img {
+  .chat__popup-btn-close:hover {
+    background: none;
+  }
+  .chat__popup-btn-close:hover > svg#btn-close path {
+    fill-opacity: 0.2;
+  }
+  .chat__popup-btn-close svg#btn-close {
     width: 15px;
     height: 15px;
-    margin-right: 0;
-    margin-top: 0;
   }
   .chat__popup-title {
     font-size: 35px;
@@ -820,6 +821,12 @@
   .chat__popup-btn-close {
     margin-right: 0;
     margin-top: 0;
+  }
+  .chat__popup-btn-close:hover {
+    background: none;
+  }
+  .chat__popup-btn-close:hover > svg#btn-close path {
+    fill-opacity: 0.2;
   }
   .chat__popup-title {
     font-size: 50px;

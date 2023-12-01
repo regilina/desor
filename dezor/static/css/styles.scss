@@ -723,3 +723,44 @@
   }
 }
 
+
+.btn-violet:hover,
+.btn-green:hover {
+  background-color: #000; 
+  color: #FFF; 
+  & svg path {
+    stroke: #FFF;
+  }
+}
+
+.btn-black:hover,
+.btn-white:hover {
+  background-color: #D4F21D; 
+  color: #000; 
+  border: none;
+}
+
+.btn-close-popup:hover {
+  background-color: #000; 
+  color: #FFF;
+  & > svg#btn-close path {
+
+    stroke: #FFF;
+    
+  }
+}
+
+.btn-share:hover {
+  background-color: #000; 
+  color: #FFF; 
+  & svg path {
+    stroke: #FFF;
+  }
+}
+
+.btn-share {
+  background: #FFF;
+  border-radius: 50%;
+  border: none;
+}
+
