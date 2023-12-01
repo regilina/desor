@@ -154,6 +154,7 @@
   padding: 60px 50px;
   display: flex;
   flex-direction: column;
+  display: none;
   border-radius: 40px;
   background: white;
   position: fixed;
