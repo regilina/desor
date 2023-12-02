@@ -1,4 +1,5 @@
 "use strict";
+// import html2canvas from 'html2canvas';
 class ChatApp {
     questions = [
         'Привет! Как вас зовут? Укажите фамилию и имя',
@@ -418,12 +419,16 @@ class ChatApp {
     getResult() {
         this.isChatFilled = true;
         const horlyRate = parseInt(this.userAnswers.hourly_income, 10);
+        const repost = document.getElementById('ya-share2');
         if (horlyRate <= 500) {
             if (this.popup && this.popupRate && this.popupDescription && this.popupImg && this.popupTitle) {
                 this.popupRate.innerHTML = this.userAnswers.hourly_income + ' р/час';
                 this.popupDescription.innerHTML = `Вы стоите на отметке ${this.userAnswers.hourly_income} рублей в час, а это значит, что перед вами бесконечное поле возможностей! Как насчет участия в экспертной сессии с нашими спикерами? Только представьте, сколько точек роста и путей развития ожидает вас?! На карьерной дегустации вы можете пообщаться с коучем, который направит вас и поможет с разбором резюме. Дерзайте!`;
                 this.popupImg.src = '../static/img/result-1.png';
                 this.popupTitle.textContent = 'Достигатор обыкновенный';
+                repost?.setAttribute('data-image', this.popupImg.src);
+                repost?.setAttribute('data-title', 'Вы — Достигатор обыкновенный');
+                repost?.setAttribute('data-description', 'Достигай-не достигай, а кофе по расписанию, в конце концов зря я что ли выбирал свободный график? Хочу работаю, хочу думаю о своих успехах, я ведь и так красавчик.');
             }
         }
         else if (horlyRate >= 501 && horlyRate <= 2000) {
@@ -432,6 +437,9 @@ class ChatApp {
                 this.popupDescription.innerHTML = `Ваша отметка на сегодня - ${this.userAnswers.hourly_income} в час, не замедляя шага, двигайтесь дальше. Чтобы свернуть на новом карьерном витке, послушайте лекции о переквалификации и востребованных профессиях на бизнес-завтраке или пообщайтесь с коучем. Но если вы хотите дойти до впечатляющих цифр, отправляйтесь на экспертные сессии феста.`;
                 this.popupImg.src = '../static/img/result-2.png';
                 this.popupTitle.textContent = 'Успехмейкер выдающийся';
+                repost?.setAttribute('data-image', this.popupImg.src);
+                repost?.setAttribute('data-title', 'Вы — Успехмейкер выдающийся');
+                repost?.setAttribute('data-description', 'Я в порядке, ребят! Я все успею, ребят! Ещё есть день, ещё есть ночь, а ночью вообще никто мешать не будет! А ещё я могу за вас презенташку доделать!');
             }
         }
         else {
@@ -440,8 +448,20 @@ class ChatApp {
                 this.popupDescription.innerHTML = `Вы многое преодолели, и не зря ваш путь остановился на отметке ${this.userAnswers.hourly_income} рублей в час! Сколько энергии и сил вы затратили на блуждания в профессиональном лабиринте возможностей, может быть, пора расслабиться и посетить карьерный стендап? А как насчет экспертных сессий о work/life balance, выгорании и новых точках роста? Ждем вас!`;
                 this.popupImg.src = '../static/img/result-3.png';
                 this.popupTitle.textContent = 'Маниманьяк';
+                repost?.setAttribute('data-image', this.popupImg.src);
+                repost?.setAttribute('data-title', 'Вы — Маниманьяк');
+                repost?.setAttribute('data-description', 'Череда черных и белых полос должна конвертироваться в зелёный свет на пути к бесконечному количеству возможностей в моем кошельке. Нет-нет, я не устал, я твердо стою на ногах как хэдлайнер рок-фестиваля!');
             }
         }
+        // const element = document.getElementById('popup');
+        // if (element) {
+        //   html2canvas(element).then((canvas: HTMLCanvasElement) => {
+        //     const img = new Image();
+        //     const imgUrl = canvas.toDataURL();
+        //     console.log('imgUrl ' + imgUrl);
+        //     repost?.setAttribute('data-image', imgUrl);
+        //   });
+        // }
         if (this.showPopup) {
             this.showPopup();
         }

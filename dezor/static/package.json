@@ -12,9 +12,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/html2canvas": "^1.0.0",
     "@types/node": "^20.10.0",
     "tslint": "^5.20.1",
     "tslint-config-standard": "^9.0.0",
     "typescript": "^5.2.2"
+  },
+  "dependencies": {
+    "html2canvas": "^1.4.1"
   }
 }

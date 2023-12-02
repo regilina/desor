@@ -632,14 +632,6 @@
   stroke: #FFF;
 }
 
-.btn-share:hover {
-  background-color: #000;
-  color: #FFF;
-}
-.btn-share:hover svg path {
-  stroke: #FFF;
-}
-
 .btn-share {
   background: #FFF;
   border-radius: 50%;
