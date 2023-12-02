@@ -230,6 +230,7 @@
   justify-content: left;
   gap: 62px;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 .main__card {
   padding: 30px 20px;
