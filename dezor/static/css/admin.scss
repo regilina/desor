@@ -280,7 +280,6 @@
   justify-content: space-between;
   
   &__button {
-    max-width: 111px;
     text-decoration: none;
     border: none;
     background: none;
@@ -439,8 +438,6 @@
     }
   }
 
-  
-
   &-first-inputs-container {
     display: grid;
     grid-template-columns: 118px 280px;
@@ -461,7 +458,6 @@
     align-self: center;
   }
 }
-
 
 .table__name-cell-img {
   margin-left: 10px;
